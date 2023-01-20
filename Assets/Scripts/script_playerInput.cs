@@ -8,7 +8,12 @@ public class script_playerInput : MonoBehaviour
 {
     private PlayerInput controls;
 
+    [SerializeField]
+    private float playerSpeed = 5;
+
     private Vector2 movementDirection;
+
+    private CharacterController playerInput;
 
     private bool hasJumped;
     private bool hasFired;
@@ -16,6 +21,8 @@ public class script_playerInput : MonoBehaviour
     private void Awake()
     {
         controls = new PlayerInput();
+        playerInput = GetComponent<CharacterController>();
+
     }
     private void OnEnable()
     {
@@ -36,10 +43,17 @@ public class script_playerInput : MonoBehaviour
         controls.Player.Fire.performed += Fire;
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 velocity = Vector3.zero;
+        velocity.x = movementDirection.x;
+        velocity.z = movementDirection.y;
+        velocity.Normalize();
+        velocity *= playerSpeed;
+        playerInput.Move(velocity*Time.deltaTime);
     }
     void Jump(InputAction.CallbackContext ctx)
     {
