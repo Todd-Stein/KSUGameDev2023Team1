@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
-public class script_playerInput : MonoBehaviour
+public class script_player : MonoBehaviour
 {
     private PlayerInput controls;
 
@@ -13,14 +14,28 @@ public class script_playerInput : MonoBehaviour
 
     private Vector2 movementDirection;
 
+    private Vector2 cameraControl;
+
     private CharacterController playerInput;
+
+    private float xRot, yRot;
 
     private bool hasJumped;
     private bool hasFired;
 
+    [SerializeField]
+    [Range(-200f, 200f)]
+    private float maxPitch = 100.0f;
+    [SerializeField]
+    [Range(-200, 200f)]
+    private float minPitch = -100.0f;
+
+    private Camera cam;
+
     private void Awake()
     {
         controls = new PlayerInput();
+        cam = GetComponentInChildren<Camera>();
         playerInput = GetComponent<CharacterController>();
 
     }
@@ -41,6 +56,8 @@ public class script_playerInput : MonoBehaviour
         controls.Player.Jump.performed += Jump;
         controls.Player.Fire.started += Fire;
         controls.Player.Fire.performed += Fire;
+        controls.Player.Camera.performed += CameraMovement;
+        xRot = yRot = 0.0f;
     }
 
     
@@ -49,11 +66,17 @@ public class script_playerInput : MonoBehaviour
     void Update()
     {
         Vector3 velocity = Vector3.zero;
-        velocity.x = movementDirection.x;
-        velocity.z = movementDirection.y;
+        velocity = (transform.forward*movementDirection.y)+(transform.right * movementDirection.x);
         velocity.Normalize();
         velocity *= playerSpeed;
         playerInput.Move(velocity*Time.deltaTime);
+        //Vector3 nextRot = transform.eulerAngles;
+        //nextRot.y += cameraControl.x;
+        yRot += cameraControl.x;
+        transform.rotation = Quaternion.Euler(0.0f, yRot, 0.0f);
+        xRot += -cameraControl.y;
+        xRot = Mathf.Clamp(xRot, minPitch, maxPitch);
+        cam.transform.rotation = Quaternion.Euler(xRot, yRot, 0.0f);
     }
     void Jump(InputAction.CallbackContext ctx)
     {
@@ -67,5 +90,8 @@ public class script_playerInput : MonoBehaviour
     {
         movementDirection = ctx.ReadValue<Vector2>();
     }
-
+    void CameraMovement(InputAction.CallbackContext ctx)
+    {
+        cameraControl = ctx.ReadValue<Vector2>();
+    }
 }
