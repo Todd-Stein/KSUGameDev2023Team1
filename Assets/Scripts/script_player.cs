@@ -23,6 +23,10 @@ public class script_player : MonoBehaviour
     private bool hasJumped;
     private bool hasFired;
 
+    public bool tonyVision;
+
+    public GameObject tonyOverlay;
+
     [SerializeField]
     [Range(-200f, 200f)]
     private float maxPitch = 100.0f;
@@ -37,6 +41,7 @@ public class script_player : MonoBehaviour
         controls = new PlayerInput();
         cam = GetComponentInChildren<Camera>();
         playerInput = GetComponent<CharacterController>();
+        tonyOverlay = transform.GetChild(0).GetChild(0).gameObject;
 
     }
     private void OnEnable()
@@ -65,6 +70,8 @@ public class script_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        tonyOverlay.SetActive(tonyVision);
+        
         Vector3 velocity = Vector3.zero;
         velocity = (transform.forward*movementDirection.y)+(transform.right * movementDirection.x);
         velocity.Normalize();
@@ -77,6 +84,8 @@ public class script_player : MonoBehaviour
         xRot += -cameraControl.y;
         xRot = Mathf.Clamp(xRot, minPitch, maxPitch);
         cam.transform.rotation = Quaternion.Euler(xRot, yRot, 0.0f);
+        //tonyOverlay.transform.localPosition = cam.transform.forward * (cam.nearClipPlane + 1.0f);
+        //UnityEngine.Debug.Log(cam.transform.forward);
     }
     void Jump(InputAction.CallbackContext ctx)
     {
