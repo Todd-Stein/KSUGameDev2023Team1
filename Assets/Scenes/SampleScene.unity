@@ -434,8 +434,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  tonyVision: 1
-  tonyOverlay: {fileID: 0}
+  playerSprintSpeed: 10
+  headBobMin: -0.1
+  headBobMax: 0.1
+  normalHeadBobRate: 0.003
+  sprintHeadBobRate: 0.005
+  tonyVision: 0
+  toggleDash: 0
+  tonyOverlay: {fileID: 2011917180}
+  sprintTimeCurrent: 0
+  sprintTimeTotal: 3
   maxPitch: 90
   minPitch: -90
 --- !u!143 &1759922432

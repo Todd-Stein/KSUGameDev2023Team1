@@ -11,6 +11,8 @@ public class script_player : MonoBehaviour
 
     [SerializeField]
     private float playerSpeed = 5;
+    [SerializeField]
+    private float playerSprintSpeed = 10;
 
     private Vector2 movementDirection;
 
@@ -18,14 +20,37 @@ public class script_player : MonoBehaviour
 
     private CharacterController playerInput;
 
+    private float currentHeadPos;
+    private float startHeadPos;
+    [SerializeField]
+    [Range (-1f, 0f)]
+    private float headBobMin = -10.0f;
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float headBobMax = 10.0f;
+    private bool headBobMoveUp = false;
+    [SerializeField]
+    private float normalHeadBobRate = 0.001f;
+    [SerializeField]
+    private float sprintHeadBobRate = 0.005f;
+    private float currentHeadBobRate;
+
     private float xRot, yRot;
 
     private bool hasJumped;
     private bool hasFired;
+    private bool hasSprinted;
+    private bool exausted;
 
     public bool tonyVision;
+    public bool toggleDash;
 
     public GameObject tonyOverlay;
+
+    [SerializeField]
+    private float sprintTimeCurrent = 0.0f;
+    [SerializeField]
+    private float sprintTimeTotal = 3.0f;
 
     [SerializeField]
     [Range(-200f, 200f)]
@@ -62,7 +87,10 @@ public class script_player : MonoBehaviour
         controls.Player.Fire.started += Fire;
         controls.Player.Fire.performed += Fire;
         controls.Player.Camera.performed += CameraMovement;
+        controls.Player.Sprint.started += Sprint;
+        controls.Player.Sprint.canceled += Sprint;
         xRot = yRot = 0.0f;
+        startHeadPos = cam.transform.localPosition.y;
     }
 
     
@@ -70,13 +98,66 @@ public class script_player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+       
         tonyOverlay.SetActive(tonyVision);
         
         Vector3 velocity = Vector3.zero;
         velocity = (transform.forward*movementDirection.y)+(transform.right * movementDirection.x);
         velocity.Normalize();
-        velocity *= playerSpeed;
-        playerInput.Move(velocity*Time.deltaTime);
+        if (velocity.magnitude != 0.0f)
+        {
+            if (hasSprinted && (sprintTimeCurrent <= sprintTimeTotal) && !exausted)
+            {
+                velocity *= playerSprintSpeed;
+                sprintTimeCurrent += Time.deltaTime;
+                currentHeadBobRate = sprintHeadBobRate;
+            }
+            else
+            {
+                velocity *= playerSpeed;
+                currentHeadBobRate = normalHeadBobRate;
+            }
+            if(sprintTimeCurrent >= sprintTimeTotal)
+            {
+                exausted = true;
+                sprintTimeCurrent = sprintTimeTotal;
+                currentHeadBobRate = normalHeadBobRate;
+            }
+            playerInput.Move(velocity * Time.deltaTime);
+
+            if(headBobMoveUp)
+            {
+                currentHeadPos += currentHeadBobRate;
+                if(currentHeadPos >= (startHeadPos + headBobMax))
+                {
+                    headBobMoveUp = false;
+                }
+            }
+            else
+            {
+                currentHeadPos -= currentHeadBobRate;
+                if (currentHeadPos <= (startHeadPos + headBobMin))
+                {
+                    headBobMoveUp = true;
+                }
+            }
+            Vector3 newHeadPos = Vector3.zero;
+            newHeadPos.y = currentHeadPos;
+            cam.transform.localPosition = newHeadPos;
+        }
+        else
+        {
+            if (sprintTimeCurrent >= 0.0)
+            {
+                sprintTimeCurrent -= Time.deltaTime;
+            }
+            else
+            {
+                sprintTimeCurrent = 0.0f;
+                exausted = false;
+            }
+        }
         //Vector3 nextRot = transform.eulerAngles;
         //nextRot.y += cameraControl.x;
         yRot += cameraControl.x;
@@ -102,5 +183,12 @@ public class script_player : MonoBehaviour
     void CameraMovement(InputAction.CallbackContext ctx)
     {
         cameraControl = ctx.ReadValue<Vector2>();
+    }
+    void Sprint(InputAction.CallbackContext ctx)
+    {
+        if (toggleDash)
+            hasSprinted = !hasSprinted;
+        else
+            hasSprinted = ctx.ReadValueAsButton();
     }
 }
