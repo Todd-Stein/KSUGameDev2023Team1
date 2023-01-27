@@ -33,7 +33,7 @@ public class Tony : MonoBehaviour
         if (checkGoals())
         {
             // Change currentGoal to next goal in goals[]
-            if (goalIndex < 3)
+            if (goalIndex < goals.Length)
             {
                 currentGoal = goals[++goalIndex].GetComponent<Transform>();
             } else
@@ -43,6 +43,11 @@ public class Tony : MonoBehaviour
             }
             agent.destination = currentGoal.position;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Triggered");
     }
 
     bool checkGoals()
