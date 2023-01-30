@@ -12,6 +12,8 @@ public class Tony : MonoBehaviour
     public Transform[] goals; // An array of goals for Tony to move to
     int goalIndex;
 
+    public int aggression; // Tony's current aggression level.
+
     NavMeshAgent agent;
     Transform personalTransform;
 
