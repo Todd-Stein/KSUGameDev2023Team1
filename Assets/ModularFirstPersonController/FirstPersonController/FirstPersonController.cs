@@ -3,11 +3,15 @@
 // CHANGES || version VERSION
 //
 // "Enable/Disable Headbob, Changed look rotations - should result in reduced camera jitters" || version 1.0.1
+//  Original Author Jess Case
+//  Modified By: Todd Stein
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEditor.ShaderGraph;
 
 #if UNITY_EDITOR
     using UnityEditor;
@@ -16,6 +20,9 @@ using UnityEngine.UI;
 
 public class FirstPersonController : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerInput controls;
+
     private Rigidbody rb;
 
     #region Camera Movement Variables
@@ -89,6 +96,7 @@ public class FirstPersonController : MonoBehaviour
     private float sprintBarHeight;
     private bool isSprintCooldown = false;
     private float sprintCooldownReset;
+    private bool isSprintPressed = false;
 
     #endregion
 
@@ -100,11 +108,13 @@ public class FirstPersonController : MonoBehaviour
 
     // Internal Variables
     private bool isGrounded = false;
+    private Vector2 movementDirection, cameraControl;
 
     #endregion
 
     #region Crouch
 
+    private bool isCrouchPressed = false;
     public bool enableCrouch = true;
     public bool holdToCrouch = true;
     public KeyCode crouchKey = KeyCode.LeftControl;
@@ -133,6 +143,8 @@ public class FirstPersonController : MonoBehaviour
 
     private void Awake()
     {
+        controls = new PlayerInput();
+
         rb = GetComponent<Rigidbody>();
 
         crosshairObject = GetComponentInChildren<Image>();
@@ -151,7 +163,16 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        if(lockCursor)
+        controls.Player.Movement.performed += MoveCallback;
+        controls.Player.Jump.started += JumpCallback;
+        controls.Player.Jump.performed += JumpCallback;
+        controls.Player.Camera.performed += CameraMovementCallback;
+        controls.Player.Sprint.started += SprintCallback;
+        controls.Player.Sprint.canceled += SprintCallback;
+        controls.Player.Crouch.started += CrouchCallback;
+        //controls.Player.Crouch.performed += CrouchCallback;
+        controls.Player.Crouch.canceled += CrouchCallback;
+        if (lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -198,7 +219,27 @@ public class FirstPersonController : MonoBehaviour
         #endregion
     }
 
+    private void Crouch_performed(InputAction.CallbackContext obj)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void Crouch_canceled(InputAction.CallbackContext obj)
+    {
+        throw new System.NotImplementedException();
+    }
+
     float camRotation;
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
 
     private void Update()
     {
@@ -207,16 +248,16 @@ public class FirstPersonController : MonoBehaviour
         // Control camera movement
         if(cameraCanMove)
         {
-            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+            yaw = transform.localEulerAngles.y + cameraControl.x * mouseSensitivity;
 
             if (!invertCamera)
             {
-                pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
+                pitch -= mouseSensitivity * cameraControl.y;
             }
             else
             {
                 // Inverted Y
-                pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
+                pitch += mouseSensitivity * cameraControl.y;
             }
 
             // Clamp pitch between lookAngle
@@ -326,33 +367,36 @@ public class FirstPersonController : MonoBehaviour
         #region Jump
 
         // Gets input and calls jump method
-        if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
-        {
-            Jump();
-        }
+        //if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+        //{
+        //    Jump();
+        //}
 
         #endregion
 
         #region Crouch
 
+
         if (enableCrouch)
         {
-            if(Input.GetKeyDown(crouchKey) && !holdToCrouch)
+
+            if(isCrouchPressed && !holdToCrouch)
             {
                 Crouch();
             }
             
-            if(Input.GetKeyDown(crouchKey) && holdToCrouch)
+            if(isCrouchPressed && holdToCrouch)
             {
                 isCrouched = false;
                 Crouch();
             }
-            else if(Input.GetKeyUp(crouchKey) && holdToCrouch)
+            else if(!isCrouchPressed && holdToCrouch)
             {
                 isCrouched = true;
                 Crouch();
             }
         }
+        
 
         #endregion
 
@@ -371,7 +415,7 @@ public class FirstPersonController : MonoBehaviour
         if (playerCanMove)
         {
             // Calculate how fast we should be moving
-            Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Vector3 targetVelocity = new Vector3(movementDirection.x, 0, movementDirection.y);
 
             // Checks if player is walking and isGrounded
             // Will allow head bob
@@ -385,7 +429,7 @@ public class FirstPersonController : MonoBehaviour
             }
 
             // All movement calculations shile sprint is active
-            if (enableSprint && Input.GetKey(sprintKey) && sprintRemaining > 0f && !isSprintCooldown)
+            if (enableSprint && isSprintPressed && sprintRemaining > 0f && !isSprintCooldown)
             {
                 targetVelocity = transform.TransformDirection(targetVelocity) * sprintSpeed;
 
@@ -429,7 +473,9 @@ public class FirstPersonController : MonoBehaviour
 
                 // Apply a force that attempts to reach our target velocity
                 Vector3 velocity = rb.velocity;
+
                 Vector3 velocityChange = (targetVelocity - velocity);
+
                 velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
                 velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
                 velocityChange.y = 0;
@@ -479,10 +525,13 @@ public class FirstPersonController : MonoBehaviour
     {
         // Stands player up to full height
         // Brings walkSpeed back up to original speed
+
         if(isCrouched)
         {
             transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
             walkSpeed /= speedReduction;
+
+            Debug.Log(isCrouchPressed);
 
             isCrouched = false;
         }
@@ -525,6 +574,28 @@ public class FirstPersonController : MonoBehaviour
             timer = 0;
             joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
         }
+    }
+    void JumpCallback(InputAction.CallbackContext ctx)
+    {
+        if (isGrounded)
+            Jump();
+    }
+
+    void MoveCallback(InputAction.CallbackContext ctx)
+    {
+        movementDirection = ctx.ReadValue<Vector2>();
+    }
+    void CameraMovementCallback (InputAction.CallbackContext ctx)
+    {
+        cameraControl = ctx.ReadValue<Vector2>();
+    }
+    void SprintCallback(InputAction.CallbackContext ctx)
+    {
+        isSprintPressed = ctx.ReadValueAsButton();
+    }
+    void CrouchCallback(InputAction.CallbackContext ctx)
+    {
+        isCrouchPressed = ctx.ReadValueAsButton();
     }
 }
 
@@ -736,7 +807,7 @@ public class FirstPersonController : MonoBehaviour
             SerFPC.ApplyModifiedProperties();
         }
     }
-
 }
+
 
 #endif
