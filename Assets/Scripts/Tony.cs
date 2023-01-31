@@ -52,6 +52,13 @@ public class Tony : MonoBehaviour
         Debug.Log("Triggered");
     }
 
+    public void OnAlert(Collider other)
+    {
+        aggression += 1;
+        currentGoal = other.gameObject.GetComponent<Transform>();
+        agent.destination = currentGoal.position;
+    }
+
     bool checkGoals()
     {
         if (currentGoal.position.x == personalTransform.position.x &&
