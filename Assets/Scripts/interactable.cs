@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class interactable : MonoBehaviour
 {
+
+    private 
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class interactable : MonoBehaviour
 
     public void activate()
     {
+        gameObject.GetComponent<SoundEvent>().activateNoiseEvent();
         Debug.Log("Interactable Activated");
     }
 }

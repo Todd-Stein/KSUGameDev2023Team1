@@ -23,12 +23,12 @@ public class SoundEvent : MonoBehaviour
     void Update()
     {
         //Test execution
-        if (Input.GetKeyDown(KeyCode.Q))
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log("Activating event");
             activateNoiseEvent();
         }
-
+        */
         if (soundtrigger.enabled)
         {
             timer += Time.deltaTime;
