@@ -144,6 +144,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  aggression: 0
 --- !u!1001 &628981520550724484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,6 +160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vision "Cone" 2.0
       objectReference: {fileID: 0}
+    - target: {fileID: 4702671685281130418, guid: 4dcc56260040c684d8b3e4e159ed6b24, type: 3}
+      propertyPath: tony
+      value: 
+      objectReference: {fileID: 3888634955850296481}
     - target: {fileID: 5125744572486930561, guid: 4dcc56260040c684d8b3e4e159ed6b24, type: 3}
       propertyPath: mainRenderableMesh
       value: 
@@ -217,6 +222,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7005207408565516077, guid: 4dcc56260040c684d8b3e4e159ed6b24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8905847758613325982, guid: 4dcc56260040c684d8b3e4e159ed6b24, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
