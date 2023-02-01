@@ -20,20 +20,6 @@ public class script_player : MonoBehaviour
 
     private CharacterController playerInput;
 
-    private float currentHeadPos;
-    private float startHeadPos;
-    [SerializeField]
-    [Range (-1f, 0f)]
-    private float headBobMin = -10.0f;
-    [SerializeField]
-    [Range(0f, 1f)]
-    private float headBobMax = 10.0f;
-    private bool headBobMoveUp = false;
-    [SerializeField]
-    private float normalHeadBobRate = 0.001f;
-    [SerializeField]
-    private float sprintHeadBobRate = 0.005f;
-    private float currentHeadBobRate;
 
     private float xRot, yRot;
 
@@ -61,12 +47,16 @@ public class script_player : MonoBehaviour
 
     private Camera cam;
 
+    private float bobTimer = 0.0f;
+    private float camHeight;
+
     private void Awake()
     {
         controls = new PlayerInput();
         cam = GetComponentInChildren<Camera>();
         playerInput = GetComponent<CharacterController>();
         tonyOverlay = transform.GetChild(0).GetChild(0).gameObject;
+        camHeight = cam.transform.localPosition.y;
 
     }
     private void OnEnable()
@@ -90,7 +80,6 @@ public class script_player : MonoBehaviour
         controls.Player.Sprint.started += Sprint;
         controls.Player.Sprint.canceled += Sprint;
         xRot = yRot = 0.0f;
-        startHeadPos = cam.transform.localPosition.y;
     }
 
     
@@ -99,7 +88,7 @@ public class script_player : MonoBehaviour
     void Update()
     {
 
-       
+        Debug.Log(bobTimer);
         tonyOverlay.SetActive(tonyVision);
         
         Vector3 velocity = Vector3.zero;
@@ -111,40 +100,22 @@ public class script_player : MonoBehaviour
             {
                 velocity *= playerSprintSpeed;
                 sprintTimeCurrent += Time.deltaTime;
-                currentHeadBobRate = sprintHeadBobRate;
             }
             else
             {
                 velocity *= playerSpeed;
-                currentHeadBobRate = normalHeadBobRate;
             }
             if(sprintTimeCurrent >= sprintTimeTotal)
             {
                 exausted = true;
                 sprintTimeCurrent = sprintTimeTotal;
-                currentHeadBobRate = normalHeadBobRate;
-            }
-            playerInput.Move(velocity * Time.deltaTime);
-
-            if(headBobMoveUp)
-            {
-                currentHeadPos += currentHeadBobRate;
-                if(currentHeadPos >= (startHeadPos + headBobMax))
-                {
-                    headBobMoveUp = false;
-                }
-            }
-            else
-            {
-                currentHeadPos -= currentHeadBobRate;
-                if (currentHeadPos <= (startHeadPos + headBobMin))
-                {
-                    headBobMoveUp = true;
-                }
             }
             Vector3 newHeadPos = Vector3.zero;
-            newHeadPos.y = currentHeadPos;
+            newHeadPos.y = (0.08f)*Mathf.Sin(bobTimer*10)+camHeight;
             cam.transform.localPosition = newHeadPos;
+            bobTimer += Time.deltaTime;
+            playerInput.Move(velocity * Time.deltaTime);
+
         }
         else
         {
@@ -157,6 +128,7 @@ public class script_player : MonoBehaviour
                 sprintTimeCurrent = 0.0f;
                 exausted = false;
             }
+            bobTimer = 0.0f;
         }
         //Vector3 nextRot = transform.eulerAngles;
         //nextRot.y += cameraControl.x;

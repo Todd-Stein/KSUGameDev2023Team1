@@ -8,6 +8,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -131,8 +133,11 @@ public class FirstPersonController : MonoBehaviour
 
     #endregion
 
+
+
     private void Awake()
     {
+
         rb = GetComponent<Rigidbody>();
 
         crosshairObject = GetComponentInChildren<Image>();
@@ -447,7 +452,6 @@ public class FirstPersonController : MonoBehaviour
         Vector3 origin = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y * .5f), transform.position.z);
         Vector3 direction = transform.TransformDirection(Vector3.down);
         float distance = .75f;
-
         if (Physics.Raycast(origin, direction, out RaycastHit hit, distance))
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
@@ -458,7 +462,6 @@ public class FirstPersonController : MonoBehaviour
             isGrounded = false;
         }
     }
-
     private void Jump()
     {
         // Adds force to the player rigidbody to jump
