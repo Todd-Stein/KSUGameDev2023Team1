@@ -8,11 +8,15 @@ public class Tony : MonoBehaviour
     public bool hunting; // To be toggled when he is in hunt mode
     public bool alerted; // To be toggled when noise can/is heard by him
     public float speed;  // Changes the speed that Tony moves
+    public const float baseSpeed = 4;   // Base speed for Tony when not alerted
     public Transform currentGoal; // The current goal for Tony to move to
     public Transform[] goals; // An array of goals for Tony to move to
     int goalIndex;
 
     public int aggression; // Tony's current aggression level.
+
+    private float timer;
+    private float timerCompare;
 
     NavMeshAgent agent;
     Transform personalTransform;
@@ -26,11 +30,24 @@ public class Tony : MonoBehaviour
         agent.destination = currentGoal.position;
         personalTransform = GetComponent<Transform>();
         goalIndex = 0;
+        timer = 0;
+        aggression = 40;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(timer <= timerCompare)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            speed = baseSpeed;
+            timerCompare = 0;
+            timer = 0;
+        }
+
         agent.speed = speed; // Change speed as necessary
         if (checkGoals())
         {
@@ -47,14 +64,9 @@ public class Tony : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnAlert(Collider other, int aggroIncrease)
     {
-        Debug.Log("Triggered");
-    }
-
-    public void OnAlert(Collider other)
-    {
-        aggression += 1;
+        aggression += aggroIncrease;
         currentGoal = other.gameObject.GetComponent<Transform>();
         agent.destination = currentGoal.position;
     }
@@ -64,6 +76,8 @@ public class Tony : MonoBehaviour
         if (currentGoal.position.x == personalTransform.position.x &&
             currentGoal.position.z == personalTransform.position.z)
         {
+            speed = 0;
+            timerCompare = 2.0f;
             return true;
         }
         return false;

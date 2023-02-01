@@ -5,7 +5,9 @@ using UnityEngine;
 public class SoundListener : MonoBehaviour
 {
     public GameObject soundlocation;
-    // Start is called before the first frame update
+    [SerializeField]
+    GameObject tony;
+
     void Start()
     {
         soundlocation = null;
@@ -19,10 +21,11 @@ public class SoundListener : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Heared sound event");
-        if(soundlocation == null || other.gameObject.GetComponent<SoundEvent>().noise > soundlocation.GetComponent<SoundEvent>().noise)
+        if (other.gameObject.CompareTag("NoiseMaker"))
         {
             soundlocation = other.gameObject;
+            tony.GetComponent<Tony>().OnAlert(other, 5);
+            Debug.Log("Heared sound event");
         }
     }
 }
