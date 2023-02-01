@@ -16,15 +16,18 @@ public class Vision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //if(goggles == true){
+        //  currentGoal = player's position;
+        //  agent.destination = currentGoal.position;
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered");
         if (other.gameObject.CompareTag("Player"))
         {
-            tony.GetComponent<Tony>().OnAlert(other);
+            tony.GetComponent<Tony>().OnAlert(other, 10);
+            Debug.Log("Alerted");
         }
     }
 
@@ -34,7 +37,7 @@ public class Vision : MonoBehaviour
         // Debug.Log("Inside Trigger.");
         if (other.gameObject.CompareTag("Player"))
         {
-            tony.GetComponent<Tony>().OnAlert(other);
+            tony.GetComponent<Tony>().OnAlert(other, 15);
         }
     }
 }
