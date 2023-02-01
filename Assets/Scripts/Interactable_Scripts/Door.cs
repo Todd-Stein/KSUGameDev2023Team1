@@ -15,7 +15,13 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        //Debug
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("Door unlocked: " + unlocked.ToString());
+        }
+
     }
 
     public void open()
