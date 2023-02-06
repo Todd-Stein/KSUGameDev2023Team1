@@ -63,7 +63,6 @@ public class Tony : MonoBehaviour
             timer = 0;
         }
 
-<<<<<<< Updated upstream
         //hunting timer, can be adjusted later
         if (huntTimer <= huntTimerCompare)
         {
