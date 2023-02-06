@@ -81,10 +81,8 @@ public class Tony : MonoBehaviour
             //speed = speed before hunting
         }
 
-        agent.speed = speed; // Change speed as necessary
-=======
         //agent.speed = speed; // Change speed as necessary
->>>>>>> Stashed changes
+
         if (checkGoals())
         {
             // Change currentGoal to next goal in goals[]
@@ -107,7 +105,6 @@ public class Tony : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -117,19 +114,12 @@ public class Tony : MonoBehaviour
     }
 
     //Tony heads towards source of sound or player if in vision
-    public void OnAlert(Collider other, int aggroIncrease)
-    {
-        //need to shrink listening range
-        //to make bigger when hunting
-        aggression += aggroIncrease;
-        currentGoal = other.gameObject.GetComponent<Transform>();
-        agent.destination = currentGoal.position;
-=======
+    //need to shrink listening range
+    //to make bigger when hunting
     public void OnAlert(Collider other, int aggro)
     {
         aggroIncrease(aggro);
         changeGoal(other.transform); // Should change destination to object that alerted Tony
->>>>>>> Stashed changes
     }
 
     public void OnTheHunt()
