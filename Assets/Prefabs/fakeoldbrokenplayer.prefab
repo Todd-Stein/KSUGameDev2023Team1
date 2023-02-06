@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1615540704477096288}
   - component: {fileID: 1615540704477096289}
   m_Layer: 0
-  m_Name: FirstPersonController
+  m_Name: fakeoldbrokenplayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 1615540705505518452}
   - component: {fileID: 1615540705505518459}
   m_Layer: 0
-  m_Name: CrosshairAndStamina
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
