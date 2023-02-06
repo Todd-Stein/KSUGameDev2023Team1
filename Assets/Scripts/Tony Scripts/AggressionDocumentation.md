@@ -1,4 +1,4 @@
-# Tony Aggression Script
+# Tony Aggression Scripts
 
 - To be created and updated.
 - So far, aggression is increased each time Tony is alerted that he sees the player. In addition, it increases more as the player stays in his vision pyramid.
