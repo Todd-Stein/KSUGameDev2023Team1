@@ -24,6 +24,8 @@ public class Tony : MonoBehaviour
     public Transform[] goals; // An array of goals for Tony to move to
     int goalIndex;
 
+    public GameObject soundSphere; // Tony's listening range, in the form of a sphere
+
     public int aggression; // Tony's current aggression level.
 
     private float timer;
@@ -161,6 +163,8 @@ public class Tony : MonoBehaviour
     {
         aggression += value;
         speed = aggression / 10; // Changes speed
-        // Change sound sphere size here
+
+        // Changes sound sphere size here
+        soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
     }
 }
