@@ -63,6 +63,7 @@ public class Tony : MonoBehaviour
             timer = 0;
         }
 
+<<<<<<< Updated upstream
         //hunting timer, can be adjusted later
         if (huntTimer <= huntTimerCompare)
         {
@@ -81,18 +82,23 @@ public class Tony : MonoBehaviour
         }
 
         agent.speed = speed; // Change speed as necessary
+=======
+        //agent.speed = speed; // Change speed as necessary
+>>>>>>> Stashed changes
         if (checkGoals())
         {
             // Change currentGoal to next goal in goals[]
             if (goalIndex < goals.Length)
             {
-                currentGoal = goals[++goalIndex].GetComponent<Transform>();
+                //currentGoal = goals[++goalIndex].GetComponent<Transform>();
+                changeGoal(goals[++goalIndex].GetComponent<Transform>());
             } else
             {
                 goalIndex = 0;
-                currentGoal = goals[goalIndex].GetComponent<Transform>();
+                //currentGoal = goals[goalIndex].GetComponent<Transform>();
+                changeGoal(goals[goalIndex].GetComponent<Transform>());
             }
-            agent.destination = currentGoal.position;
+            //agent.destination = currentGoal.position;
         }
 
         if (hunting == true)
@@ -101,6 +107,7 @@ public class Tony : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -117,6 +124,12 @@ public class Tony : MonoBehaviour
         aggression += aggroIncrease;
         currentGoal = other.gameObject.GetComponent<Transform>();
         agent.destination = currentGoal.position;
+=======
+    public void OnAlert(Collider other, int aggro)
+    {
+        aggroIncrease(aggro);
+        changeGoal(other.transform); // Should change destination to object that alerted Tony
+>>>>>>> Stashed changes
     }
 
     public void OnTheHunt()
@@ -147,5 +160,18 @@ public class Tony : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    void changeGoal(Transform t)
+    {
+        currentGoal = t;
+        agent.destination = currentGoal.position;
+    }
+
+    public void aggroIncrease(int value)
+    {
+        aggression += value;
+        speed = aggression / 10; // Changes speed
+        // Change sound sphere size here
     }
 }
