@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Vision : MonoBehaviour
 {
+    bool goggs;
+
     [SerializeField]
     GameObject tony;
 
@@ -24,10 +26,18 @@ public class Vision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //alerted if no goggles
+        //hunting if goggles
         if (other.gameObject.CompareTag("Player"))
         {
             tony.GetComponent<Tony>().OnAlert(other, 10);
             Debug.Log("Alerted");
+        }
+
+        if(other.gameObject.CompareTag("Player") && goggs)
+        {
+            tony.GetComponent<Tony>().OnTheHunt();
+            Debug.Log("Hunting");
         }
     }
 

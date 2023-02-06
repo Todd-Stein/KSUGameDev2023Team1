@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//throwing notes here to keep better track of things:
+//tony's speed and hearing range is proportional to aggression level 
+//higher level sound events takes priority over lower ones
+//hunt mode is 1.5 secs, might need to adjust in the future
+//hunt mode activated by player touching tony or being seen with goggles 
+//after exiting hunting mode, heightened aggression and hearing range
+//--probably make range based off of aggression
+//increased speed for 10 secs after exiting hunting
+//destination reached timer dependant on noise level and aggression
+//aggression decreases over time
+
 public class Tony : MonoBehaviour
 {
     public bool hunting; // To be toggled when he is in hunt mode
@@ -17,6 +28,8 @@ public class Tony : MonoBehaviour
 
     private float timer;
     private float timerCompare;
+    private float huntTimerCompare;
+    private float huntTimer;
 
     NavMeshAgent agent;
     Transform personalTransform;
@@ -31,12 +44,14 @@ public class Tony : MonoBehaviour
         personalTransform = GetComponent<Transform>();
         goalIndex = 0;
         timer = 0;
+        huntTimer = 0;
         aggression = 40;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //general timer, mostly for reaching destinations
         if(timer <= timerCompare)
         {
             timer += Time.deltaTime;
@@ -46,6 +61,23 @@ public class Tony : MonoBehaviour
             speed = baseSpeed;
             timerCompare = 0;
             timer = 0;
+        }
+
+        //hunting timer, can be adjusted later
+        if (huntTimer <= huntTimerCompare)
+        {
+            huntTimer += Time.deltaTime;
+            //Debug.Log(timer);
+        }
+        else if (huntTimer >= 1.5f)
+        {
+            hunting = false;
+            Debug.Log("No More Hunt");
+        }
+        else
+        {
+            Debug.Log("time over");
+            //speed = speed before hunting
         }
 
         agent.speed = speed; // Change speed as necessary
@@ -62,13 +94,47 @@ public class Tony : MonoBehaviour
             }
             agent.destination = currentGoal.position;
         }
+
+        if (hunting == true)
+        {
+            OnTheHunt();
+        }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            OnTheHunt();
+        }
+    }
+
+    //Tony heads towards source of sound or player if in vision
     public void OnAlert(Collider other, int aggroIncrease)
     {
+        //need to shrink listening range
+        //to make bigger when hunting
         aggression += aggroIncrease;
         currentGoal = other.gameObject.GetComponent<Transform>();
         agent.destination = currentGoal.position;
+    }
+
+    public void OnTheHunt()
+    {
+        //activated by contact or seen with goggles active
+        //hunting == true for 1.5 secs
+        //increased speed for 10 secs after hunting == false
+
+        //increased speed and aggression
+
+        //timer = 11.5f;
+        //after 1.5: hunting  == false
+        //after 10: speed is normal
+
+        huntTimerCompare = 11.5f;
+        speed = aggression / 5;   //doubles current speed
+        
+        Debug.Log("Hunting");
     }
 
     bool checkGoals()
