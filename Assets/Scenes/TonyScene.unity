@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -220,6 +220,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175887221}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &519084844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4013724502388504194, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+  m_PrefabInstance: {fileID: 3888634955967336107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &578317917
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736454163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.39, y: 0.73, z: 3.28}
+  m_LocalPosition: {x: 31.39, y: 0.73, z: 24.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1650,6 +1655,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 175887222}
     - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: soundSphere
+      value: 
+      objectReference: {fileID: 519084844}
+    - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: goals.Array.data[0]
       value: 
       objectReference: {fileID: 175887222}
@@ -1673,6 +1682,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1848331406}
+    - target: {fileID: 1914771905469397992, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914771905469397992, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914771905469397992, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 2920648806092727541, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_SelectedEditorRenderState
       value: 2

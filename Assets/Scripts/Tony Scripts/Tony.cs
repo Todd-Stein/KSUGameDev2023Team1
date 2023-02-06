@@ -60,7 +60,7 @@ public class Tony : MonoBehaviour
         }
         else
         {
-            speed = baseSpeed;
+            speed = aggression / 10; // Speed changed to correct level
             timerCompare = 0;
             timer = 0;
         }
@@ -82,7 +82,7 @@ public class Tony : MonoBehaviour
             //speed = speed before hunting
         }
 
-        //agent.speed = speed; // Change speed as necessary
+        agent.speed = speed; // Change speed as necessary
 
         if (checkGoals())
         {

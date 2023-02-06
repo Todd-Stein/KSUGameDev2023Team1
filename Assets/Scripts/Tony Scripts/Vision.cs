@@ -47,7 +47,7 @@ public class Vision : MonoBehaviour
         // Debug.Log("Inside Trigger.");
         if (other.gameObject.CompareTag("Player"))
         {
-            tony.GetComponent<Tony>().OnAlert(other, 15);
+            tony.GetComponent<Tony>().OnAlert(other, 1); // Sets Tony's destination to player and increases aggro by 1
         }
     }
 }
