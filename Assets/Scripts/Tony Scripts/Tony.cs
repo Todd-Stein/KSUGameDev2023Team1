@@ -28,10 +28,8 @@ public class Tony : MonoBehaviour
 
     public int aggression; // Tony's current aggression level.
 
-    private float timer;
-    private float timerCompare;
-    private float huntTimerCompare;
-    private float huntTimer;
+    public float idleTimer;
+    public float huntTimer;
 
     NavMeshAgent agent;
     Transform personalTransform;
@@ -45,42 +43,14 @@ public class Tony : MonoBehaviour
         agent.destination = currentGoal.position;
         personalTransform = GetComponent<Transform>();
         goalIndex = 0;
-        timer = 0;
-        huntTimer = 0;
+        idleTimer = 0;
         aggression = 40;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //general timer, mostly for reaching destinations
-        if(timer <= timerCompare)
-        {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            speed = aggression / 10; // Speed changed to correct level
-            timerCompare = 0;
-            timer = 0;
-        }
-
-        //hunting timer, can be adjusted later
-        if (huntTimer <= huntTimerCompare)
-        {
-            huntTimer += Time.deltaTime;
-            //Debug.Log(timer);
-        }
-        else if (huntTimer >= 1.5f)
-        {
-            hunting = false;
-            Debug.Log("No More Hunt");
-        }
-        else
-        {
-            Debug.Log("time over");
-            //speed = speed before hunting
-        }
+        Timer();
 
         agent.speed = speed; // Change speed as necessary
 
@@ -99,18 +69,13 @@ public class Tony : MonoBehaviour
             }
             //agent.destination = currentGoal.position;
         }
-
-        if (hunting == true)
-        {
-            OnTheHunt();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            OnTheHunt();
+            OnTheHunt(other);
         }
     }
 
@@ -123,22 +88,45 @@ public class Tony : MonoBehaviour
         changeGoal(other.transform); // Should change destination to object that alerted Tony
     }
 
-    public void OnTheHunt()
+    public void OnTheHunt(Collider other)
     {
         //activated by contact or seen with goggles active
-        //hunting == true for 1.5 secs
         //increased speed for 10 secs after hunting == false
 
         //increased speed and aggression
 
-        //timer = 11.5f;
+        huntTimer = 11.5f;
+        hunting = true;
+
         //after 1.5: hunting  == false
         //after 10: speed is normal
 
-        huntTimerCompare = 11.5f;
         speed = aggression / 5;   //doubles current speed
         
         Debug.Log("Hunting");
+        
+        changeGoal(other.transform);
+    }
+
+    private void Timer()
+    {
+        if(idleTimer > 0)
+            idleTimer -= Time.deltaTime;
+        else
+        {
+            speed = aggression / 10;
+            idleTimer = 0;
+        }
+
+        if (huntTimer > 0)
+            huntTimer -= Time.deltaTime;
+
+        if(hunting && huntTimer <= 10f)
+        {
+            Debug.Log("No More Hunt");
+            hunting = false;
+            speed = aggression / 10;
+        }
     }
 
     bool checkGoals()
@@ -147,8 +135,9 @@ public class Tony : MonoBehaviour
             currentGoal.position.z == personalTransform.position.z)
         {
             speed = 0;
-            timerCompare = 2.0f;
+            idleTimer = 2f;
             return true;
+
         }
         return false;
     }
