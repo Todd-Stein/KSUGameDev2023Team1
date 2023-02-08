@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vision : MonoBehaviour
 {
-    bool goggs;
+    public bool goggs;
 
     [SerializeField]
     GameObject tony;
