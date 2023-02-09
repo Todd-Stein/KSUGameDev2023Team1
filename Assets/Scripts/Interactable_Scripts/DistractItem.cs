@@ -7,6 +7,7 @@ public class DistractItem : MonoBehaviour
     public bool thrown;
     private SoundEvent Sevent;
     private Collider cl;
+    private ParticleSystem emiter;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,9 @@ public class DistractItem : MonoBehaviour
         thrown = false;
         Sevent = gameObject.GetComponent<SoundEvent>();
         cl = gameObject.GetComponent<Collider>();
+        emiter = gameObject.GetComponentInChildren<ParticleSystem>();
+        var emission = emiter.emission;
+        emission.enabled = false;
     }
 
     // Update is called once per frame
@@ -26,8 +30,10 @@ public class DistractItem : MonoBehaviour
     {
         if(thrown == true)
         {
+
             Sevent.activateNoiseEvent();
-            Object.Destroy(gameObject);
+            var emission = emiter.emission;
+            emission.enabled = true;
         }
     }
 }
