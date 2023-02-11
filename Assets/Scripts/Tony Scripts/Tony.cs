@@ -151,7 +151,14 @@ public class Tony : MonoBehaviour
     public void aggroIncrease(int value)
     {
         aggression += value;
-        speed = aggression / 10; // Changes speed
+        if (hunting)
+        {
+            speed = aggression / 5;
+        }
+        else
+        {
+            speed = aggression / 10; // Changes speed
+        }
 
         // Changes sound sphere size here
         soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
