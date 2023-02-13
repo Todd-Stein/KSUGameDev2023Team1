@@ -24,7 +24,7 @@ public class SoundListener : MonoBehaviour
         if (other.gameObject.CompareTag("NoiseMaker"))
         {
             soundlocation = other.gameObject;
-            tony.GetComponent<Tony>().OnAlert(other, 5);
+            tony.GetComponent<Tony>().OnAlert(other, other.GetComponent<SoundEvent>().noise); // Call Tony's alert script, increasing aggression by noise level
             Debug.Log("Heared sound event");
         }
     }
