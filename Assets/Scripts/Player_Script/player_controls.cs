@@ -1,72 +1,126 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class player_controls : MonoBehaviour
 {
-    public KeyCode enableGoggles = KeyCode.Mouse1;
-    public KeyCode interact = KeyCode.E;
-    public KeyCode toss = KeyCode.Mouse0;
-
-    private Camera playerCam;
-
-    public GameObject held;
-
+    public KeyCode gogglesKey = KeyCode.Mouse1;
+    public KeyCode interactKey = KeyCode.E;
+    public KeyCode tossKey = KeyCode.Mouse0;
 
     [SerializeField]
     private float interactDistance = 1.5f;
 
+    /////////////////////////
+    /// pickup variables
+    private GameObject held;
+    private Rigidbody heldRB;
+    private bool isHolding = false;
+
+    [SerializeField]
+    [Tooltip("(Auto-assigned during Awake().) The position which a pickup will be held at in the FOV.")]
+    private Transform holdPos;
+    /////////////////////////
+
+    [Tooltip("(Auto-assigned during Awake().) The layer that any interactable object is on.")]
     public LayerMask interactableLayer;
+    [Tooltip("(Auto-assigned during Awake().) The layer that any pickupable object is on.")]
     public LayerMask pickupableLayer;
 
     private RaycastHit interactHit;
     private RaycastHit pickupHit;
 
     [SerializeField]
+    [Tooltip("(Auto-assigned during Awake().) The Canvas Image which overlays a yellow tint when gogglesKey is pressed.")]
     private GameObject tonyVision;
 
     //throwing control
 
+    [Tooltip("The force applied to thrown objects.")]
+    public float throwForce = 500f;  //public in case of a future game mechanic that may alter it.
+
     private void Awake()
     {
         interactableLayer = LayerMask.GetMask("Interactables");
-        pickupableLayer = LayerMask.GetMask("Pickup");
-        playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
+        pickupableLayer = LayerMask.GetMask("Pickup");     
+        holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
+        tonyVision = GameObject.Find("TonyVision");
+        tonyVision.SetActive(false);
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(enableGoggles))
+        if (Input.GetKeyDown(gogglesKey))
         {
-            tonyVision.SetActive(true);
-           
+            tonyVision.SetActive(true);      
         }
-        if (Input.GetKeyUp(enableGoggles))
+        if (Input.GetKeyUp(gogglesKey))
         {
             tonyVision.SetActive(false);
         }
-        if (Input.GetKeyDown(interact))
+        if (Input.GetKeyDown(interactKey))
         {
             Interact();
         }
+        if (Input.GetKeyDown(tossKey))
+        {
+            toss();
+        }
     }
+
     void Interact()
     {
-        if(Physics.Raycast(transform.position, transform.forward, out interactHit, interactDistance, interactableLayer))
+        Debug.Log("Interact key pressed.");
+     
+        if (Physics.Raycast(transform.position, transform.forward, out interactHit, interactDistance, interactableLayer))
         {
+            Debug.Log("Raycast hit object with Interactable Layer");
             interactHit.collider.gameObject.GetComponent<interactable>().activate();
             return;
         }
-        if(Physics.Raycast(transform.position, transform.forward, out pickupHit, interactDistance, pickupableLayer))
+
+        if (!isHolding)
         {
-            if(pickupHit.collider.gameObject.GetComponent<Rigidbody>() != null)
+            if (Physics.Raycast(transform.position, transform.forward, out pickupHit, interactDistance, pickupableLayer))
             {
-                pickupHit.collider.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                Debug.Log("Raycast hit object with Pickupable Layer");
+
+                if (pickupHit.collider.gameObject.GetComponent<Rigidbody>() != null)
+                {
+                    held = pickupHit.collider.gameObject;
+                    heldRB = pickupHit.collider.gameObject.GetComponent<Rigidbody>();
+                    heldRB.isKinematic = true;
+                    held.transform.position = holdPos.position;
+                    heldRB.transform.parent = holdPos.transform;
+
+                    Debug.Log("Player is now holding object");
+                    isHolding = true;
+
+                    Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), true);
+                }              
             }
-            pickupHit.collider.gameObject.transform.position = held.transform.position;
-            pickupHit.collider.gameObject.transform.parent = playerCam.gameObject.transform;
+        }
+
+        else
+            Debug.Log("No interactable within range");
+    }
+
+    void toss()
+    {
+        Debug.Log("Toss key pressed. Is player holding something: " + isHolding);
+
+        if (isHolding)
+        {
+            Debug.Log("Tossing!");
+
+            Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), false);
+
+            heldRB.isKinematic = false;
+            held.transform.parent = null;
+            heldRB.AddForce(transform.forward * throwForce);
+            held = null;
+            isHolding = false;
         }
     }
 }
