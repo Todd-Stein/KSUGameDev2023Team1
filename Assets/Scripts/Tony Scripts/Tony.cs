@@ -135,7 +135,7 @@ public class Tony : MonoBehaviour
             currentGoal.position.z == personalTransform.position.z)
         {
             speed = 0;
-            idleTimer = 2f;
+            idleTimer = (float)((100 - aggression)/10); // Waits idle for less time as aggression increases
             return true;
 
         }
