@@ -22,7 +22,7 @@ public class Tony : MonoBehaviour
     public const float baseSpeed = 4;   // Base speed for Tony when not alerted
     public Transform currentGoal; // The current goal for Tony to move to
     public Transform[] goals; // An array of goals for Tony to move to
-    int goalIndex;
+    public int goalIndex;
 
     public GameObject soundSphere; // Tony's listening range, in the form of a sphere
 
@@ -84,8 +84,20 @@ public class Tony : MonoBehaviour
     //to make bigger when hunting
     public void OnAlert(Collider other, int aggro)
     {
-        aggroIncrease(aggro);
-        changeGoal(other.transform); // Should change destination to object that alerted Tony
+        // Check if has a sound event script
+        if (currentGoal.GetComponent<SoundEvent>() != null)
+        {
+            // Check if the noise level is greater than or equal to the old goal
+            if (currentGoal.GetComponent<SoundEvent>().noise < aggro)
+            {
+                aggroIncrease(aggro);
+                changeGoal(other.transform); // Should change destination to object that alerted Tony
+            }
+        } else // Just switch to new target if not a sound event
+        {
+            aggroIncrease(aggro);
+            changeGoal(other.transform); // Should change destination to object that alerted Tony
+        }
     }
 
     public void OnTheHunt(Collider other)
@@ -135,7 +147,7 @@ public class Tony : MonoBehaviour
             currentGoal.position.z == personalTransform.position.z)
         {
             speed = 0;
-            idleTimer = 2f;
+            idleTimer = (float)(100-aggression)/10;
             return true;
 
         }
