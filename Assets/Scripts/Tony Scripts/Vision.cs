@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vision : MonoBehaviour
 {
-    public bool goggs;
+    bool goggs = true;
 
     [SerializeField]
     GameObject tony;
@@ -28,7 +28,7 @@ public class Vision : MonoBehaviour
     {
         //alerted if no goggles
         //hunting if goggles
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !goggs)
         {
             tony.GetComponent<Tony>().OnAlert(other, 10);
             Debug.Log("Alerted");
@@ -36,7 +36,7 @@ public class Vision : MonoBehaviour
 
         if(other.gameObject.CompareTag("Player") && goggs)
         {
-            tony.GetComponent<Tony>().OnTheHunt();
+            tony.GetComponent<Tony>().OnTheHunt(other);
             Debug.Log("Hunting");
         }
     }
