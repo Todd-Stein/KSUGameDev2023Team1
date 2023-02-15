@@ -52,23 +52,6 @@ public class Tony : MonoBehaviour
     {
         Timer();
 
-        //hunting timer, can be adjusted later
-        if (huntTimer <= huntTimerCompare)
-        {
-            huntTimer += Time.deltaTime;
-            //Debug.Log(timer);
-        }
-        else if (huntTimer >= 1.5f)
-        {
-            hunting = false;
-            Debug.Log("No More Hunt");
-        }
-        else
-        {
-            Debug.Log("time over");
-            //speed = speed before hunting
-        }
-
         agent.speed = speed; // Change speed as necessary
 
         if (checkGoals())
