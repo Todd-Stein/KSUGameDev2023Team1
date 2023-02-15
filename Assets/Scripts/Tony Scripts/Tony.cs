@@ -23,6 +23,7 @@ public class Tony : MonoBehaviour
     public Transform currentGoal; // The current goal for Tony to move to
     public Transform[] goals; // An array of goals for Tony to move to
     public int goalIndex;
+    public int rand;
 
     public GameObject soundSphere; // Tony's listening range, in the form of a sphere
 
@@ -45,6 +46,7 @@ public class Tony : MonoBehaviour
         goalIndex = 0;
         idleTimer = 0;
         aggression = 40;
+        rand = Random.Range(0, goals.Length);
     }
 
     // Update is called once per frame
@@ -57,7 +59,7 @@ public class Tony : MonoBehaviour
         if (checkGoals())
         {
             // Change currentGoal to next goal in goals[]
-            if (goalIndex < goals.Length)
+            /*if (goalIndex < goals.Length)
             {
                 //currentGoal = goals[++goalIndex].GetComponent<Transform>();
                 changeGoal(goals[++goalIndex].GetComponent<Transform>());
@@ -68,6 +70,15 @@ public class Tony : MonoBehaviour
                 changeGoal(goals[goalIndex].GetComponent<Transform>());
             }
             //agent.destination = currentGoal.position;
+            */
+
+            changeGoal(goals[rand].GetComponent<Transform>());
+            rand = Random.Range(0, goals.Length);
+        }
+        else if(!checkGoals() && hunting)
+        {
+            changeGoal(goals[rand].GetComponent<Transform>());
+            rand = Random.Range(0, goals.Length);
         }
     }
 
