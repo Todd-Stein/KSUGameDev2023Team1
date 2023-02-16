@@ -20,15 +20,8 @@ public class DoorSwitch : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Unlock()
     {
-        if(other.tag == "Player")
-        {
-            Debug.Log("Player Enter");
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Door_.unlocked = true;
-            }
-        }
+        Door_.unlocked = true;
     }
 }
