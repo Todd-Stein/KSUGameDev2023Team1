@@ -1550,8 +1550,8 @@ GameObject:
   - component: {fileID: 862110095}
   - component: {fileID: 862110094}
   - component: {fileID: 862110093}
-  - component: {fileID: 862110092}
   - component: {fileID: 862110096}
+  - component: {fileID: 862110097}
   m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: nongog
@@ -1567,26 +1567,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862110090}
   m_LocalRotation: {x: -0.7029525, y: -0, z: -0, w: 0.7112368}
-  m_LocalPosition: {x: -11.0601225, y: 7.571, z: -33.841988}
+  m_LocalPosition: {x: -11.0601225, y: 6.65, z: -33.841988}
   m_LocalScale: {x: 0.2, y: -0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1423772607}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -89.329, y: 0, z: 0}
---- !u!135 &862110092
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862110090}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 8.179297
-  m_Center: {x: 0.0000023841858, y: -3.8138425, z: -3.365413}
 --- !u!114 &862110093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1664,6 +1651,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 0}
   DS: {fileID: 862110093}
+--- !u!136 &862110097
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862110090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.5148852
+  m_Height: 7.0297713
+  m_Direction: 1
+  m_Center: {x: 0.20041168, y: 4.4433316e-16, z: -0.0000011920929}
 --- !u!1001 &906144911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3898,26 +3899,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968936239}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3fc6573b2aef0144b7383e7e3e39847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   noise: 3
   noiseradius: 20
---- !u!135 &1968936244
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968936239}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.66969514
-  m_Center: {x: 0, y: 0.048395555, z: 1.1310011}
 --- !u!1001 &2000761496
 PrefabInstance:
   m_ObjectHideFlags: 0

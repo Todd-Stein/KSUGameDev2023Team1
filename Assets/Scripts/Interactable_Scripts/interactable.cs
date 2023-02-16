@@ -11,6 +11,14 @@ public class interactable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (door != null)
+        {
+            Debug.Log(door.name);
+        }
+        if(DS != null)
+        {
+            Debug.Log (DS.name);
+        }
     }
 
     // Update is called once per frame

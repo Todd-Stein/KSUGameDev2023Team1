@@ -14,7 +14,12 @@ public class SoundEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        soundtrigger = gameObject.GetComponent<SphereCollider>();
+        try
+        {
+            soundtrigger = gameObject.GetComponent<SphereCollider>();
+        }
+        catch { soundtrigger = null; }
+        
         soundtrigger.enabled = false;
         soundtrigger.radius = noiseradius;
     }
