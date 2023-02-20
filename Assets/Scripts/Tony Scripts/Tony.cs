@@ -13,10 +13,11 @@ using UnityEngine.AI;
 //increased speed for 10 secs after exiting hunting
 //destination reached timer dependant on noise level and aggression
 //aggression decreases over time
+// find player and reference what's needed rather than several vars for player
 
 public class Tony : MonoBehaviour
 {
-    public bool hunting; // To be toggled when he is in hunt mode
+    private bool hunting; // To be toggled when he is in hunt mode
     public bool alerted; // To be toggled when noise can/is heard by him
     public float speed;  // Changes the speed that Tony moves
     public const float baseSpeed = 4;   // Base speed for Tony when not alerted

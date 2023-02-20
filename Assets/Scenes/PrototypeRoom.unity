@@ -541,6 +541,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4973732229832538377, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
   m_PrefabInstance: {fileID: 88544959}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &124051698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124051699}
+  m_Layer: 0
+  m_Name: Patrol (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &124051699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124051698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1049519660}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &150034241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1036,6 +1067,170 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4973732229832538377, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
   m_PrefabInstance: {fileID: 472459077}
   m_PrefabAsset: {fileID: 0}
+--- !u!43 &534345816
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: um_18328
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 36
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 24
+    localAABB:
+      m_Center: {x: -5.082602, y: -7.6680756, z: -58.589462}
+      m_Extent: {x: 2.901979, y: 3.420956, z: 1.602087}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000001000200000002000300040005000600040006000700080009000a0008000a000b000c000d000e000c000e000f00100011001200100012001300140015001600140016001700
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 24
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 40
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 56
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 1536
+    _typelessdata: 548f0bc068e887c012f363c200000080000000000000803f000080bf0000000000000000000080bf0000803f0000803f0000803f0000803f548f0b4068e887c0b081ffc068e887c012f363c200000080000000000000803f000080bf0000000000000000000080bf0000803f0000803f0000803f0000803fb081ff4068e887c0b081ffc0ac6c31c112f363c200000080000000000000803f000080bf0000000000000000000080bf0000803f0000803f0000803f0000803fb081ff40ac6c31c1548f0bc0ac6c31c112f363c200000080000000000000803f000080bf0000000000000000000080bf0000803f0000803f0000803f0000803f548f0b40ac6c31c1548f0bc067e887c025c470c2000000800000803fa4ca1f340000803f0000000000000000000080bf0000803f0000803f0000803f0000803f548f0bc025c470c2b081ffc067e887c025c470c2000000800000803fa4ca1f340000803f0000000000000000000080bf0000803f0000803f0000803f0000803fb081ffc025c470c2b081ffc068e887c012f363c2000000800000803fa4ca1f340000803f0000000000000000000080bf0000803f0000803f0000803f0000803fb081ffc012f363c2548f0bc068e887c012f363c2000000800000803fa4ca1f340000803f0000000000000000000080bf0000803f0000803f0000803f0000803f548f0bc012f363c2b081ffc067e887c025c470c2000080bf00000000000000000000000000000000000080bf000080bf0000803f0000803f0000803f0000803f25c4704267e887c0b081ffc0ac6c31c125c470c2000080bf00000000000000000000000000000000000080bf000080bf0000803f0000803f0000803f0000803f25c47042ac6c31c1b081ffc0ac6c31c112f363c2000080bf00000000000000000000000000000000000080bf000080bf0000803f0000803f0000803f0000803f12f36342ac6c31c1b081ffc068e887c012f363c2000080bf00000000000000000000000000000000000080bf000080bf0000803f0000803f0000803f0000803f12f3634268e887c0b081ffc0ac6c31c125c470c200000000000080bf00000000000080bf00000000000000000000803f0000803f0000803f0000803f0000803fb081ff4025c47042548f0bc0ac6c31c125c470c200000000000080bf00000000000080bf00000000000000000000803f0000803f0000803f0000803f0000803f548f0b4025c47042548f0bc0ac6c31c112f363c200000000000080bf00000000000080bf00000000000000000000803f0000803f0000803f0000803f0000803f548f0b4012f36342b081ffc0ac6c31c112f363c200000000000080bf00000000000080bf00000000000000000000803f0000803f0000803f0000803f0000803fb081ff4012f36342548f0bc0ac6c31c125c470c20000803f00000000000000000000000069c20e250000803f000080bf0000803f0000803f0000803f0000803f25c470c2ac6c31c1548f0bc067e887c025c470c20000803f000000000000000000000000000000260000803f000080bf0000803f0000803f0000803f0000803f25c470c267e887c0548f0bc068e887c012f363c20000803f000000000000000000000000cc9eb8250000803f000080bf0000803f0000803f0000803f0000803f12f363c268e887c0548f0bc0ac6c31c112f363c20000803f000000000000000000000000000000000000803f000080bf0000803f0000803f0000803f0000803f12f363c2ac6c31c1548f0bc067e887c025c470c200000080feffff33000080bf0000803f0000000000000000000080bf0000803f0000803f0000803f0000803f548f0bc067e887c0548f0bc0ac6c31c125c470c200000080feffff33000080bf0000803f0000000000000000000080bf0000803f0000803f0000803f0000803f548f0bc0ac6c31c1b081ffc0ac6c31c125c470c200000080feffff33000080bf0000803f0000000000000000000080bf0000803f0000803f0000803f0000803fb081ffc0ac6c31c1b081ffc067e887c025c470c200000080feffff33000080bf0000803f0000000000000000000080bf0000803f0000803f0000803f0000803fb081ffc067e887c0
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: -5.082602, y: -7.6680756, z: -58.589462}
+    m_Extent: {x: 2.902979, y: 3.421956, z: 1.6030884}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1001 &564793591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1535,6 +1730,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4973732229832538377, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
   m_PrefabInstance: {fileID: 771344748}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &774162910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774162911}
+  m_Layer: 0
+  m_Name: Patrol (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &774162911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774162910}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.13, y: 0, z: 29.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1049519660}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &786570268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1686,6 +1912,170 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93a2f6e6bd9aa164abb8b3e25e3e54fc, type: 3}
+--- !u!43 &851047585
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: um_27330
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 18
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 16
+    localAABB:
+      m_Center: {x: 1.3364966, y: -0.68865854, z: 0.73386776}
+      m_Extent: {x: 1.8031032, y: 1.2866266, z: 1.749282}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 0000010002000300040005000600070008000600080009000a000b000c000d000e000f00
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 16
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 40
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 56
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 1024
+    _typelessdata: 34ef4840f57ef63e15c01640f6357c3d231c7f3f8be565bd40837f3fe79b7cbde2b8d92f000080bf0000803f0000803f0000803f0000803f34ef484015c0164034ef4840d949953e18f981bff6357c3d231c7f3f8be565bd40837f3fe79b7cbde2b8d92f000080bf0000803f0000803f0000803f0000803f34ef484018f981bf14e7eebe6f14193f2bbaef3ef6357c3d231c7f3f8be565bd40837f3fe79b7cbde2b8d92f000080bf0000803f0000803f0000803f0000803f14e7eebe2bbaef3e1f2b1040dd88e4bfedeb1e40b07ee4be6fc9643e81d65d3f559763bf9d109031b76beabe000080bf0000803f0000803f0000803f0000803f1f2b10c0dc88e4bf34ef4840f57ef63e15c01640b07ee4be6fc9643e81d65d3f559763bf9d109031b76beabe000080bf0000803f0000803f0000803f0000803f34ef48c0f57ef63e14e7eebe6f14193f2bbaef3eb07ee4be6fc9643e81d65d3f559763bf9d109031b76beabe000080bf0000803f0000803f0000803f0000803f14e7ee3e6f14193f1f2b1040dd88e4bfedeb1e4058736e3f7102babe30a0a73c5aebb3bcf4c331b331f07f3f000080bf0000803f0000803f0000803f0000803fedeb1e40dc88e4bf1f2b104025d6fcbfc84263bf58736e3f7102babe30a0a73c53ebb3bc944a0db231f07f3f000080bf0000803f0000803f0000803f0000803fc84263bf24d6fcbf34ef4840d949953e18f981bf58736e3f7102babe30a0a73c58ebb3bc508801b331f07f3f000080bf0000803f0000803f0000803f0000803f18f981bfd949953e34ef4840f57ef63e15c0164058736e3f7102babe30a0a73c5febb3bccffc87b331f07f3f000080bf0000803f0000803f0000803f0000803f15c01640f57ef63e14e7eebe7014193f2dbaef3e1776bebe9190bf3d266b6cbfab756d3f17561d31cd4cbfbe000080bf0000803f0000803f0000803f0000803f14e7eebe7014193f34ef4840d949953e18f981bf1776bebe9190bf3d266b6cbfab756d3f17561d31cd4cbfbe000080bf0000803f0000803f0000803f0000803f34ef4840d949953e1f2b104025d6fcbfc84263bf1776bebe9190bf3d266b6cbfab756d3f17561d31cd4cbfbe000080bf0000803f0000803f0000803f0000803f1f2b104024d6fcbf1f2b104025d6fcbfc84263bf23ff2cbf14673cbf4ac8293d92903cbf3c252d3f7f564aaf0000803f0000803f0000803f0000803f0000803f1f2b10c0c842633f1f2b1040dd88e4bfedeb1e4023ff2cbf14673cbf4ac8293d92903cbf3c252d3f7e564aaf0000803f0000803f0000803f0000803f0000803f1f2b10c0edeb1ec014e7eebe7014193f2dbaef3e23ff2cbf14673cbf4ac8293d92903cbf3c252d3f7f564aaf0000803f0000803f0000803f0000803f0000803f14e7ee3e2cbaefbe
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 1.3364965, y: -0.6886586, z: 0.7338677}
+    m_Extent: {x: 1.8041033, y: 1.2876267, z: 1.750282}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &862110090
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,6 +2558,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4973732229832538377, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
   m_PrefabInstance: {fileID: 1045042700}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1049519659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049519660}
+  m_Layer: 0
+  m_Name: Patrol Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1049519660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049519659}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 124051699}
+  - {fileID: 1251375286}
+  - {fileID: 774162911}
+  - {fileID: 1189766494}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1081750084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2340,6 +2765,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4973732229832538377, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
   m_PrefabInstance: {fileID: 1176786699}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1189766493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1189766494}
+  m_Layer: 0
+  m_Name: Patrol (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1189766494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189766493}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.69, y: 0, z: 7.35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1049519660}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1223230525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2426,6 +2882,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4973732229832538377, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
   m_PrefabInstance: {fileID: 1223230525}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1251375285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1251375286}
+  m_Layer: 0
+  m_Name: Patrol (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1251375286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251375285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.87, y: 0, z: 30.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1049519660}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1282298141
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,6 +4226,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: currentGoal
+      value: 
+      objectReference: {fileID: 1251375286}
+    - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: goals.Array.data[0]
+      value: 
+      objectReference: {fileID: 124051699}
+    - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: goals.Array.data[1]
+      value: 
+      objectReference: {fileID: 1251375286}
+    - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: goals.Array.data[2]
+      value: 
+      objectReference: {fileID: 774162911}
+    - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: goals.Array.data[3]
+      value: 
+      objectReference: {fileID: 1189766494}
+    - target: {fileID: 398781251885920456, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 534345816}
+    - target: {fileID: 3829575553009238720, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829575553009238720, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829575553009238720, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6896235
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829575553009238720, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.13170448
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829575553009238720, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.694733
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829575553009238720, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.15626729
+      objectReference: {fileID: 0}
+    - target: {fileID: 3829575553009238720, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 3888634955850296481, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_Name
       value: Tony
@@ -3791,17 +4330,1013 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5737574005474364121, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 851047585}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: mainRenderableMesh
+      value: 
+      objectReference: {fileID: 851047585}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.mainPolygons_.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].instanceID_
+      value: 15926
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].instanceID_
+      value: 15927
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].instanceID_
+      value: 21519
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].instanceID_
+      value: 15921
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].instanceID_
+      value: 15924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].instanceID_
+      value: 21510
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].plane_.distance_
+      value: -0.54087806
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].plane_.normal_.x
+      value: 0.0615749
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].plane_.normal_.y
+      value: 0.9965231
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].plane_.normal_.z
+      value: -0.056127112
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].plane_.distance_
+      value: -0.74757326
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].plane_.normal_.x
+      value: -0.44627905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].plane_.normal_.y
+      value: 0.22342466
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].plane_.normal_.z
+      value: 0.8665543
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].plane_.distance_
+      value: -2.7976642
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].plane_.normal_.x
+      value: 0.9314475
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].plane_.normal_.y
+      value: -0.36329988
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].plane_.normal_.z
+      value: 0.020462126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].plane_.distance_
+      value: 0.20289567
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].plane_.normal_.x
+      value: -0.3719947
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].plane_.normal_.y
+      value: 0.09353746
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].plane_.normal_.z
+      value: -0.92350996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].plane_.distance_
+      value: 0.105347276
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].plane_.normal_.x
+      value: -0.6757681
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].plane_.normal_.y
+      value: -0.73594785
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].plane_.normal_.z
+      value: 0.041450776
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].plane_.distance_
+      value: 0.2103568
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].plane_.normal_.x
+      value: -0.5613572
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].plane_.normal_.y
+      value: -0.8262641
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].plane_.normal_.z
+      value: 0.046537604
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].edges_.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].uvParams_.scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].uvParams_.scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].edges_.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].uvParams_.scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].uvParams_.scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].edges_.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].uvParams_.scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].uvParams_.scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].edges_.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].uvParams_.scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].uvParams_.scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].edges_.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].uvParams_.scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].uvParams_.scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].edges_.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].uvParams_.scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].uvParams_.scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].edges_.Array.data[0].i1_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].edges_.Array.data[1].i0_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].edges_.Array.data[1].i1_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].edges_.Array.data[2].i0_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].edges_.Array.data[0].i1_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].edges_.Array.data[1].i0_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].edges_.Array.data[2].i0_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].edges_.Array.data[2].i1_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].edges_.Array.data[0].i1_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].edges_.Array.data[1].i0_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].edges_.Array.data[1].i1_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].edges_.Array.data[2].i0_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].edges_.Array.data[2].i1_
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].edges_.Array.data[3].i0_
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].edges_.Array.data[0].i1_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].edges_.Array.data[1].i0_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].edges_.Array.data[1].i1_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].edges_.Array.data[2].i0_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].edges_.Array.data[0].i1_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].edges_.Array.data[1].i0_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].edges_.Array.data[1].i1_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].edges_.Array.data[2].i0_
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].edges_.Array.data[0].i1_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[0].uv.x
+      value: 3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[0].uv.y
+      value: 2.3554738
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[1].uv.x
+      value: 3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[1].uv.y
+      value: -1.0154142
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[2].uv.x
+      value: -0.46660674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[2].uv.y
+      value: 0.46821722
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[0].uv.x
+      value: -2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[0].uv.y
+      value: -1.7854266
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[1].uv.x
+      value: -3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[1].uv.y
+      value: 0.48143736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[2].uv.x
+      value: 0.46660674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[2].uv.y
+      value: 0.59796804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[0].uv.x
+      value: 2.4831498
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[0].uv.y
+      value: -1.7854266
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[1].uv.x
+      value: -0.88773775
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[1].uv.y
+      value: -1.975285
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[2].uv.x
+      value: -1.0154142
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[2].uv.y
+      value: 0.29157904
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[3].uv.x
+      value: 2.3554738
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[3].uv.y
+      value: 0.48143736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[0].uv.x
+      value: -0.46660674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[0].uv.y
+      value: 0.5979681
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[1].uv.x
+      value: 3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[1].uv.y
+      value: 0.29157904
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[2].uv.x
+      value: 2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[2].uv.y
+      value: -1.975285
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[0].uv.x
+      value: -2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[0].uv.y
+      value: 0.88773775
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[1].uv.x
+      value: -2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[1].uv.y
+      value: -2.4831498
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[2].uv.x
+      value: 0.46660674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[2].uv.y
+      value: -0.46821725
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[0].uv.x
+      value: -2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[0].uv.y
+      value: -2.4831498
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[1].uv.x
+      value: -2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[1].uv.y
+      value: 0.88773775
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[0].pos.x
+      value: 3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[0].pos.y
+      value: 0.48143736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[0].pos.z
+      value: 2.3554738
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[1].pos.x
+      value: 3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[1].pos.y
+      value: 0.29157904
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[1].pos.z
+      value: -1.0154142
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[2].pos.x
+      value: -0.46660674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[2].pos.y
+      value: 0.59796804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[2].pos.z
+      value: 0.46821722
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[0].pos.x
+      value: 2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[0].pos.y
+      value: -1.7854267
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[0].pos.z
+      value: 2.4831498
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[1].pos.x
+      value: 3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[1].pos.y
+      value: 0.48143736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[1].pos.z
+      value: 2.3554738
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[2].pos.x
+      value: -0.46660674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[2].pos.y
+      value: 0.59796804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[2].pos.z
+      value: 0.46821722
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[0].pos.x
+      value: 2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[0].pos.y
+      value: -1.7854267
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[0].pos.z
+      value: 2.4831498
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[1].pos.x
+      value: 2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[1].pos.y
+      value: -1.9752852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[1].pos.z
+      value: -0.88773775
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[2].pos.x
+      value: 3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[2].pos.y
+      value: 0.29157904
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[2].pos.z
+      value: -1.0154142
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[3].pos.x
+      value: 3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[3].pos.y
+      value: 0.48143736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[3].pos.z
+      value: 2.3554738
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[0].pos.x
+      value: -0.46660674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[0].pos.y
+      value: 0.5979681
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[0].pos.z
+      value: 0.46821728
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[1].pos.x
+      value: 3.1395998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[1].pos.y
+      value: 0.29157904
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[1].pos.z
+      value: -1.0154142
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[2].pos.x
+      value: 2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[2].pos.y
+      value: -1.9752852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[2].pos.z
+      value: -0.88773775
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[0].pos.x
+      value: 2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[0].pos.y
+      value: -1.9752852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[0].pos.z
+      value: -0.88773775
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[1].pos.x
+      value: 2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[1].pos.y
+      value: -1.7854267
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[1].pos.z
+      value: 2.4831498
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[2].pos.x
+      value: -0.46660674
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[2].pos.y
+      value: 0.5979681
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[2].pos.z
+      value: 0.46821728
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[0].pos.x
+      value: 2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[0].pos.y
+      value: -1.7854267
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[0].pos.z
+      value: 2.4831498
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[1].pos.x
+      value: 2.252632
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[1].pos.y
+      value: -1.9752852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[1].pos.z
+      value: -0.88773775
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[0].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[0].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[0].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[1].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[1].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[1].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[2].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[2].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[2].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[0].vertices_.Array.data[2].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[0].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[0].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[0].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[1].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[1].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[1].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[2].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[2].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[2].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[1].vertices_.Array.data[2].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[0].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[0].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[0].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[1].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[1].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[1].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[2].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[2].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[2].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[2].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[3].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[3].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[3].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[2].vertices_.Array.data[3].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[0].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[0].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[0].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[1].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[1].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[1].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[2].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[2].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[2].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[3].vertices_.Array.data[2].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[0].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[0].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[0].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[1].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[1].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[1].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[2].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[2].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[2].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[4].vertices_.Array.data[2].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[0].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[0].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[0].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[1].color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[1].color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054601119914646944, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: editableMesh_.subPolygons_.Array.data[5].vertices_.Array.data[1].color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257574663512067367, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 534345816}
+    - target: {fileID: 7605990817262302377, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7605990817262302377, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.31
+      value: -0.53
       objectReference: {fileID: 0}
     - target: {fileID: 7605990817262302377, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.13
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605990817262302377, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605990817262302377, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605990817262302377, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8299423853116730138, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299423853116730138, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_SelectedEditorRenderState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 668b657646eeff24ba88b250f819faec, type: 3}
