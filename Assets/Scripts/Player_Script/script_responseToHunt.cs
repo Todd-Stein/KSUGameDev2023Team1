@@ -59,7 +59,7 @@ public class script_responseToHunt : MonoBehaviour
         lookAtPos = lookAtLoc;
 
     }
-    public void OnDisable()
+    public void DisableResponseToHuntMode()
     {
         isNearTony = false;
         isTurningAnimDone = false;
