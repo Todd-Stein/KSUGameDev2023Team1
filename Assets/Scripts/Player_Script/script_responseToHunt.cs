@@ -62,7 +62,7 @@ public class script_responseToHunt : MonoBehaviour
     public void DisableResponseToHuntMode()
     {
         isNearTony = false;
-        isTurningAnimDone = false;
+        isTurningAnimDone = true;
         turnCurrentTime = 0.0f;
     }
 }
