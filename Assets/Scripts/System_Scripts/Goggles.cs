@@ -22,7 +22,7 @@ public class Goggles : MonoBehaviour
         foreach (var obj in goggleobjs)
         {
             obj.GetComponent<MeshRenderer>().enabled = false;
-            Debug.Log(obj.ToString());
+            //Debug.Log(obj.ToString());
         }
         if (nongogobjs == null)
         {
@@ -30,7 +30,7 @@ public class Goggles : MonoBehaviour
             nongogobjs = new List<GameObject>();
             foreach (var obj in GameObject.FindGameObjectsWithTag("nongog")){
                 nongogobjs.Add(obj);
-                Debug.Log(obj.ToString());
+                //Debug.Log(obj.ToString());
             }
         }
     }

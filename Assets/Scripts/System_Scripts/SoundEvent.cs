@@ -56,4 +56,9 @@ public class SoundEvent : MonoBehaviour
         soundtrigger.enabled = true;
         au.Play();
     }
+
+    public void stopPlaying()
+    {
+        au.Stop();
+    }
 }

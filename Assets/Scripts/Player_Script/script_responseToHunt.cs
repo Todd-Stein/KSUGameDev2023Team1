@@ -54,6 +54,7 @@ public class script_responseToHunt : MonoBehaviour
     }
     public void EnableResponseToHuntMode(Transform lookAtLoc)
     {
+        Debug.Log("Looking at tony engadged");
         isNearTony = true;
         isTurningAnimDone = false;
         lookAtPos = lookAtLoc;
@@ -61,6 +62,7 @@ public class script_responseToHunt : MonoBehaviour
     }
     public void DisableResponseToHuntMode()
     {
+        Debug.Log("Done with look");
         isNearTony = false;
         isTurningAnimDone = true;
         turnCurrentTime = 0.0f;
