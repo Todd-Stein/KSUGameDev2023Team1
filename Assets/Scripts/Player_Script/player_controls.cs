@@ -45,6 +45,10 @@ public class player_controls : MonoBehaviour
     private void Awake()
     {
         interactableLayer = LayerMask.GetMask("Interactables");
+        pickupableLayer = LayerMask.GetMask("Pickup"); 
+        if(holdPos == null)
+            holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
+        if(tonyVision== null)
         pickupableLayer = LayerMask.GetMask("Pickup");
         if(holdPos== null)
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
@@ -100,6 +104,8 @@ public class player_controls : MonoBehaviour
 
                     Debug.Log("Player is now holding object");
                     isHolding = true;
+
+                    held.GetComponent<DistractItem>().thrown = true;
 
                     Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), true);
                 }              
