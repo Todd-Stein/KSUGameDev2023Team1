@@ -145,7 +145,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  soundSphere: {fileID: 4013724502388504194}
   aggression: 0
+  idleTimer: 0
+  huntTimer: 0
 --- !u!1 &4013724502388504194
 GameObject:
   m_ObjectHideFlags: 0

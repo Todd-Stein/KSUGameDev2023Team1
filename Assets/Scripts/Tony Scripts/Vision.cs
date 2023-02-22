@@ -6,22 +6,38 @@ public class Vision : MonoBehaviour
 {
     bool goggs = true;
 
+    public GameObject curHitObj;
+
+    public GameObject debug;
+
+    public float radius;
+    public float distance;
+    public LayerMask layer;
+
+    private Vector3 origin;
+    private Vector3 dir;
+    private float curHitDis;
+
+
     [SerializeField]
     GameObject tony;
 
-    // Start is called before the first frame update
-    void Start()
+    private void FixedUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if(goggles == true){
-        //  currentGoal = player's position;
-        //  agent.destination = currentGoal.position;
-        //}
+        origin = transform.position;
+        dir = transform.forward;
+        RaycastHit hit;
+        if(Physics.SphereCast(origin, radius, dir, out hit, distance, layer, QueryTriggerInteraction.UseGlobal))
+        {
+            curHitObj = hit.transform.gameObject;
+            curHitDis = hit.distance;
+        }
+        else
+        {
+            curHitDis = distance;
+            curHitObj = null;
+        }
+        debug.transform.position = new Vector3(transform.position.x, transform.position.y, curHitDis);
     }
 
     private void OnTriggerEnter(Collider other)
