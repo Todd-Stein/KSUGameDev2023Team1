@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Vision : MonoBehaviour
 {
+    bool goggs = true;
+
     [SerializeField]
     GameObject tony;
 
@@ -24,10 +26,18 @@ public class Vision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        //alerted if no goggles
+        //hunting if goggles
+        if (other.gameObject.CompareTag("Player") && !goggs)
         {
             tony.GetComponent<Tony>().OnAlert(other, 10);
             Debug.Log("Alerted");
+        }
+
+        if(other.gameObject.CompareTag("Player") && goggs)
+        {
+            tony.GetComponent<Tony>().OnTheHunt(other);
+            Debug.Log("Hunting");
         }
     }
 
@@ -37,7 +47,7 @@ public class Vision : MonoBehaviour
         // Debug.Log("Inside Trigger.");
         if (other.gameObject.CompareTag("Player"))
         {
-            tony.GetComponent<Tony>().OnAlert(other, 15);
+            tony.GetComponent<Tony>().OnAlert(other, 1); // Sets Tony's destination to player and increases aggro by 1
         }
     }
 }
