@@ -75,20 +75,21 @@ public class Tony : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            OnTheHunt(other);
+            GameObject player = other.GetComponent<GameObject>();
+            OnTheHunt(player);
         }
     }
 
     //Tony heads towards source of sound or player if in vision
     //need to shrink listening range
     //to make bigger when hunting
-    public void OnAlert(Collider other, int aggro)
+    public void OnAlert(GameObject other, int aggro)
     {
         aggroIncrease(aggro);
         changeGoal(other.transform); // Should change destination to object that alerted Tony
     }
 
-    public void OnTheHunt(Collider other)
+    public void OnTheHunt(GameObject other)
     {
         //activated by contact or seen with goggles active
         //increased speed for 10 secs after hunting == false

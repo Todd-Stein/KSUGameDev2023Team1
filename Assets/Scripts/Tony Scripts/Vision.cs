@@ -8,8 +8,6 @@ public class Vision : MonoBehaviour
 
     public GameObject curHitObj;
 
-    public GameObject debug;
-
     public float radius;
     public float distance;
     public LayerMask layer;
@@ -22,12 +20,27 @@ public class Vision : MonoBehaviour
     [SerializeField]
     GameObject tony;
 
+    private void Update()
+    {
+        if (curHitObj.CompareTag("Player") && !goggs)
+        {
+            tony.GetComponent<Tony>().OnAlert(curHitObj, 10);
+            Debug.Log("Alerted");
+        }
+
+        if (curHitObj.CompareTag("Player") && goggs)
+        {
+            tony.GetComponent<Tony>().OnTheHunt(curHitObj);
+            Debug.Log("Hunting");
+        }
+    }
+
     private void FixedUpdate()
     {
         origin = transform.position;
         dir = transform.forward;
         RaycastHit hit;
-        if(Physics.SphereCast(origin, radius, dir, out hit, distance, layer, QueryTriggerInteraction.UseGlobal))
+        if (Physics.SphereCast(origin, radius, dir, out hit, distance, layer, QueryTriggerInteraction.UseGlobal))
         {
             curHitObj = hit.transform.gameObject;
             curHitDis = hit.distance;
@@ -37,33 +50,12 @@ public class Vision : MonoBehaviour
             curHitDis = distance;
             curHitObj = null;
         }
-        debug.transform.position = new Vector3(transform.position.x, transform.position.y, curHitDis);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnDrawGizmosSelected()
     {
-        //alerted if no goggles
-        //hunting if goggles
-        if (other.gameObject.CompareTag("Player") && !goggs)
-        {
-            tony.GetComponent<Tony>().OnAlert(other, 10);
-            Debug.Log("Alerted");
-        }
-
-        if(other.gameObject.CompareTag("Player") && goggs)
-        {
-            tony.GetComponent<Tony>().OnTheHunt(other);
-            Debug.Log("Hunting");
-        }
-    }
-
-    // Update to continuously provide location info of the player.
-    private void OnTriggerStay(Collider other)
-    {
-        // Debug.Log("Inside Trigger.");
-        if (other.gameObject.CompareTag("Player"))
-        {
-            tony.GetComponent<Tony>().OnAlert(other, 1); // Sets Tony's destination to player and increases aggro by 1
-        }
+        Gizmos.color = Color.red;
+        Debug.DrawLine(origin, origin + dir * curHitDis);
+        Gizmos.DrawWireSphere(origin + dir * curHitDis, radius);
     }
 }

@@ -19,12 +19,22 @@ public class SoundListener : MonoBehaviour
         
     }
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("NoiseMaker"))
+    //    {
+    //        soundlocation = other.gameObject;
+    //        tony.GetComponent<Tony>().OnAlert(other, other.GetComponent<SoundEvent>().noise); // Call Tony's alert script, increasing aggression by noise level
+    //        Debug.Log("Heared sound event");
+    //    }
+    //}
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("NoiseMaker"))
         {
             soundlocation = other.gameObject;
-            tony.GetComponent<Tony>().OnAlert(other, other.GetComponent<SoundEvent>().noise); // Call Tony's alert script, increasing aggression by noise level
+            tony.GetComponent<Tony>().OnAlert(soundlocation, soundlocation.GetComponent<SoundEvent>().noise); // Call Tony's alert script, increasing aggression by noise level
             Debug.Log("Heared sound event");
         }
     }
