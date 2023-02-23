@@ -137,6 +137,7 @@ public class Tony : MonoBehaviour
         {
             speed = 0;
             idleTimer = (float)((100 - aggression)/10); // Waits idle for less time as aggression increases
+            goalIndex = Random.Range(0, goals.Length);
             return true;
 
         }
