@@ -35,7 +35,10 @@ public class EnvironmentSound : MonoBehaviour
         }
         else
         {
-            au.Play();
+            if (other.gameObject.layer == 8)
+            {
+                au.Play();
+            }
         }
     }
 }
