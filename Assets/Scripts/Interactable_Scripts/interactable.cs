@@ -24,9 +24,11 @@ public class interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Collider[] coliders = Physics.OverlapSphere(gameObject.GetComponent<Collider>().transform.localPosition, 5.0f, 8);
-        if(coliders.Length != 0)
+        Collider[] coliders = Physics.OverlapSphere(GetComponent<Transform>().position, 45.0f, LayerMask.NameToLayer("Tony"));
+        //Gizmos.DrawWireSphere(gameObject.GetComponent<Transform>().position, 45.0f);
+        if (coliders.Length != 0)
         {
+            Debug.Log("Tony is in the sound area!");
             foreach(var T in coliders)
             {
                 if(T.GetComponent<Tony>().idleTimer != 0)
