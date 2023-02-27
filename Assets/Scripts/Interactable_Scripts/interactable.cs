@@ -8,6 +8,7 @@ public class interactable : MonoBehaviour
 
     public Door door = null;
     public DoorSwitch DS = null;
+    //public GameObject NoiseEmitter;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +55,8 @@ public class interactable : MonoBehaviour
             return;
         }
         gameObject.GetComponent<SoundEvent>().activateNoiseEvent();
+        //(Instantiate(NoiseEmitter) as GameObject).transform.parent = gameObject.transform;
+        //Instantiate(NoiseEmitter, gameObject.transform.position, Quaternion.identity);
         Debug.Log("Interactable Activated");
     }
 }

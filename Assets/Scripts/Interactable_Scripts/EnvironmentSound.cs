@@ -37,6 +37,8 @@ public class EnvironmentSound : MonoBehaviour
         {
             if (other.gameObject.layer == 8)
             {
+                Debug.Log("Tony Activated Envirosound");
+                //Tony Activated sound
                 au.Play();
             }
         }
