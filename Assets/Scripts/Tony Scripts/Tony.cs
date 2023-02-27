@@ -80,9 +80,7 @@ public class Tony : MonoBehaviour
         }
     }
 
-    //Tony heads towards source of sound or player if in vision
-    //need to shrink listening range
-    //to make bigger when hunting
+    //Tony heads towards source of sound
     public void OnAlert(GameObject other, int aggro)
     {
         aggroIncrease(aggro);
