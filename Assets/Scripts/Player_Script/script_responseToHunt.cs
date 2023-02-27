@@ -5,7 +5,7 @@ using UnityEngine;
 public class script_responseToHunt : MonoBehaviour
 {
     private Quaternion playerOriginalRot;
-    private bool isNearTony;
+    private bool isNearTony = false;
     private bool isTurningAnimDone;
     private Transform lookAtPos;
     private GameObject vignette;
@@ -20,6 +20,7 @@ public class script_responseToHunt : MonoBehaviour
         {
             vignette = transform.GetChild(0).GetChild(0).GetChild(3).gameObject;
         }
+        isNearTony = false;
     }
 
     // Start is called before the first frame update
@@ -33,23 +34,37 @@ public class script_responseToHunt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         vignette.SetActive(isNearTony);
-        if(!isTurningAnimDone)
+        if (isNearTony)
         {
-            turnCurrentTime += Time.deltaTime / turnTotalTime;
-            if(turnCurrentTime<turnTotalTime/2)
+            if (!isTurningAnimDone)
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookAtPos.position, Vector3.up), turnCurrentTime);
+                turnCurrentTime += Time.deltaTime / turnTotalTime;
+                if (turnCurrentTime < turnTotalTime / 2)
+                {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookAtPos.position, Vector3.up), turnCurrentTime);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, playerOriginalRot, turnCurrentTime);
+                }
+                if (turnCurrentTime >= turnTotalTime)
+                {
+                    isTurningAnimDone = true;
+                }
+
             }
             else
             {
-                transform.rotation = Quaternion.Lerp(transform.rotation, playerOriginalRot, turnCurrentTime);
+                DisableResponseToHuntMode();
             }
-            if(turnCurrentTime>=turnTotalTime)
-            {
-                isTurningAnimDone = true;
-            }
-
+        }
+        else
+        {
+            isNearTony = false;
+            turnCurrentTime = 0.0f;
+            isTurningAnimDone = false;
         }
     }
     public void EnableResponseToHuntMode(Transform lookAtLoc)
