@@ -22,7 +22,7 @@ public class Tony : MonoBehaviour
     public const float baseSpeed = 4;   // Base speed for Tony when not alerted
     public Transform currentGoal; // The current goal for Tony to move to
     public Transform[] goals; // An array of goals for Tony to move to
-    int goalIndex;
+    public int goalIndex;
 
     public GameObject soundSphere; // Tony's listening range, in the form of a sphere
 

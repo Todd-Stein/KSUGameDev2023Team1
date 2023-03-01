@@ -13,7 +13,8 @@ public class DoorPatrolSwitch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponent<MeshRenderer>().enabled = false;
+        Tony = GameObject.Find("Tony");
     }
 
     // Update is called once per frame
