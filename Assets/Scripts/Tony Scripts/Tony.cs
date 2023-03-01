@@ -85,6 +85,7 @@ public class Tony : MonoBehaviour
     {
         aggroIncrease(aggro);
         changeGoal(other.transform); // Should change destination to object that alerted Tony
+        alerted = true;
     }
 
     public void OnTheHunt(GameObject other)
@@ -93,12 +94,11 @@ public class Tony : MonoBehaviour
         //increased speed for 10 secs after hunting == false
 
         //increased speed and aggression
-
-        huntTimer = 11.5f;
-        hunting = true;
-
         //after 1.5: hunting  == false
         //after 10: speed is normal
+
+        huntTimer = 11.5f;
+        hunting = true;        
 
         speed = aggression / 5;   //doubles current speed
         
@@ -131,13 +131,29 @@ public class Tony : MonoBehaviour
     bool checkGoals()
     {
         if (currentGoal.position.x == personalTransform.position.x &&
-            currentGoal.position.z == personalTransform.position.z)
+            currentGoal.position.z == personalTransform.position.z && 
+            !alerted && !hunting)
         {
             speed = 0;
             idleTimer = (float)((100 - aggression)/10); // Waits idle for less time as aggression increases
             goalIndex = Random.Range(0, goals.Length);
             return true;
 
+        } else if(alerted && agent.remainingDistance <= 4f)
+        {
+            alerted = false;
+            speed = 0;
+            idleTimer = 2f; // Waits idle for less time as aggression increases
+            goalIndex = Random.Range(0, goals.Length);
+            return true;
+        } else if (hunting && agent.remainingDistance <= 1f)
+        {
+            speed = 0;
+            idleTimer = (float)((100 - aggression) / 10);
+            goalIndex = Random.Range(0, goals.Length);
+            //hitting animation
+            //damage player function
+            return true;
         }
         return false;
     }
