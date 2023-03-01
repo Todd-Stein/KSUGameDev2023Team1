@@ -30,6 +30,7 @@ public class Tony : MonoBehaviour
 
     public float idleTimer;
     public float huntTimer;
+    private float dmgCooldown;
 
     NavMeshAgent agent;
     Transform personalTransform;
@@ -44,6 +45,7 @@ public class Tony : MonoBehaviour
         personalTransform = GetComponent<Transform>();
         goalIndex = 0;
         idleTimer = 0;
+        dmgCooldown = 0;
         aggression = 40;
     }
 
@@ -73,10 +75,14 @@ public class Tony : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") &&
+            !hunting)
         {
             GameObject player = other.GetComponent<GameObject>();
             OnTheHunt(player);
+        } else if (other.gameObject.CompareTag("Player"))
+        {
+            playerHit(other);
         }
     }
 
@@ -84,8 +90,9 @@ public class Tony : MonoBehaviour
     public void OnAlert(GameObject other, int aggro)
     {
         aggroIncrease(aggro);
-        changeGoal(other.transform); // Should change destination to object that alerted Tony
+        changeGoal(other.transform); // Changes destination to object that alerted Tony
         alerted = true;
+        agent.autoBraking = true; // Enable autobraking for distractables
     }
 
     public void OnTheHunt(GameObject other)
@@ -96,6 +103,8 @@ public class Tony : MonoBehaviour
         //increased speed and aggression
         //after 1.5: hunting  == false
         //after 10: speed is normal
+
+        agent.autoBraking = false;
 
         huntTimer = 11.5f;
         hunting = true;        
@@ -116,6 +125,9 @@ public class Tony : MonoBehaviour
             speed = aggression / 10;
             idleTimer = 0;
         }
+
+        if (dmgCooldown > 0)
+            dmgCooldown -= Time.deltaTime;
 
         if (huntTimer > 0)
             huntTimer -= Time.deltaTime;
@@ -145,16 +157,15 @@ public class Tony : MonoBehaviour
             speed = 0;
             idleTimer = 2f; // Waits idle for less time as aggression increases
             goalIndex = Random.Range(0, goals.Length);
+            agent.autoBraking = false;
             return true;
-        } else if (hunting && agent.remainingDistance <= 1f)
+        } /*else if (hunting && agent.remainingDistance <= 1f)
         {
             speed = 0;
             idleTimer = (float)((100 - aggression) / 10);
-            goalIndex = Random.Range(0, goals.Length);
-            //hitting animation
-            //damage player function
+            goalIndex = Random.Range(0, goals.Length); // Should probably change to still be player
             return true;
-        }
+        }*/
         return false;
     }
 
@@ -178,5 +189,17 @@ public class Tony : MonoBehaviour
 
         // Changes sound sphere size here
         soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
+    }
+
+    void playerHit(Collider other)
+    {
+        if (dmgCooldown <= 0)
+        {
+            // Play hit animation here
+            other.GetComponent<player_health>().RecieveHit();
+            dmgCooldown = 0.5f;
+            speed = 0;
+            idleTimer = 0.5f;
+        }
     }
 }
