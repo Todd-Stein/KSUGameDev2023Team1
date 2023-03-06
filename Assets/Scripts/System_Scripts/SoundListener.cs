@@ -21,11 +21,11 @@ public class SoundListener : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<SoundEvent>() && !other.GetComponent<Door>() && other.GetComponent<SphereCollider>().enabled == true)
+        if (other.gameObject.layer == 6 && other.isTrigger || other.gameObject.layer == 7 && other.isTrigger)
         {
             soundlocation = other.gameObject;
-            tony.GetComponent<Tony>().OnAlert(soundlocation, soundlocation.GetComponent<SoundEvent>().noise); // Call Tony's alert script, increasing aggression by noise level
-            Debug.Log("Heared sound event");
+            tony.GetComponent<Tony>().OnAlert(other.gameObject, other.GetComponent<SoundEvent>().noise); // Call Tony's alert script, increasing aggression by noise level
+            Debug.Log("Heared sound event" + other.name + " other.enebled = " + other.enabled);
         }
     }
 }
