@@ -10,6 +10,8 @@ public class Checkpoint : MonoBehaviour
     [SerializeField]
     GameObject nextDoor;
 
+    static private bool used;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +27,11 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !used)
         {
-
-            SavePlayerPosition(other.gameObject);
-            SaveTonyPosition();
+            used = true;
+            SavePlayerState(other.gameObject);
+            SaveTonyState();
 
             if (nextGoals != null)
             {
@@ -43,21 +45,22 @@ public class Checkpoint : MonoBehaviour
                 }
             }
 
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 
-    void SavePlayerPosition(GameObject other)
+    void SavePlayerState(GameObject other)
     {
         PlayerPrefs.SetFloat("PlayerPosX", other.transform.position.x);
         PlayerPrefs.SetFloat("PlayerPosY", other.transform.position.y);
         PlayerPrefs.SetFloat("PlayerPosZ", other.transform.position.z);
     }
 
-    void SaveTonyPosition()
-    {
+    void SaveTonyState()
+    { 
         PlayerPrefs.SetFloat("TonyPosX", Tony.transform.position.x);
         PlayerPrefs.SetFloat("TonyPosY", Tony.transform.position.y);
         PlayerPrefs.SetFloat("TonyPosZ", Tony.transform.position.z);
+        PlayerPrefs.SetInt("TonyAggression", Tony.GetComponent<Tony>().aggression);
     }
 }
