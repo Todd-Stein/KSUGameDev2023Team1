@@ -22,7 +22,7 @@ public class Tony : MonoBehaviour
     public const float baseSpeed = 4;   // Base speed for Tony when not alerted
     public Transform currentGoal; // The current goal for Tony to move to
     public Transform[] goals; // An array of goals for Tony to move to
-    int goalIndex;
+    public int goalIndex;
 
     public GameObject soundSphere; // Tony's listening range, in the form of a sphere
 
@@ -30,6 +30,7 @@ public class Tony : MonoBehaviour
 
     public float idleTimer;
     public float huntTimer;
+    private float dmgCooldown;
 
     NavMeshAgent agent;
     Transform personalTransform;
@@ -44,6 +45,7 @@ public class Tony : MonoBehaviour
         personalTransform = GetComponent<Transform>();
         goalIndex = 0;
         idleTimer = 0;
+        dmgCooldown = 0;
         aggression = 40;
     }
 
@@ -73,33 +75,39 @@ public class Tony : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") &&
+            !hunting)
         {
-            OnTheHunt(other);
+            GameObject player = other.GetComponent<GameObject>();
+            OnTheHunt(player);
+        } else if (other.gameObject.CompareTag("Player"))
+        {
+            playerHit(other);
         }
     }
 
-    //Tony heads towards source of sound or player if in vision
-    //need to shrink listening range
-    //to make bigger when hunting
-    public void OnAlert(Collider other, int aggro)
+    //Tony heads towards source of sound
+    public void OnAlert(GameObject other, int aggro)
     {
         aggroIncrease(aggro);
-        changeGoal(other.transform); // Should change destination to object that alerted Tony
+        changeGoal(other.transform); // Changes destination to object that alerted Tony
+        alerted = true;
+        agent.autoBraking = true; // Enable autobraking for distractables
     }
 
-    public void OnTheHunt(Collider other)
+    public void OnTheHunt(GameObject other)
     {
         //activated by contact or seen with goggles active
         //increased speed for 10 secs after hunting == false
 
         //increased speed and aggression
-
-        huntTimer = 11.5f;
-        hunting = true;
-
         //after 1.5: hunting  == false
         //after 10: speed is normal
+
+        agent.autoBraking = false;
+
+        huntTimer = 11.5f;
+        hunting = true;        
 
         speed = aggression / 5;   //doubles current speed
         
@@ -118,6 +126,9 @@ public class Tony : MonoBehaviour
             idleTimer = 0;
         }
 
+        if (dmgCooldown > 0)
+            dmgCooldown -= Time.deltaTime;
+
         if (huntTimer > 0)
             huntTimer -= Time.deltaTime;
 
@@ -132,13 +143,29 @@ public class Tony : MonoBehaviour
     bool checkGoals()
     {
         if (currentGoal.position.x == personalTransform.position.x &&
-            currentGoal.position.z == personalTransform.position.z)
+            currentGoal.position.z == personalTransform.position.z && 
+            !alerted && !hunting)
         {
             speed = 0;
             idleTimer = (float)((100 - aggression)/10); // Waits idle for less time as aggression increases
+            goalIndex = Random.Range(0, goals.Length);
             return true;
 
-        }
+        } else if(alerted && agent.remainingDistance <= 4f)
+        {
+            alerted = false;
+            speed = 0;
+            idleTimer = 2f; // Waits idle for less time as aggression increases
+            goalIndex = Random.Range(0, goals.Length);
+            agent.autoBraking = false;
+            return true;
+        } /*else if (hunting && agent.remainingDistance <= 1f)
+        {
+            speed = 0;
+            idleTimer = (float)((100 - aggression) / 10);
+            goalIndex = Random.Range(0, goals.Length); // Should probably change to still be player
+            return true;
+        }*/
         return false;
     }
 
@@ -162,5 +189,17 @@ public class Tony : MonoBehaviour
 
         // Changes sound sphere size here
         soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
+    }
+
+    void playerHit(Collider other)
+    {
+        if (dmgCooldown <= 0)
+        {
+            // Play hit animation here
+            other.GetComponent<player_health>().RecieveHit();
+            dmgCooldown = 0.5f;
+            speed = 0;
+            idleTimer = 0.5f;
+        }
     }
 }

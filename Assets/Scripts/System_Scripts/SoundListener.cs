@@ -21,10 +21,10 @@ public class SoundListener : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("NoiseMaker"))
+        if (other.GetComponent<SoundEvent>() && !other.GetComponent<Door>() && other.GetComponent<SphereCollider>().enabled == true)
         {
             soundlocation = other.gameObject;
-            tony.GetComponent<Tony>().OnAlert(other, other.GetComponent<SoundEvent>().noise); // Call Tony's alert script, increasing aggression by noise level
+            tony.GetComponent<Tony>().OnAlert(soundlocation, soundlocation.GetComponent<SoundEvent>().noise); // Call Tony's alert script, increasing aggression by noise level
             Debug.Log("Heared sound event");
         }
     }
