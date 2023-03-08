@@ -1475,6 +1475,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2150179097931310584, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3888634955850296481, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_Name
       value: Tony
