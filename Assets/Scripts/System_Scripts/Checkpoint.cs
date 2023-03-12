@@ -63,4 +63,15 @@ public class Checkpoint : MonoBehaviour
         PlayerPrefs.SetFloat("TonyPosZ", Tony.transform.position.z);
         PlayerPrefs.SetInt("TonyAggression", Tony.GetComponent<Tony>().aggression);
     }
+
+    void LoadPlayerState(GameObject player)
+    {
+        player.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), PlayerPrefs.GetFloat("PlayerPosZ"));
+    }
+
+    void LoadTonyState()
+    {
+        Tony.transform.position = new Vector3(PlayerPrefs.GetFloat("TonyPosX"), PlayerPrefs.GetFloat("TonyPosY"), PlayerPrefs.GetFloat("TonyPosZ"));
+        Tony.GetComponent<Tony>().aggression = PlayerPrefs.GetInt("TonyAggression");
+    }
 }

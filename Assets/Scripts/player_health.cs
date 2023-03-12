@@ -75,6 +75,8 @@ public class player_health : MonoBehaviour
         }
         if (isDead)
         {
+            // Call LoadPlayerState() from Checkpoint.cs
+            // Call LoadTonyState() from Checkpoint.cs
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
