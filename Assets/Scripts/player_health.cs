@@ -21,6 +21,9 @@ public class player_health : MonoBehaviour
     public int currentHealth;
     public bool isDead;
 
+    public delegate void OnDeath();
+    public static OnDeath onDeath;
+
     private void Awake()
     {
         currentHealth = totalHealth;
@@ -75,9 +78,12 @@ public class player_health : MonoBehaviour
         }
         if (isDead)
         {
-            // Call LoadPlayerState() from Checkpoint.cs
-            // Call LoadTonyState() from Checkpoint.cs
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // Invoke onDeath delegate
+            onDeath?.Invoke();
+            bloodOverlay.SetActive(false);
+            isDead = false;
+
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
