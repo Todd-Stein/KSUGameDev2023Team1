@@ -61,7 +61,7 @@ public class player_health : MonoBehaviour
             RecieveHit();
         }
     }
-    void RecieveHit()
+    public void RecieveHit()
     {
         currentHealth--;
         isDead = currentHealth <= 0;

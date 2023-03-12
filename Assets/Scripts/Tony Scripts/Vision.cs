@@ -4,40 +4,58 @@ using UnityEngine;
 
 public class Vision : MonoBehaviour
 {
+    bool goggs = true;
+
+    public GameObject curHitObj;
+
+    public float radius;
+    public float distance;
+    public LayerMask layer;
+
+    private Vector3 origin;
+    private Vector3 dir;
+    private float curHitDis;
+
+
     [SerializeField]
     GameObject tony;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if(goggles == true){
-        //  currentGoal = player's position;
-        //  agent.destination = currentGoal.position;
-        //}
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        if (curHitObj.CompareTag("Player") && !goggs)
         {
-            tony.GetComponent<Tony>().OnAlert(other, 10);
+            tony.GetComponent<Tony>().OnAlert(curHitObj, 10);
             Debug.Log("Alerted");
         }
+
+        if (curHitObj.CompareTag("Player") && goggs)
+        {
+            tony.GetComponent<Tony>().OnTheHunt(curHitObj);
+            Debug.Log("Hunting");
+        }
     }
 
-    // Update to continuously provide location info of the player.
-    private void OnTriggerStay(Collider other)
+    private void FixedUpdate()
     {
-        // Debug.Log("Inside Trigger.");
-        if (other.gameObject.CompareTag("Player"))
+        origin = transform.position;
+        dir = transform.forward;
+        RaycastHit hit;
+        if (Physics.SphereCast(origin, radius, dir, out hit, distance, layer, QueryTriggerInteraction.UseGlobal))
         {
-            tony.GetComponent<Tony>().OnAlert(other, 15);
+            curHitObj = hit.transform.gameObject;
+            curHitDis = hit.distance;
         }
+        else
+        {
+            curHitDis = distance;
+            curHitObj = null;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Debug.DrawLine(origin, origin + dir * curHitDis);
+        Gizmos.DrawWireSphere(origin + dir * curHitDis, radius);
     }
 }
