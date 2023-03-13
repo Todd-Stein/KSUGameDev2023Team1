@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Checkpoint : MonoBehaviour
 {
     public Transform[] nextGoals;
     public GameObject Tony;
     public GameObject player;
+    GameObject held;
 
     [SerializeField]
     GameObject nextDoor;
@@ -57,7 +57,13 @@ public class Checkpoint : MonoBehaviour
                 previousDoor.SetActive(false);
             }
 
-            //gameObject.SetActive(false);
+            if (other.GetComponent<player_controls>().GetHolding())
+            {
+                held = other.GetComponent<player_controls>().GetItem();
+            } else
+            {
+                held = null;
+            }
         }
     }
 
@@ -81,6 +87,7 @@ public class Checkpoint : MonoBehaviour
     {
         player.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), PlayerPrefs.GetFloat("PlayerPosZ"));
         player.GetComponent<player_health>().currentHealth = PlayerPrefs.GetInt("PlayerHealth");
+        if (held != null) { player.GetComponent<player_controls>().GiveItem(held); }
     }
 
     public void LoadTonyState()

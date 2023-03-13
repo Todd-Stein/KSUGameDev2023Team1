@@ -59,10 +59,10 @@ public class player_health : MonoBehaviour
         {
             tonyVision.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        /*if (Input.GetKeyDown(KeyCode.E))
         {
             RecieveHit();
-        }
+        }*/
     }
     public void RecieveHit()
     {

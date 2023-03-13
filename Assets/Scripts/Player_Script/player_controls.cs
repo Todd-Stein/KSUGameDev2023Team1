@@ -133,4 +133,34 @@ public class player_controls : MonoBehaviour
             isHolding = false;
         }
     }
+
+    public bool GetHolding()
+    {
+        return isHolding;
+    }
+
+    public GameObject GetItem()
+    {
+        return held;
+    }
+
+    public void GiveItem(GameObject o)
+    {
+        // Copied and pasted code from the part where the player picks up an item
+        if (o.GetComponent<Rigidbody>() != null)
+        {
+            held = o.gameObject;
+            heldRB = o.GetComponent<Rigidbody>();
+            heldRB.isKinematic = true;
+            held.transform.position = holdPos.position;
+            heldRB.transform.parent = holdPos.transform;
+
+            Debug.Log("Player is now holding object");
+            isHolding = true;
+
+            held.GetComponent<DistractItem>().thrown = true;
+
+            Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), true);
+        }
+    }
 }
