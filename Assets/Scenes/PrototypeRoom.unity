@@ -1475,6 +1475,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+
+    - target: {fileID: 2150179097931310584, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
+
     - target: {fileID: 3888634955850296481, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_Name
       value: Tony
@@ -3182,6 +3188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af692623511f314a921a45cb7da99d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SE: {fileID: 0}
+  sound: {fileID: 0}
+  au: {fileID: 0}
   sound: {fileID: 8300000, guid: 6a67f096286d25c42b52b918fdaf3bda, type: 3}
 --- !u!82 &1282298145
 AudioSource:
@@ -3624,6 +3633,14 @@ PrefabInstance:
     - target: {fileID: 5252285384882237282, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
       propertyPath: m_Name
       value: Cube (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252285384882237282, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252285384882237282, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5252285384882237282, guid: 09fc617e862b89c41be134d9d3cb4894, type: 3}
       propertyPath: m_NavMeshLayer
@@ -4403,6 +4420,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1128509123383287233, guid: d6ac0aac000ca7841a6cf500acbd30fd, type: 3}
+      propertyPath: turnTotalTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5925475949351579848, guid: d6ac0aac000ca7841a6cf500acbd30fd, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5586,7 +5607,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2af692623511f314a921a45cb7da99d5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier:
+  SE: {fileID: 0}
+  sound: {fileID: 0}
+  au: {fileID: 0}
   sound: {fileID: 8300000, guid: 6a67f096286d25c42b52b918fdaf3bda, type: 3}
 --- !u!82 &1925005375
 AudioSource:
