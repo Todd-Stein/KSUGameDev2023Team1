@@ -46,12 +46,11 @@ public class script_responseToHunt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         vignette.SetActive(isNearTony);
 
         controls1.enabled = isTurningAnimDone;
         controls2.enabled = isTurningAnimDone;
-        
+       
         if(!isTurningAnimDone)
         {
             turnCurrentTime += Time.deltaTime / turnTotalTime;
@@ -75,12 +74,6 @@ public class script_responseToHunt : MonoBehaviour
                 isTurningAnimDone = true;
                 DisableResponseToHuntMode();
             }
-        }
-        else
-        {
-            isNearTony = false;
-            turnCurrentTime = 0.0f;
-            isTurningAnimDone = false;
         }
     }
     public void EnableResponseToHuntMode(Transform lookAtLoc)
