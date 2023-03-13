@@ -12,13 +12,13 @@ public class player_controls : MonoBehaviour
     private Camera playerCam;
 
     [SerializeField]
-    private float interactDistance = 1.5f;
+    private float interactDistance = 2.5f;
 
     /////////////////////////
     /// pickup variables
     private GameObject held;
     private Rigidbody heldRB;
-    private bool isHolding = false;
+    public bool isHolding = false;
 
     [SerializeField]
     [Tooltip("(Auto-assigned during Awake().) The position which a pickup will be held at in the FOV.")]
@@ -54,7 +54,8 @@ public class player_controls : MonoBehaviour
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
         tonyVision = GameObject.Find("TonyVision");
         tonyVision.SetActive(false);
-        playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
+        //playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
+        playerCam = Camera.main;
     }
 
     void Update()
@@ -80,17 +81,23 @@ public class player_controls : MonoBehaviour
     void Interact()
     {
         Debug.Log("Interact key pressed.");
-     
+
+        Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * interactDistance, Color.green);
+
         if (Physics.Raycast(transform.position, playerCam.transform.forward, out interactHit, interactDistance, interactableLayer))
         {
             Debug.Log("Raycast hit object with Interactable Layer");
+
+            //Debug.Log(interactHit.transform.gameObject.name);
+
             interactHit.collider.gameObject.GetComponent<interactable>().activate();
             return;
         }
 
+
         if (!isHolding)
         {
-            if (Physics.Raycast(transform.position, playerCam.transform.forward, out pickupHit, interactDistance, pickupableLayer))
+            if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out pickupHit, interactDistance, pickupableLayer))
             {
                 Debug.Log("Raycast hit object with Pickupable Layer");
 
@@ -104,6 +111,7 @@ public class player_controls : MonoBehaviour
 
                     Debug.Log("Player is now holding object");
                     isHolding = true;
+                    held.GetComponentInChildren<TextMeshPopup>().destroyMe();
 
                     held.GetComponent<DistractItem>().thrown = true;
 

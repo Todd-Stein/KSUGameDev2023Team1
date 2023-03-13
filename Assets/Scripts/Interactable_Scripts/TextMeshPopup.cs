@@ -35,6 +35,11 @@ public class TextMeshPopup : MonoBehaviour
         textMesh.text = gameObject.transform.parent.name;
     }
 
+    public void destroyMe()
+    {
+        GameObject.Destroy(gameObject);
+    }
+
     void Update()
     {
         float distance = Vector3.Distance(transform.position, pCam.position);
