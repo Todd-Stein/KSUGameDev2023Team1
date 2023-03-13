@@ -9,6 +9,8 @@ public class player_controls : MonoBehaviour
     public KeyCode interactKey = KeyCode.E;
     public KeyCode tossKey = KeyCode.Mouse0;
 
+    private Camera playerCam;
+
     [SerializeField]
     private float interactDistance = 1.5f;
 
@@ -47,8 +49,12 @@ public class player_controls : MonoBehaviour
         if(holdPos == null)
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
         if(tonyVision== null)
+        pickupableLayer = LayerMask.GetMask("Pickup");
+        if(holdPos== null)
+            holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
         tonyVision = GameObject.Find("TonyVision");
         tonyVision.SetActive(false);
+        playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
     }
 
     void Update()
@@ -75,7 +81,7 @@ public class player_controls : MonoBehaviour
     {
         Debug.Log("Interact key pressed.");
      
-        if (Physics.Raycast(transform.position, transform.forward, out interactHit, interactDistance, interactableLayer))
+        if (Physics.Raycast(transform.position, playerCam.transform.forward, out interactHit, interactDistance, interactableLayer))
         {
             Debug.Log("Raycast hit object with Interactable Layer");
             interactHit.collider.gameObject.GetComponent<interactable>().activate();
@@ -84,7 +90,7 @@ public class player_controls : MonoBehaviour
 
         if (!isHolding)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out pickupHit, interactDistance, pickupableLayer))
+            if (Physics.Raycast(transform.position, playerCam.transform.forward, out pickupHit, interactDistance, pickupableLayer))
             {
                 Debug.Log("Raycast hit object with Pickupable Layer");
 

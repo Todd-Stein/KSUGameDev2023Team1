@@ -33,6 +33,7 @@ public class Tony : MonoBehaviour
     public float huntTimer;
     private float dmgCooldown;
 
+
     private GameObject playerRef;
 
     NavMeshAgent agent;

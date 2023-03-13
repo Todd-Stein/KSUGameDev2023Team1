@@ -5,8 +5,10 @@ using UnityEngine;
 public class script_responseToHunt : MonoBehaviour
 {
     private Quaternion playerOriginalRot;
+
     private Quaternion tonyLookAt;
     private bool isNearTony;
+    private bool isNearTony = false;
     private bool isTurningAnimDone;
     private GameObject vignette;
 
@@ -27,9 +29,11 @@ public class script_responseToHunt : MonoBehaviour
             vignette = transform.GetChild(0).GetChild(0).GetChild(3).gameObject;
         }
         isNearTony = false;
+
         isTurningAnimDone = true;
         controls1 = GetComponent<FirstPersonController>();
         controls2 = GetComponent<player_controls>();
+
     }
 
     // Start is called before the first frame update
@@ -42,7 +46,9 @@ public class script_responseToHunt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         vignette.SetActive(isNearTony);
+
         controls1.enabled = isTurningAnimDone;
         controls2.enabled = isTurningAnimDone;
         
@@ -53,6 +59,25 @@ public class script_responseToHunt : MonoBehaviour
             {
                 Debug.Log("look at tony");
                 transform.rotation = Quaternion.Lerp(playerOriginalRot, tonyLookAt, turnCurrentTime);
+
+        if (isNearTony)
+        {
+            if (!isTurningAnimDone)
+            {
+                turnCurrentTime += Time.deltaTime / turnTotalTime;
+                if (turnCurrentTime < turnTotalTime / 2)
+                {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookAtPos.position, Vector3.up), turnCurrentTime);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, playerOriginalRot, turnCurrentTime);
+                }
+                if (turnCurrentTime >= turnTotalTime)
+                {
+                    isTurningAnimDone = true;
+                }
+
             }
             else if(turnCurrentTime>turnTotalTime && !reverseTurn)
             {
@@ -67,8 +92,14 @@ public class script_responseToHunt : MonoBehaviour
             if(turnCurrentTime>=turnTotalTime && reverseTurn)
             {
                 isTurningAnimDone = true;
+                DisableResponseToHuntMode();
             }
-
+        }
+        else
+        {
+            isNearTony = false;
+            turnCurrentTime = 0.0f;
+            isTurningAnimDone = false;
         }
     }
     public void EnableResponseToHuntMode(Transform lookAtLoc)
