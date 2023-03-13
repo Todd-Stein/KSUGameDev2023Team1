@@ -7,7 +7,7 @@ public class script_responseToHunt : MonoBehaviour
     private Quaternion playerOriginalRot;
 
     private Quaternion tonyLookAt;
-    private bool isNearTony;
+
     private bool isNearTony = false;
     private bool isTurningAnimDone;
     private GameObject vignette;
@@ -55,31 +55,12 @@ public class script_responseToHunt : MonoBehaviour
         if(!isTurningAnimDone)
         {
             turnCurrentTime += Time.deltaTime / turnTotalTime;
-            if(turnCurrentTime<turnTotalTime && !reverseTurn)
+            if (turnCurrentTime < turnTotalTime && !reverseTurn)
             {
                 Debug.Log("look at tony");
                 transform.rotation = Quaternion.Lerp(playerOriginalRot, tonyLookAt, turnCurrentTime);
-
-        if (isNearTony)
-        {
-            if (!isTurningAnimDone)
-            {
-                turnCurrentTime += Time.deltaTime / turnTotalTime;
-                if (turnCurrentTime < turnTotalTime / 2)
-                {
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(lookAtPos.position, Vector3.up), turnCurrentTime);
-                }
-                else
-                {
-                    transform.rotation = Quaternion.Lerp(transform.rotation, playerOriginalRot, turnCurrentTime);
-                }
-                if (turnCurrentTime >= turnTotalTime)
-                {
-                    isTurningAnimDone = true;
-                }
-
             }
-            else if(turnCurrentTime>turnTotalTime && !reverseTurn)
+            else if (turnCurrentTime > turnTotalTime && !reverseTurn)
             {
                 reverseTurn = true;
                 turnCurrentTime = 0.0f;
