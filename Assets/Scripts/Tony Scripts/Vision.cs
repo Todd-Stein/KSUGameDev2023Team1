@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vision : MonoBehaviour
 {
-    bool goggs = true;
+    public bool goggs = true;
 
     public GameObject curHitObj;
 
