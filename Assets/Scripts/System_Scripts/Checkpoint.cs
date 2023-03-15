@@ -56,7 +56,7 @@ public class Checkpoint : MonoBehaviour
             {
                 previousDoor.SetActive(false);
             }
-
+            // Move to SavePlayerState()
             if (other.GetComponent<player_controls>().GetHolding())
             {
                 held = other.GetComponent<player_controls>().GetItem();
@@ -73,6 +73,7 @@ public class Checkpoint : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerPosY", other.transform.position.y);
         PlayerPrefs.SetFloat("PlayerPosZ", other.transform.position.z);
         PlayerPrefs.SetInt("PlayerHealth", other.GetComponent<player_health>().currentHealth);
+        // Place GetHolding and GetItem here
     }
 
     void SaveTonyState()
@@ -87,7 +88,7 @@ public class Checkpoint : MonoBehaviour
     {
         player.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), PlayerPrefs.GetFloat("PlayerPosZ"));
         player.GetComponent<player_health>().currentHealth = PlayerPrefs.GetInt("PlayerHealth");
-        if (held != null) { player.GetComponent<player_controls>().GiveItem(held); }
+        // Delete: if (held != null) { player.GetComponent<player_controls>().GiveItem(held); }
     }
 
     public void LoadTonyState()
