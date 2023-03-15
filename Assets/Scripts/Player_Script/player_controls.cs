@@ -144,7 +144,7 @@ public class player_controls : MonoBehaviour
         return held;
     }
 
-    public void GiveItem(GameObject o)
+    /* Delete: public void GiveItem(GameObject o)
     {
         // Copied and pasted code from the part where the player picks up an item
         if (o.GetComponent<Rigidbody>() != null)
@@ -162,5 +162,5 @@ public class player_controls : MonoBehaviour
 
             Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), true);
         }
-    }
+    }*/
 }
