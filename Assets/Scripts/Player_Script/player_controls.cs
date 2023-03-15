@@ -12,13 +12,14 @@ public class player_controls : MonoBehaviour
     private Camera playerCam;
 
     [SerializeField]
+    [Tooltip("The reach of the player's interaction range.")]
     private float interactDistance = 2.5f;
 
     /////////////////////////
     /// pickup variables
     private GameObject held;
     private Rigidbody heldRB;
-    public bool isHolding = false;
+    private bool isHolding = false;
 
     [SerializeField]
     [Tooltip("(Auto-assigned during Awake().) The position which a pickup will be held at in the FOV.")]
@@ -74,7 +75,7 @@ public class player_controls : MonoBehaviour
         }
         if (Input.GetKeyDown(tossKey))
         {
-            toss();
+            Toss();
         }
     }
 
@@ -84,17 +85,16 @@ public class player_controls : MonoBehaviour
 
         Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * interactDistance, Color.green);
 
+        //This raycast will only hit objects on the interactableLayer. If it hits it will call that gameobject's "activate()" method.
         if (Physics.Raycast(transform.position, playerCam.transform.forward, out interactHit, interactDistance, interactableLayer))
         {
             Debug.Log("Raycast hit object with Interactable Layer");
-
-            //Debug.Log(interactHit.transform.gameObject.name);
 
             interactHit.collider.gameObject.GetComponent<interactable>().activate();
             return;
         }
 
-
+        //This raycast will only hit objects on the pickupableLayer. If it hits, it will send that gameobject to the pickup() method.
         if (!isHolding)
         {
             if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out pickupHit, interactDistance, pickupableLayer))
@@ -102,35 +102,41 @@ public class player_controls : MonoBehaviour
                 Debug.Log("Raycast hit object with Pickupable Layer");
 
                 if (pickupHit.collider.gameObject.GetComponent<Rigidbody>() != null)
-                {
-                    held = pickupHit.collider.gameObject;
-                    heldRB = pickupHit.collider.gameObject.GetComponent<Rigidbody>();
-                    heldRB.isKinematic = true;
-                    held.transform.position = holdPos.position;
-                    heldRB.transform.parent = holdPos.transform;
-
-                    Debug.Log("Player is now holding object");
-                    isHolding = true;
-                    held.GetComponentInChildren<TextMeshPopup>().destroyMe();
-
-                    held.GetComponent<DistractItem>().thrown = true;
-
-                    Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), true);
-                }              
+                    Pickup(pickupHit.collider.gameObject);                                           
             }
         }
 
         else
-            Debug.Log("No interactable within range");
+            Debug.Log("No interactable within the set interactDistance.");
     }
 
-    void toss()
+    public void Pickup(GameObject obj)
+    {
+        held = obj;
+        heldRB = held.GetComponent<Rigidbody>();
+        heldRB.isKinematic = true;
+        held.transform.position = holdPos.position;
+        heldRB.transform.parent = holdPos.transform;
+
+        Debug.Log("Player is now holding object");
+
+        isHolding = true;
+        if (held.GetComponentInChildren<TextMeshPopup>() != null)
+            held.GetComponentInChildren<TextMeshPopup>().destroyMe();
+
+        Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), true);
+    }
+
+    void Toss()
     {
         Debug.Log("Toss key pressed. Is player holding something: " + isHolding);
 
         if (isHolding)
         {
             Debug.Log("Tossing!");
+
+            if (held.GetComponent<DistractItem>() != null)
+                held.GetComponent<DistractItem>().thrown = true;
 
             Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), false);
 

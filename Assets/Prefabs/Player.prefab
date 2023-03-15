@@ -444,7 +444,8 @@ MonoBehaviour:
   gogglesKey: 324
   interactKey: 101
   tossKey: 323
-  interactDistance: 1.5
+  interactDistance: 2.5
+  isHolding: 0
   holdPos: {fileID: 0}
   interactableLayer:
     serializedVersion: 2

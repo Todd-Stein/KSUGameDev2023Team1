@@ -42,12 +42,7 @@ public class TextMeshPopup : MonoBehaviour
 
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, pCam.position);
-
-        Debug.Log("distance: " + distance);
-        Debug.Log("transform.pos: " + transform.position);
-        Debug.Log("pCam.pos: " + pCam.position);
-
+        float distance = Vector3.Distance(transform.position, pCam.position);   
 
         if (distance <= activationDistance)
         {
