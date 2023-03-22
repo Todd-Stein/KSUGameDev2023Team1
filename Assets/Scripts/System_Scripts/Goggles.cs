@@ -35,22 +35,6 @@ public class Goggles : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    /*
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-               
-        }
-
-        if (Input.GetMouseButtonUp(1))
-        {
-            
-        }
-    }
-    */
-
     public void Activate()
     {
         foreach (var obj in goggleobjs)
