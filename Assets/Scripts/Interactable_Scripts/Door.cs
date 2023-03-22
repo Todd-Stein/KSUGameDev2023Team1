@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public bool unlocked;
+    public bool unlocked = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        unlocked = false;
+
     }
 
     // Update is called once per frame

@@ -17,7 +17,7 @@ public class player_interaction : MonoBehaviour
             
             foreach (Collider collider in colliders)
             {
-                collider.gameObject.GetComponent<interactable>().activate();
+                collider.gameObject.GetComponent<interactable>().Activate();
             }
         }
         Collider[] objectsInRange = Physics.OverlapSphere(transform.position, interactReach, 1 << LayerMask.NameToLayer("Interactables"));

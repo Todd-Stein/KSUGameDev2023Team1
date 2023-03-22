@@ -27,7 +27,7 @@ public class interactable : MonoBehaviour
         
     }
 
-    public void activate()
+    public void Activate()
     {
         if(door != null)
         {

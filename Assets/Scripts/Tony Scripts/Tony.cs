@@ -18,6 +18,7 @@ public class Tony : MonoBehaviour
 {
     public bool hunting; // To be toggled when he is in hunt mode
     public bool alerted; // To be toggled when noise can/is heard by him
+    private bool playerHasResponded = false;
     public float speed;  // Changes the speed that Tony moves
     public const float baseSpeed = 4;   // Base speed for Tony when not alerted
     public Transform currentGoal; // The current goal for Tony to move to
@@ -31,6 +32,9 @@ public class Tony : MonoBehaviour
     public float idleTimer;
     public float huntTimer;
     private float dmgCooldown;
+
+
+    private GameObject playerRef;
 
     NavMeshAgent agent;
     Transform personalTransform;
@@ -47,6 +51,10 @@ public class Tony : MonoBehaviour
         idleTimer = 0;
         dmgCooldown = 0;
         aggression = 40;
+        if(playerRef == null)
+        {
+            playerRef = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
     // Update is called once per frame
@@ -83,6 +91,7 @@ public class Tony : MonoBehaviour
         } else if (other.gameObject.CompareTag("Player"))
         {
             playerHit(other);
+            playerHasResponded = false;
         }
     }
 
@@ -105,6 +114,12 @@ public class Tony : MonoBehaviour
         //after 10: speed is normal
 
         agent.autoBraking = false;
+
+        if (!playerHasResponded)
+        {
+            playerRef.GetComponent<script_responseToHunt>().EnableResponseToHuntMode(transform);
+            playerHasResponded = true;
+        }
 
         huntTimer = 11.5f;
         hunting = true;        
@@ -137,6 +152,8 @@ public class Tony : MonoBehaviour
             Debug.Log("No More Hunt");
             hunting = false;
             speed = aggression / 10;
+            playerRef.GetComponent<script_responseToHunt>().DisableResponseToHuntMode();
+            playerHasResponded = false;
         }
     }
 

@@ -54,9 +54,8 @@ public class player_controls : MonoBehaviour
         if(holdPos== null)
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
         tonyVision = GameObject.Find("TonyVision");
-        tonyVision.SetActive(false);
-        //playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
-        playerCam = Camera.main;
+        //tonyVision.SetActive(false);
+        playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
     }
 
     void Update()
@@ -89,8 +88,7 @@ public class player_controls : MonoBehaviour
         if (Physics.Raycast(transform.position, playerCam.transform.forward, out interactHit, interactDistance, interactableLayer))
         {
             Debug.Log("Raycast hit object with Interactable Layer");
-
-            interactHit.collider.gameObject.GetComponent<interactable>().activate();
+            interactHit.collider.gameObject.GetComponent<interactable>().Activate();
             return;
         }
 
