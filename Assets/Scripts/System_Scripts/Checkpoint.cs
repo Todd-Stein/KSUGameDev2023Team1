@@ -74,14 +74,12 @@ public class Checkpoint : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerPosZ", other.transform.position.z);
         PlayerPrefs.SetInt("PlayerHealth", other.GetComponent<player_health>().currentHealth);
         // Place GetHolding and GetItem here
-        /*if (other.GetComponent<player_controls>().isHolding()) {
-             held = other.GetComponent<player_controls>().GetItem();
-          } else
-          {
-             held = null;
-          }
+        if (other.GetComponent<player_controls>().GetHolding()) {
+            held = other.GetComponent<player_controls>().GetItem();
+        } else
+        {
+            held = null;
         }
-        */
     }
 
     void SaveTonyState()
@@ -96,7 +94,7 @@ public class Checkpoint : MonoBehaviour
     {
         player.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), PlayerPrefs.GetFloat("PlayerPosZ"));
         player.GetComponent<player_health>().currentHealth = PlayerPrefs.GetInt("PlayerHealth");
-        // if (held != null) { player.GetComponent<player_controls>().Pickup(held); }
+        if (held != null) { player.GetComponent<player_controls>().Pickup(held); }
     }
 
     public void LoadTonyState()
