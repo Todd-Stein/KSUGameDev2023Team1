@@ -10,6 +10,7 @@ public class player_controls : MonoBehaviour
     public KeyCode tossKey = KeyCode.Mouse0;
 
     private Camera playerCam;
+    private Goggles goggles;
 
     [SerializeField]
     [Tooltip("The reach of the player's interaction range.")]
@@ -55,6 +56,10 @@ public class player_controls : MonoBehaviour
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
         tonyVision = GameObject.Find("TonyVision");
         tonyVision.SetActive(false);
+
+        //find game manager
+        goggles = GameObject.Find("GameManager").GetComponent<Goggles>();
+
         //playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
         playerCam = Camera.main;
     }
@@ -63,11 +68,13 @@ public class player_controls : MonoBehaviour
     {
         if (Input.GetKeyDown(gogglesKey))
         {
-            tonyVision.SetActive(true);      
+            //tonyVision.SetActive(true);
+            goggles.Activate();
         }
         if (Input.GetKeyUp(gogglesKey))
         {
-            tonyVision.SetActive(false);
+            //tonyVision.SetActive(false);
+            goggles.Disable();
         }
         if (Input.GetKeyDown(interactKey))
         {

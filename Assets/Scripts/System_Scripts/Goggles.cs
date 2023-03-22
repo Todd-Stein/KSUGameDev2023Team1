@@ -35,31 +35,27 @@ public class Goggles : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Activate()
     {
-        if (Input.GetMouseButtonDown(1))
+        foreach (var obj in goggleobjs)
         {
-                foreach (var obj in goggleobjs)
-                {
-                    obj.GetComponent<MeshRenderer>().enabled = true;
-                }
-                foreach(var obj in nongogobjs)
-                {
-                    obj.GetComponent<MeshRenderer>().enabled = false;
-                }
+            obj.GetComponent<MeshRenderer>().enabled = true;
         }
-
-        if (Input.GetMouseButtonUp(1))
+        foreach (var obj in nongogobjs)
         {
-            foreach (var obj in goggleobjs)
-            {
-                obj.GetComponent<MeshRenderer>().enabled = false;
-            }
-            foreach (var obj in nongogobjs)
-            {
-                obj.GetComponent<MeshRenderer>().enabled = true;
-            }
+            obj.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+
+    public void Disable()
+    {
+        foreach (var obj in goggleobjs)
+        {
+            obj.GetComponent<MeshRenderer>().enabled = false;
+        }
+        foreach (var obj in nongogobjs)
+        {
+            obj.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 }
