@@ -97,7 +97,7 @@ public class player_controls : MonoBehaviour
         {
             Debug.Log("Raycast hit object with Interactable Layer");
 
-            interactHit.collider.gameObject.GetComponent<interactable>().activate();
+            interactHit.collider.gameObject.GetComponent<interactable>().Activate();
             return;
         }
 
@@ -153,5 +153,13 @@ public class player_controls : MonoBehaviour
             held = null;
             isHolding = false;
         }
+    }
+    public bool GetHolding()
+    {
+        return isHolding;
+    }
+    public GameObject GetItem()
+    {
+        return held.gameObject;
     }
 }
