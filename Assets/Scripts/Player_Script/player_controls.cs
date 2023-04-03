@@ -97,7 +97,7 @@ public class player_controls : MonoBehaviour
         {
             Debug.Log("Raycast hit object with Interactable Layer");
 
-            interactHit.collider.gameObject.GetComponent<interactable>().activate();
+            interactHit.collider.gameObject.GetComponent<interactable>().Activate();
             return;
         }
 
