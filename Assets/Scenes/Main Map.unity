@@ -7659,6 +7659,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5925475949351579857, guid: d6ac0aac000ca7841a6cf500acbd30fd, type: 3}
+      propertyPath: pickupableLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925475949351579857, guid: d6ac0aac000ca7841a6cf500acbd30fd, type: 3}
+      propertyPath: interactableLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 5925475950165921643, guid: d6ac0aac000ca7841a6cf500acbd30fd, type: 3}
       propertyPath: m_ClearFlags
       value: 2

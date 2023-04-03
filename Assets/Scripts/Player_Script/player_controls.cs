@@ -44,7 +44,7 @@ public class player_controls : MonoBehaviour
     [Tooltip("The force applied to thrown objects.")]
     public float throwForce = 500f;  //public in case of a future game mechanic that may alter it.
 
-    private void Awake()
+    private void Start()
     {
         interactableLayer = LayerMask.GetMask("Interactables");
         pickupableLayer = LayerMask.GetMask("Pickup"); 
@@ -54,8 +54,8 @@ public class player_controls : MonoBehaviour
         pickupableLayer = LayerMask.GetMask("Pickup");
         if(holdPos== null)
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
-        tonyVision = GameObject.Find("TonyVision");
-        tonyVision.SetActive(false);
+       // tonyVision = GameObject.Find("TonyVision");
+        //tonyVision.SetActive(false);
 
         //find game manager
         goggles = GameObject.Find("GameManager").GetComponent<Goggles>();
@@ -90,7 +90,7 @@ public class player_controls : MonoBehaviour
     {
         Debug.Log("Interact key pressed.");
 
-        Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * interactDistance, Color.green);
+        //Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * interactDistance, Color.green);
 
         //This raycast will only hit objects on the interactableLayer. If it hits it will call that gameobject's "activate()" method.
         if (Physics.Raycast(transform.position, playerCam.transform.forward, out interactHit, interactDistance, interactableLayer))
