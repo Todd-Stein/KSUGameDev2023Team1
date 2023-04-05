@@ -9,7 +9,7 @@ public class player_controls : MonoBehaviour
     public KeyCode interactKey = KeyCode.E;
     public KeyCode tossKey = KeyCode.Mouse0;
 
-    private Camera playerCam;
+    public Camera playerCam;
     private Goggles goggles;
 
     [SerializeField]
@@ -61,7 +61,7 @@ public class player_controls : MonoBehaviour
         goggles = GameObject.Find("GameManager").GetComponent<Goggles>();
 
         //playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
-        playerCam = Camera.main;
+       // playerCam = Camera.main;
     }
 
     void Update()
