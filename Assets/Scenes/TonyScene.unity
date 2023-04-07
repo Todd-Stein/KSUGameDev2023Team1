@@ -2142,7 +2142,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &736454168
 Rigidbody:
@@ -3488,11 +3488,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4881662902406745294, guid: e8e03412500878c40829c5647b402ae1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000038146973
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4881662902406745294, guid: e8e03412500878c40829c5647b402ae1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40.776535
+      value: 39.53
       objectReference: {fileID: 0}
     - target: {fileID: 4881662902406745294, guid: e8e03412500878c40829c5647b402ae1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3522,6 +3522,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5490099727947401403, guid: e8e03412500878c40829c5647b402ae1, type: 3}
+      propertyPath: nextGoals.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490099727947401403, guid: e8e03412500878c40829c5647b402ae1, type: 3}
+      propertyPath: nextGoals.Array.data[0]
+      value: 
+      objectReference: {fileID: 799670097}
     - target: {fileID: 6284301822392698843, guid: e8e03412500878c40829c5647b402ae1, type: 3}
       propertyPath: nextGoals.Array.size
       value: 2
@@ -4566,7 +4574,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1557878422
 NavMeshObstacle:
@@ -5765,7 +5773,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6bb66929b68a1f84b98eb7aa53232623, type: 2}
     - target: {fileID: 6019057478879584599, guid: 93a2f6e6bd9aa164abb8b3e25e3e54fc, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6019057478879584599, guid: 93a2f6e6bd9aa164abb8b3e25e3e54fc, type: 3}
       propertyPath: m_LocalScale.x
@@ -6393,7 +6401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3888634955850296485, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3888634955850296485, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_LocalPosition.x
