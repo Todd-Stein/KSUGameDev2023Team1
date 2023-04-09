@@ -51,7 +51,8 @@ public class Tony : MonoBehaviour
         idleTimer = 0;
         dmgCooldown = 0;
         aggression = 40;
-        if(playerRef == null)
+        soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
+        if (playerRef == null)
         {
             playerRef = GameObject.FindGameObjectWithTag("Player");
         }

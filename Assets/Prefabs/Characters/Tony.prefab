@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc6ffcf98b0fb2468474b67e868ff3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goggs: 1
   curHitObj: {fileID: 0}
   radius: 0.5
   distance: 5
