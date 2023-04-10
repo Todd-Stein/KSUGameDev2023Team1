@@ -69,7 +69,7 @@ public class Tony : MonoBehaviour
 
         if (checkGoals())
         {
-            currentGoal = goals[Random.Range(0, goals.Length)];
+            changeGoal(goals[Random.Range(0, goals.Length)]);
 
             // Change currentGoal to next goal in goals[]
             /*if (goalIndex < goals.Length)
@@ -164,12 +164,12 @@ public class Tony : MonoBehaviour
 
     bool checkGoals()
     {
-        if (agent.remainingDistance == 0f && 
+        if (agent.remainingDistance <= 0f && 
             !alerted && !hunting)
         {
             speed = 0;
             idleTimer = (float)((100 - aggression)/10); // Waits idle for less time as aggression increases
-            goalIndex = Random.Range(0, goals.Length);
+            //goalIndex = Random.Range(0, goals.Length);
             return true;
 
         } else if(alerted && agent.remainingDistance <= 4f)
@@ -177,7 +177,7 @@ public class Tony : MonoBehaviour
             alerted = false;
             speed = 0;
             idleTimer = 2f; // Waits idle for less time as aggression increases
-            goalIndex = Random.Range(0, goals.Length);
+            //goalIndex = Random.Range(0, goals.Length);
             agent.autoBraking = false;
             return true;
         } 
