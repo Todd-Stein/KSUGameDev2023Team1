@@ -42,6 +42,7 @@ public class Tony : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentGoal = goals[Random.Range(0, goals.Length)];
         hunting = false;
         alerted = false;
         agent = GetComponent<NavMeshAgent>();
@@ -56,6 +57,7 @@ public class Tony : MonoBehaviour
         {
             playerRef = GameObject.FindGameObjectWithTag("Player");
         }
+        
     }
 
     // Update is called once per frame
@@ -67,8 +69,10 @@ public class Tony : MonoBehaviour
 
         if (checkGoals())
         {
+            currentGoal = goals[Random.Range(0, goals.Length)];
+
             // Change currentGoal to next goal in goals[]
-            if (goalIndex < goals.Length)
+            /*if (goalIndex < goals.Length)
             {
                 //currentGoal = goals[++goalIndex].GetComponent<Transform>();
                 changeGoal(goals[++goalIndex].GetComponent<Transform>());
@@ -77,7 +81,7 @@ public class Tony : MonoBehaviour
                 goalIndex = 0;
                 //currentGoal = goals[goalIndex].GetComponent<Transform>();
                 changeGoal(goals[goalIndex].GetComponent<Transform>());
-            }
+            }*/
             //agent.destination = currentGoal.position;
         }
     }
@@ -160,8 +164,7 @@ public class Tony : MonoBehaviour
 
     bool checkGoals()
     {
-        if (currentGoal.position.x == personalTransform.position.x &&
-            currentGoal.position.z == personalTransform.position.z && 
+        if (agent.remainingDistance == 0f && 
             !alerted && !hunting)
         {
             speed = 0;
@@ -177,13 +180,7 @@ public class Tony : MonoBehaviour
             goalIndex = Random.Range(0, goals.Length);
             agent.autoBraking = false;
             return true;
-        } /*else if (hunting && agent.remainingDistance <= 1f)
-        {
-            speed = 0;
-            idleTimer = (float)((100 - aggression) / 10);
-            goalIndex = Random.Range(0, goals.Length); // Should probably change to still be player
-            return true;
-        }*/
+        } 
         return false;
     }
 
