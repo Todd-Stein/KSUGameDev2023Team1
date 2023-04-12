@@ -34,12 +34,16 @@ public class Tony : MonoBehaviour
 
     NavMeshAgent agent;
     Transform personalTransform;
+    private GameObject playerRef;
+    Animator ani;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentGoal = goals[Random.Range(0, goals.Length)];
         hunting = false;
         alerted = false;
+        ani = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.destination = currentGoal.position;
         personalTransform = GetComponent<Transform>();
@@ -47,6 +51,12 @@ public class Tony : MonoBehaviour
         idleTimer = 0;
         dmgCooldown = 0;
         aggression = 40;
+        soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
+        if (playerRef == null)
+        {
+            playerRef = GameObject.FindGameObjectWithTag("Player");
+        }
+
     }
 
     // Update is called once per frame
@@ -58,8 +68,10 @@ public class Tony : MonoBehaviour
 
         if (checkGoals())
         {
+            changeGoal(goals[Random.Range(0, goals.Length)]);
+
             // Change currentGoal to next goal in goals[]
-            if (goalIndex < goals.Length)
+            /*if (goalIndex < goals.Length)
             {
                 //currentGoal = goals[++goalIndex].GetComponent<Transform>();
                 changeGoal(goals[++goalIndex].GetComponent<Transform>());
@@ -68,7 +80,7 @@ public class Tony : MonoBehaviour
                 goalIndex = 0;
                 //currentGoal = goals[goalIndex].GetComponent<Transform>();
                 changeGoal(goals[goalIndex].GetComponent<Transform>());
-            }
+            }*/
             //agent.destination = currentGoal.position;
         }
     }
@@ -80,7 +92,8 @@ public class Tony : MonoBehaviour
         {
             GameObject player = other.GetComponent<GameObject>();
             OnTheHunt(player);
-        } else if (other.gameObject.CompareTag("Player"))
+        }
+        else if (other.gameObject.CompareTag("Player"))
         {
             playerHit(other);
         }
@@ -107,21 +120,23 @@ public class Tony : MonoBehaviour
         agent.autoBraking = false;
 
         huntTimer = 11.5f;
-        hunting = true;        
+        hunting = true;
 
         speed = aggression / 5;   //doubles current speed
-        
+
         Debug.Log("Hunting");
-        
+
         changeGoal(other.transform);
     }
 
     private void Timer()
     {
-        if(idleTimer > 0)
+        if (idleTimer > 0)
             idleTimer -= Time.deltaTime;
         else
         {
+            ani.SetBool("idle", false);
+            ani.SetBool("walk", true);
             speed = aggression / 10;
             idleTimer = 0;
         }
@@ -132,7 +147,7 @@ public class Tony : MonoBehaviour
         if (huntTimer > 0)
             huntTimer -= Time.deltaTime;
 
-        if(hunting && huntTimer <= 10f)
+        if (hunting && huntTimer <= 10f)
         {
             Debug.Log("No More Hunt");
             hunting = false;
@@ -142,16 +157,18 @@ public class Tony : MonoBehaviour
 
     bool checkGoals()
     {
-        if (currentGoal.position.x == personalTransform.position.x &&
-            currentGoal.position.z == personalTransform.position.z && 
+        if (agent.remainingDistance <= 0f &&
             !alerted && !hunting)
         {
+            ani.SetBool("walk", false);
+            ani.SetBool("idle", true);
             speed = 0;
-            idleTimer = (float)((100 - aggression)/10); // Waits idle for less time as aggression increases
+            idleTimer = (float)((100 - aggression) / 10); // Waits idle for less time as aggression increases
             goalIndex = Random.Range(0, goals.Length);
             return true;
 
-        } else if(alerted && agent.remainingDistance <= 4f)
+        }
+        else if (alerted && agent.remainingDistance <= 4f)
         {
             alerted = false;
             speed = 0;
@@ -159,13 +176,7 @@ public class Tony : MonoBehaviour
             goalIndex = Random.Range(0, goals.Length);
             agent.autoBraking = false;
             return true;
-        } /*else if (hunting && agent.remainingDistance <= 1f)
-        {
-            speed = 0;
-            idleTimer = (float)((100 - aggression) / 10);
-            goalIndex = Random.Range(0, goals.Length); // Should probably change to still be player
-            return true;
-        }*/
+        }
         return false;
     }
 
@@ -196,6 +207,7 @@ public class Tony : MonoBehaviour
         if (dmgCooldown <= 0)
         {
             // Play hit animation here
+            ani.SetTrigger("swipe");
             other.GetComponent<player_health>().RecieveHit();
             dmgCooldown = 0.5f;
             speed = 0;
