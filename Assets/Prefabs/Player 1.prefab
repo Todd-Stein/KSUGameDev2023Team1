@@ -329,7 +329,7 @@ Transform:
   - {fileID: 1791694518608528544}
   m_Father: {fileID: 6661960538586631361}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9.100001, y: 0, z: 0}
 --- !u!20 &6661960538314208219
 Camera:
   m_ObjectHideFlags: 0
@@ -785,6 +785,7 @@ MonoBehaviour:
   gogglesKey: 324
   interactKey: 101
   tossKey: 323
+  playerCam: {fileID: 0}
   interactDistance: 2.93
   holdPos: {fileID: 3113452123185658962}
   interactableLayer:

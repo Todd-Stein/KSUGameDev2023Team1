@@ -9,5 +9,6 @@ public class DoorSwitch : MonoBehaviour
     public void Unlock()
     {
         Door_.unlocked = true;
+        Debug.Log(Door_.name + " unlocked values is equal to " + Door_.unlocked);
     }
 }

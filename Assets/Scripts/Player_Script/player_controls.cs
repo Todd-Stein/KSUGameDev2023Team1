@@ -90,10 +90,10 @@ public class player_controls : MonoBehaviour
     {
         Debug.Log("Interact key pressed.");
 
-        //Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * interactDistance, Color.green);
+        Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * interactDistance, Color.green);
 
         //This raycast will only hit objects on the interactableLayer. If it hits it will call that gameobject's "activate()" method.
-        if (Physics.Raycast(transform.position, playerCam.transform.forward, out interactHit, interactDistance, interactableLayer))
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out interactHit, interactDistance, interactableLayer))
         {
             Debug.Log("Raycast hit object with Interactable Layer");
 
