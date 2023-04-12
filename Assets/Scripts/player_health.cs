@@ -21,6 +21,9 @@ public class player_health : MonoBehaviour
     public int currentHealth;
     public bool isDead;
 
+    public delegate void OnDeath();
+    public static OnDeath onDeath;
+
     private void Awake()
     {
         currentHealth = totalHealth;
@@ -56,10 +59,10 @@ public class player_health : MonoBehaviour
         {
             tonyVision.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             RecieveHit();
-        }
+        }*/
     }
     public void RecieveHit()
     {
@@ -75,7 +78,12 @@ public class player_health : MonoBehaviour
         }
         if (isDead)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // Invoke onDeath delegate
+            onDeath?.Invoke();
+            bloodOverlay.SetActive(false);
+            isDead = false;
+
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

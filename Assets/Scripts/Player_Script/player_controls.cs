@@ -9,7 +9,8 @@ public class player_controls : MonoBehaviour
     public KeyCode interactKey = KeyCode.E;
     public KeyCode tossKey = KeyCode.Mouse0;
 
-    private Camera playerCam;
+    public Camera playerCam;
+    private Goggles goggles;
 
     [SerializeField]
     [Tooltip("The reach of the player's interaction range.")]
@@ -43,7 +44,7 @@ public class player_controls : MonoBehaviour
     [Tooltip("The force applied to thrown objects.")]
     public float throwForce = 500f;  //public in case of a future game mechanic that may alter it.
 
-    private void Awake()
+    private void Start()
     {
         interactableLayer = LayerMask.GetMask("Interactables");
         pickupableLayer = LayerMask.GetMask("Pickup"); 
@@ -53,20 +54,27 @@ public class player_controls : MonoBehaviour
         pickupableLayer = LayerMask.GetMask("Pickup");
         if(holdPos== null)
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
-        tonyVision = GameObject.Find("TonyVision");
+       // tonyVision = GameObject.Find("TonyVision");
         //tonyVision.SetActive(false);
-        playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
+
+        //find game manager
+        goggles = GameObject.Find("GameManager").GetComponent<Goggles>();
+
+        //playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
+       // playerCam = Camera.main;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(gogglesKey))
         {
-            tonyVision.SetActive(true);      
+            //tonyVision.SetActive(true);
+            goggles.Activate();
         }
         if (Input.GetKeyUp(gogglesKey))
         {
-            tonyVision.SetActive(false);
+            //tonyVision.SetActive(false);
+            goggles.Disable();
         }
         if (Input.GetKeyDown(interactKey))
         {
@@ -82,12 +90,13 @@ public class player_controls : MonoBehaviour
     {
         Debug.Log("Interact key pressed.");
 
-        Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * interactDistance, Color.green);
+        //Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * interactDistance, Color.green);
 
         //This raycast will only hit objects on the interactableLayer. If it hits it will call that gameobject's "activate()" method.
         if (Physics.Raycast(transform.position, playerCam.transform.forward, out interactHit, interactDistance, interactableLayer))
         {
             Debug.Log("Raycast hit object with Interactable Layer");
+
             interactHit.collider.gameObject.GetComponent<interactable>().Activate();
             return;
         }
@@ -145,34 +154,12 @@ public class player_controls : MonoBehaviour
             isHolding = false;
         }
     }
-
     public bool GetHolding()
     {
         return isHolding;
     }
-
     public GameObject GetItem()
     {
-        return held;
+        return held.gameObject;
     }
-
-    /* Delete: public void GiveItem(GameObject o)
-    {
-        // Copied and pasted code from the part where the player picks up an item
-        if (o.GetComponent<Rigidbody>() != null)
-        {
-            held = o.gameObject;
-            heldRB = o.GetComponent<Rigidbody>();
-            heldRB.isKinematic = true;
-            held.transform.position = holdPos.position;
-            heldRB.transform.parent = holdPos.transform;
-
-            Debug.Log("Player is now holding object");
-            isHolding = true;
-
-            held.GetComponent<DistractItem>().thrown = true;
-
-            Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), true);
-        }
-    }*/
 }
