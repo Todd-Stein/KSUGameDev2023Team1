@@ -38,7 +38,7 @@ public class Tony : MonoBehaviour
 
     NavMeshAgent agent;
     Transform personalTransform;
-    private GameObject playerRef;
+    //private GameObject playerRef;
     Animator ani;
 
     // Start is called before the first frame update
