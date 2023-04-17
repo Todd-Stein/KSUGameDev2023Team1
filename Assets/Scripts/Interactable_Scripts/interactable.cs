@@ -36,6 +36,7 @@ public class interactable : MonoBehaviour
         }
         if(DS != null)
         {
+            Debug.Log("UNLOCKING DOOR");
             //unlock called
             DS.Unlock();
             return;
