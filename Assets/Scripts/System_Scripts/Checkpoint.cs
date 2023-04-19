@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
-    public Transform[] nextGoals;   // Tony's collection of next goals, an array of patrol points he will switch to when the Checkpoint is passed.
+    public GameObject nextGoals;   // Tony's collection of next goals, an array of patrol points he will switch to when the Checkpoint is passed.
     public GameObject Tony;         // Tony itself
     public GameObject player;       // Reference to the player
     GameObject held;                // GameObject player was holding when they passed through the Checkpoint
@@ -35,7 +35,11 @@ public class Checkpoint : MonoBehaviour
 
             if (nextGoals != null && Tony != null)  // If there are patrol points in the next area, and tony exists...
             {
-                Tony.GetComponent<Tony>().goals = nextGoals; // Assign Tony's next patrol points
+                Tony.GetComponent<Tony>().goals.Clear();
+                foreach (Transform pnt in nextGoals.GetComponentsInChildren<Transform>())
+                {
+                    Tony.GetComponent<Tony>().goals.Add(pnt); // Assign Tony's next patrol points
+                }
                 Tony.GetComponent<Tony>().goalIndex = 0;     // Reset Tony's current patrol point
             }
 

@@ -22,7 +22,7 @@ public class Tony : MonoBehaviour
     public float speed;  // Changes the speed that Tony moves
     public const float baseSpeed = 4;   // Base speed for Tony when not alerted
     public Transform currentGoal; // The current goal for Tony to move to
-    public Transform[] goals; // An array of goals for Tony to move to
+    public List<Transform> goals; // An array of goals for Tony to move to
     public int goalIndex;
 
     public GameObject soundSphere; // Tony's listening range, in the form of a sphere
@@ -44,7 +44,7 @@ public class Tony : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentGoal = goals[Random.Range(0, goals.Length)];
+        currentGoal = goals[Random.Range(0, goals.Count)];
         hunting = false;
         alerted = false;
         ani = GetComponent<Animator>();
@@ -72,7 +72,7 @@ public class Tony : MonoBehaviour
 
         if (checkGoals())
         {
-            changeGoal(goals[Random.Range(0, goals.Length)]);
+            changeGoal(goals[Random.Range(0, goals.Count)]);
 
             // Change currentGoal to next goal in goals[]
             /*if (goalIndex < goals.Length)
@@ -177,7 +177,7 @@ public class Tony : MonoBehaviour
             ani.SetBool("idle", true);
             speed = 0;
             idleTimer = (float)((100 - aggression) / 10); // Waits idle for less time as aggression increases
-            goalIndex = Random.Range(0, goals.Length);
+            goalIndex = Random.Range(0, goals.Count);
             return true;
 
         }
@@ -186,7 +186,7 @@ public class Tony : MonoBehaviour
             alerted = false;
             speed = 0;
             idleTimer = 2f; // Waits idle for less time as aggression increases
-            goalIndex = Random.Range(0, goals.Length);
+            goalIndex = Random.Range(0, goals.Count);
             agent.autoBraking = false;
             return true;
         }
