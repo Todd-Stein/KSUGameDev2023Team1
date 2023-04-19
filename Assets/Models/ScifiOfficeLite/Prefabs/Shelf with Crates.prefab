@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1146663272022385678}
   m_Layer: 0
   m_Name: Object061
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 1458237907528203265}
   m_Layer: 0
   m_Name: Crates Shelf
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 6469372484625389564}
   m_Layer: 0
   m_Name: Object066
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 3590063177296339011}
   m_Layer: 0
   m_Name: Object064
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 4227419009517900313}
   m_Layer: 0
   m_Name: Object065
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 6119124428877446237}
   m_Layer: 0
   m_Name: Object062
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 2210954186127828241}
   m_Layer: 0
   m_Name: Object063
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

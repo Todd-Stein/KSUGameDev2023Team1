@@ -6,6 +6,10 @@ public class Goggles : MonoBehaviour
 {
 
     private GameObject[] goggleobjs;
+
+    private Stack<GameObject> nongogobjs1;
+    private Stack<GameObject> nongogobjs2;
+
     private GameObject[] nongogobjs;
     
     // Start is called before the first frame update
@@ -14,43 +18,65 @@ public class Goggles : MonoBehaviour
         Debug.Log("GoggleStart");
         //if(goggleobjs == null)
         //{
-        Debug.Log("nongog count = " + GameObject.FindGameObjectsWithTag("nongog").Length);
 
+
+
+        Debug.Log("nongog object count is: " + GameObject.FindGameObjectsWithTag("nongog").Length);
+        nongogobjs1 = new Stack<GameObject>();
+        nongogobjs2 = new Stack<GameObject>();
         goggleobjs = GameObject.FindGameObjectsWithTag("Goggle");
 
-            /*
-            foreach (var obj in GameObject.FindGameObjectsWithTag("Goggle"))
-            {
-                goggleobjs.Add(obj);
-            }
-            */
-        //}
-        foreach (var obj in goggleobjs)
+        Debug.Log("Now doing nongogloop!");
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("nongog").Length; ++i)
         {
-            obj.GetComponent<MeshRenderer>().enabled = false;
-            //Debug.Log("Disabling rend of" + obj.ToString());
+
+            nongogobjs1.Push(GameObject.FindGameObjectsWithTag("nongog")[i]);
+            Debug.Log(GameObject.FindGameObjectsWithTag("nongog")[i].name);
         }
-        //if (nongogobjs == null)
-        //{
-            
-            //nongogobjs = new List<GameObject>();
-            /*foreach (var obj in GameObject.FindGameObjectsWithTag("nongog")){
-                nongogobjs.Add(obj);
-                Debug.Log(obj.ToString());
-            }*/
         nongogobjs = GameObject.FindGameObjectsWithTag("nongog");
-        Debug.Log("nongog count = " + nongogobjs.Length);
+        Debug.Log("nongog count = " + nongogobjs1.Count);
         //}
+
+        Debug.Log("Unrendering all goggles");
+        for (int i = 0; i < goggleobjs.Length; ++i)
+        {
+            goggleobjs[i].GetComponent<MeshRenderer>().enabled = false;
+            Debug.Log("Disabling rend of" + goggleobjs[i].name);
+        }
+;
+        
+
+        Debug.Log("end of goggle start!");
     }
 
     public void Activate()
     {
         Debug.Log("GOGGLES ON!");
-        Debug.Log("Activate nongog count " + nongogobjs.Length);
-        for (int i = 0; i < nongogobjs.Length; ++i)
+        Debug.Log("Activate nongog count " + nongogobjs1.Count);
+        /*if (nongogobjs1.Count > 0)
         {
-            Debug.Log("Disableing");
-            nongogobjs[i].GetComponent<MeshRenderer>().enabled = false;
+            for (int i = 0; i < nongogobjs1.Count; ++i)
+            {
+                Debug.Log("Disableing " + nongogobjs1.Peek().name);
+                try { nongogobjs1.Peek().GetComponent<MeshRenderer>().enabled = false; }
+                catch { }
+                nongogobjs2.Push(nongogobjs1.Pop());
+            }
+        }
+        else
+        {
+            for (int i = 0; i < nongogobjs2.Count; ++i)
+            {
+                Debug.Log("Disableing");
+                nongogobjs2.Peek().GetComponent<MeshRenderer>().enabled = false;
+                nongogobjs1.Push(nongogobjs2.Pop());
+            }
+        }*/
+
+        for(int i = 0; i < nongogobjs.Length; ++i)
+        {
+            try { nongogobjs[i].GetComponent<MeshRenderer>().enabled = false; }
+            catch { }
         }
 
         
@@ -58,7 +84,8 @@ public class Goggles : MonoBehaviour
         {
             //Debug.Log("enabling " + obj.name);
             //obj.GetComponent<MeshRenderer>().enabled = true;
-            goggleobjs[i].GetComponent<MeshRenderer>().enabled = true;
+            try { goggleobjs[i].GetComponent<MeshRenderer>().enabled = true; }
+            catch { Debug.Log(goggleobjs[i].name + " has no mesh renderer component"); }
         }
 
         
@@ -67,14 +94,37 @@ public class Goggles : MonoBehaviour
     public void Disable()
     {
         Debug.Log("GOGGELS OFF");
+        /*if (nongogobjs1.Count > 0)
+        {
+            for (int i = 0; nongogobjs1.Count != 0; ++i)
+            {
+                Debug.Log("Disableing");
+                try { nongogobjs1.Peek().GetComponent<MeshRenderer>().enabled = true; }
+                catch { }
+                nongogobjs1.Push(nongogobjs2.Pop());
+            }
+        }
+        else
+        {
+            for (int i = 0; i < nongogobjs2.Count; ++i)
+            {
+                Debug.Log("Disableing");
+                nongogobjs2.Peek().GetComponent<MeshRenderer>().enabled = true;
+                nongogobjs1.Push(nongogobjs2.Pop());
+            }
+        }*/
+
         for (int i = 0; i < nongogobjs.Length; ++i)
         {
-            nongogobjs[i].GetComponent<MeshRenderer>().enabled = true;
+            try { nongogobjs[i].GetComponent<MeshRenderer>().enabled = true; }
+            catch { }
         }
+
         for (int i = 0; i < goggleobjs.Length; ++i)
         {
-            
-            goggleobjs[i].GetComponent<MeshRenderer>().enabled = false;
+
+            try { goggleobjs[i].GetComponent<MeshRenderer>().enabled = false; }
+            catch {}
         }
         
     }
