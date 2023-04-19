@@ -66745,13 +66745,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: aggression
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: goals.Array.size
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: goals.Array.data[0]
       value: 
-      objectReference: {fileID: 332642071}
+      objectReference: {fileID: 0}
     - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: goals.Array.data[1]
       value: 
@@ -66808,9 +66812,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 200753334196478652, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b4e47a00899a79f49bd7107110c34aa4, type: 2}
     - target: {fileID: 1246175797544394681, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_TagString
       value: Goggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415318471828593831, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: layer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1765954950382127356, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_TagString
