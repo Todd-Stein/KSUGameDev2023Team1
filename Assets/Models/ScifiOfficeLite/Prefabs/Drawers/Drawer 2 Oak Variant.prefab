@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7851380827036028973, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: nongog
       objectReference: {fileID: 0}
     - target: {fileID: 8410943446260483702, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
       propertyPath: m_TagString
