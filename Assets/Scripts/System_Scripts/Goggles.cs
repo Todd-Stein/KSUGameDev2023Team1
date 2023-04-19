@@ -86,6 +86,8 @@ public class Goggles : MonoBehaviour
             //obj.GetComponent<MeshRenderer>().enabled = true;
             try { goggleobjs[i].GetComponent<MeshRenderer>().enabled = true; }
             catch { Debug.Log(goggleobjs[i].name + " has no mesh renderer component"); }
+            try { goggleobjs[i].GetComponent<SkinnedMeshRenderer>().enabled = true; }
+            catch { }
         }
 
         
@@ -125,6 +127,8 @@ public class Goggles : MonoBehaviour
 
             try { goggleobjs[i].GetComponent<MeshRenderer>().enabled = false; }
             catch {}
+            try { goggleobjs[i].GetComponent<SkinnedMeshRenderer>().enabled = true; }
+            catch { }
         }
         
     }
