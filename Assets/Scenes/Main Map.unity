@@ -66746,7 +66746,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: goals.Array.size
-      value: 11
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 50411708034906966, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: goals.Array.data[0]
@@ -66808,6 +66808,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 200753334196478652, guid: 668b657646eeff24ba88b250f819faec, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b4e47a00899a79f49bd7107110c34aa4, type: 2}
     - target: {fileID: 1246175797544394681, guid: 668b657646eeff24ba88b250f819faec, type: 3}
       propertyPath: m_TagString
       value: Goggle

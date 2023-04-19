@@ -55,6 +55,7 @@ public class Tony : MonoBehaviour
         idleTimer = 0;
         dmgCooldown = 0;
         aggression = 40;
+        speed = aggression / 10;
         soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
         if (playerRef == null)
         {
@@ -176,7 +177,7 @@ public class Tony : MonoBehaviour
             ani.SetBool("walk", false);
             ani.SetBool("idle", true);
             speed = 0;
-            idleTimer = (float)((100 - aggression) / 10); // Waits idle for less time as aggression increases
+            //idleTimer = (float)((100 - aggression) / 10); // Waits idle for less time as aggression increases
             goalIndex = Random.Range(0, goals.Count);
             return true;
 
