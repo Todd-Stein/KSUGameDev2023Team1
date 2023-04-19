@@ -127,7 +127,7 @@ public class Goggles : MonoBehaviour
 
             try { goggleobjs[i].GetComponent<MeshRenderer>().enabled = false; }
             catch {}
-            try { goggleobjs[i].GetComponent<SkinnedMeshRenderer>().enabled = true; }
+            try { goggleobjs[i].GetComponent<SkinnedMeshRenderer>().enabled = false; }
             catch { }
         }
         
