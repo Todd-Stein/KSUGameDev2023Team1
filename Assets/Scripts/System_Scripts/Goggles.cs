@@ -5,57 +5,77 @@ using UnityEngine;
 public class Goggles : MonoBehaviour
 {
 
-    private List<GameObject> goggleobjs;
-    private List<GameObject> nongogobjs;
+    private GameObject[] goggleobjs;
+    private GameObject[] nongogobjs;
     
     // Start is called before the first frame update
     void Start()
     {
-        if(goggleobjs == null)
-        {
-            goggleobjs = new List<GameObject>();
+        Debug.Log("GoggleStart");
+        //if(goggleobjs == null)
+        //{
+        Debug.Log("nongog count = " + GameObject.FindGameObjectsWithTag("nongog").Length);
+
+        goggleobjs = GameObject.FindGameObjectsWithTag("Goggle");
+
+            /*
             foreach (var obj in GameObject.FindGameObjectsWithTag("Goggle"))
             {
                 goggleobjs.Add(obj);
             }
-        }
+            */
+        //}
         foreach (var obj in goggleobjs)
         {
             obj.GetComponent<MeshRenderer>().enabled = false;
-            Debug.Log(obj.ToString());
+            //Debug.Log("Disabling rend of" + obj.ToString());
         }
-        if (nongogobjs == null)
-        {
-            Debug.Log("nongog");
-            nongogobjs = new List<GameObject>();
-            foreach (var obj in GameObject.FindGameObjectsWithTag("nongog")){
+        //if (nongogobjs == null)
+        //{
+            
+            //nongogobjs = new List<GameObject>();
+            /*foreach (var obj in GameObject.FindGameObjectsWithTag("nongog")){
                 nongogobjs.Add(obj);
                 Debug.Log(obj.ToString());
-            }
-        }
+            }*/
+        nongogobjs = GameObject.FindGameObjectsWithTag("nongog");
+        Debug.Log("nongog count = " + nongogobjs.Length);
+        //}
     }
 
     public void Activate()
     {
-        foreach (var obj in goggleobjs)
+        Debug.Log("GOGGLES ON!");
+        Debug.Log("Activate nongog count " + nongogobjs.Length);
+        for (int i = 0; i < nongogobjs.Length; ++i)
         {
-            obj.GetComponent<MeshRenderer>().enabled = true;
+            Debug.Log("Disableing");
+            nongogobjs[i].GetComponent<MeshRenderer>().enabled = false;
         }
-        foreach (var obj in nongogobjs)
+
+        
+        for(int i = 0; i < goggleobjs.Length; ++i)
         {
-            obj.GetComponent<MeshRenderer>().enabled = false;
+            //Debug.Log("enabling " + obj.name);
+            //obj.GetComponent<MeshRenderer>().enabled = true;
+            goggleobjs[i].GetComponent<MeshRenderer>().enabled = true;
         }
+
+        
     }
 
     public void Disable()
     {
-        foreach (var obj in goggleobjs)
+        Debug.Log("GOGGELS OFF");
+        for (int i = 0; i < nongogobjs.Length; ++i)
         {
-            obj.GetComponent<MeshRenderer>().enabled = false;
+            nongogobjs[i].GetComponent<MeshRenderer>().enabled = true;
         }
-        foreach (var obj in nongogobjs)
+        for (int i = 0; i < goggleobjs.Length; ++i)
         {
-            obj.GetComponent<MeshRenderer>().enabled = true;
+            
+            goggleobjs[i].GetComponent<MeshRenderer>().enabled = false;
         }
+        
     }
 }

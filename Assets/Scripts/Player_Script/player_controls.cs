@@ -54,11 +54,13 @@ public class player_controls : MonoBehaviour
         pickupableLayer = LayerMask.GetMask("Pickup");
         if(holdPos== null)
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
-       // tonyVision = GameObject.Find("TonyVision");
+        // tonyVision = GameObject.Find("TonyVision");
         //tonyVision.SetActive(false);
 
         //find game manager
-        goggles = GameObject.Find("GameManager").GetComponent<Goggles>();
+        try { goggles = GameObject.Find("GameManager").GetComponent<Goggles>(); Debug.Log("GOT GOGGLES!!!"); }
+        catch { Debug.Log("NO GOG"); }
+        
 
         //playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
        // playerCam = Camera.main;
@@ -68,11 +70,13 @@ public class player_controls : MonoBehaviour
     {
         if (Input.GetKeyDown(gogglesKey))
         {
+            Debug.Log("playergogon");
             //tonyVision.SetActive(true);
             goggles.Activate();
         }
         if (Input.GetKeyUp(gogglesKey))
         {
+            Debug.Log("playergogOff");
             //tonyVision.SetActive(false);
             goggles.Disable();
         }
