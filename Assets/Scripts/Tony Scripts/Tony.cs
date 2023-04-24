@@ -24,6 +24,7 @@ public class Tony : MonoBehaviour
     public Transform currentGoal; // The current goal for Tony to move to
     public List<Transform> goals; // An array of goals for Tony to move to
     public int goalIndex;
+    public GameObject initialGoals; // A parent gameobject of each tony goal, initial to the scene
 
     public GameObject soundSphere; // Tony's listening range, in the form of a sphere
 
@@ -61,7 +62,10 @@ public class Tony : MonoBehaviour
         {
             playerRef = GameObject.FindGameObjectWithTag("Player");
         }
-
+        foreach (Transform pnt in initialGoals.GetComponentsInChildren<Transform>())
+        {
+            goals.Add(pnt); // Assign Tony's next patrol points
+        }
     }
 
     // Update is called once per frame
