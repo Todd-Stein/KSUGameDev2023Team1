@@ -36,8 +36,13 @@ public class Checkpoint : MonoBehaviour
             if (nextGoals != null && Tony != null)  // If there are patrol points in the next area, and tony exists...
             {
                 Tony.GetComponent<Tony>().goals.Clear();
-                foreach (Transform pnt in nextGoals.GetComponentsInChildren<Transform>())
+                Debug.Log(nextGoals.transform.GetComponentInChildren<Transform>());
+                foreach (Transform pnt in nextGoals.transform.GetComponentsInChildren<Transform>())
                 {
+                    if(pnt.name == nextGoals.name)
+                    {
+                        continue;
+                    }
                     Tony.GetComponent<Tony>().goals.Add(pnt); // Assign Tony's next patrol points
                 }
                 Tony.GetComponent<Tony>().goalIndex = 0;     // Reset Tony's current patrol point

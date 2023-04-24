@@ -55,7 +55,7 @@ public class Tony : MonoBehaviour
         goalIndex = 0;
         idleTimer = 0;
         dmgCooldown = 0;
-        aggression = 40;
+        aggression = 20;
         speed = aggression / 10;
         soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
         if (playerRef == null)
