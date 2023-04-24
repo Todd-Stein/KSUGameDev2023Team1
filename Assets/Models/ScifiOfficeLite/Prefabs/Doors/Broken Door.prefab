@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1658763700019488578}
   m_Layer: 0
   m_Name: Door2
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 8745815172074599022}
   m_Layer: 0
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 8745815172739604724}
   m_Layer: 0
   m_Name: Top 2
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 691709616524037031}
   m_Layer: 0
   m_Name: Frame 2
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 691709615578339645}
   m_Layer: 0
   m_Name: Frame
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
