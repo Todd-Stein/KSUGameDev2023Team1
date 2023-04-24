@@ -234,6 +234,10 @@ PrefabInstance:
       value: Wall 4
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 01e56f6e47b405e4689821759816baf0, type: 3}
+      propertyPath: m_TagString
+      value: nongog
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 01e56f6e47b405e4689821759816baf0, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
