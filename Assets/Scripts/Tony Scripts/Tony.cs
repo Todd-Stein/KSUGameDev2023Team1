@@ -35,7 +35,7 @@ public class Tony : MonoBehaviour
     private float dmgCooldown;
 
 
-    private GameObject playerRef;
+    public GameObject playerRef;
 
     NavMeshAgent agent;
     Transform personalTransform;
@@ -94,17 +94,18 @@ public class Tony : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player") &&
+       
+        if (collision.gameObject.CompareTag("Player") &&
             !hunting)
         {
-            GameObject player = other.GetComponent<GameObject>();
+            GameObject player = collision.gameObject.GetComponent<GameObject>();
             OnTheHunt(player);
         }
-        else if (other.gameObject.CompareTag("Player"))
+        else if (collision.gameObject.CompareTag("Player"))
         {
-            playerHit(other);
+            playerHit(collision.collider);
             playerHasResponded = false;
         }
     }
