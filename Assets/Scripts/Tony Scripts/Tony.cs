@@ -50,7 +50,6 @@ public class Tony : MonoBehaviour
         alerted = false;
         ani = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = currentGoal.position;
         personalTransform = GetComponent<Transform>();
         goalIndex = 0;
         idleTimer = 0;
@@ -66,6 +65,7 @@ public class Tony : MonoBehaviour
         {
             goals.Add(pnt); // Assign Tony's next patrol points
         }
+        agent.destination = currentGoal.position;
     }
 
     // Update is called once per frame
@@ -78,19 +78,6 @@ public class Tony : MonoBehaviour
         if (checkGoals())
         {
             changeGoal(goals[Random.Range(0, goals.Count)]);
-
-            // Change currentGoal to next goal in goals[]
-            /*if (goalIndex < goals.Length)
-            {
-                //currentGoal = goals[++goalIndex].GetComponent<Transform>();
-                changeGoal(goals[++goalIndex].GetComponent<Transform>());
-            } else
-            {
-                goalIndex = 0;
-                //currentGoal = goals[goalIndex].GetComponent<Transform>();
-                changeGoal(goals[goalIndex].GetComponent<Transform>());
-            }*/
-            //agent.destination = currentGoal.position;
         }
     }
 
@@ -139,7 +126,8 @@ public class Tony : MonoBehaviour
         huntTimer = 11.5f;
         hunting = true;
 
-        speed = aggression / 5;   //doubles current speed
+        speed = 0;
+        agent.speed = 0;
 
         Debug.Log("Hunting");
 
@@ -161,16 +149,25 @@ public class Tony : MonoBehaviour
         if (dmgCooldown > 0)
             dmgCooldown -= Time.deltaTime;
 
-        if (huntTimer > 0)
+        if (huntTimer >= 0)
+        {
             huntTimer -= Time.deltaTime;
+            changeGoal(playerRef.transform);
+        }
 
         if (hunting && huntTimer <= 10f)
         {
-            Debug.Log("No More Hunt");
             hunting = false;
-            speed = aggression / 10;
+            speed = aggression / 5;
+            agent.speed = speed;
             playerRef.GetComponent<script_responseToHunt>().DisableResponseToHuntMode();
             playerHasResponded = false;
+        }
+
+        if(huntTimer <= 0 && !hunting)
+        {
+            speed = aggression / 10;
+            agent.speed = aggression / 10;
         }
     }
 
@@ -195,6 +192,10 @@ public class Tony : MonoBehaviour
             goalIndex = Random.Range(0, goals.Count);
             agent.autoBraking = false;
             return true;
+        }
+        else if (hunting && agent.remainingDistance <= 1f)
+        {
+            playerHit(playerRef.GetComponent<Collider>());
         }
         return false;
     }
@@ -228,9 +229,9 @@ public class Tony : MonoBehaviour
             // Play hit animation here
             ani.SetTrigger("swipe");
             other.GetComponent<player_health>().RecieveHit();
-            dmgCooldown = 0.5f;
+            dmgCooldown = 1.5f;
             speed = 0;
-            idleTimer = 0.5f;
+            idleTimer = 1.5f;
         }
     }
 }
