@@ -14304,6 +14304,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6661960539643137147, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
+      propertyPath: walkSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661960539643137147, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
+      propertyPath: sprintSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661960539643137147, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
+      propertyPath: speedReduction
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661960539643137147, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
+      propertyPath: sprintCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661960539643137147, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
+      propertyPath: sprintDuration
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6661960539730694664, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
       propertyPath: m_Layer
       value: 9
