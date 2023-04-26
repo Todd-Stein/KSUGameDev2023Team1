@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Door : MonoBehaviour
 {
     public bool unlocked = false;
+    public bool opened = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,10 @@ public class Door : MonoBehaviour
         {
             gameObject.GetComponent<BoxCollider>().enabled = false;
             gameObject.GetComponent<MeshRenderer>().enabled = false;
-            gameObject.GetComponent<SoundEvent>().activateNoiseEvent();
+            opened = true;
+            GetComponent<NavMeshObstacle>().enabled = false;
+            //gameObject.GetComponent<SoundEvent>().activateNoiseEvent();
+            
         }
     }
 

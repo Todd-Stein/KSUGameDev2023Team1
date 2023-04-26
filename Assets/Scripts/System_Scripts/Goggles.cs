@@ -118,6 +118,8 @@ public class Goggles : MonoBehaviour
 
         for (int i = 0; i < nongogobjs.Length; ++i)
         {
+            try { if (nongogobjs[i].GetComponent<Door>().opened == true) { continue; } }
+            catch { }
             try { nongogobjs[i].GetComponent<MeshRenderer>().enabled = true; }
             catch { }
         }
