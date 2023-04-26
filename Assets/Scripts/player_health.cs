@@ -15,8 +15,6 @@ public class player_health : MonoBehaviour
     private MeshRenderer bloodMaterialRef;
     #endregion
 
-    public KeyCode enableGoggles = KeyCode.Mouse1;
-
     public int totalHealth = 3;
     public int currentHealth;
     public bool isDead;
@@ -27,12 +25,6 @@ public class player_health : MonoBehaviour
     private void Awake()
     {
         currentHealth = totalHealth;
-        if (tonyVision == null)
-        {
-            tonyVision = transform.GetChild(0).GetChild(0).GetChild(1).gameObject;
-        }
-        tonyMaterialRef = tonyVision.GetComponent<Renderer>().material;
-        tonyVision.SetActive(false);
         if (bloodOverlay == null)
         {
             bloodOverlay = transform.GetChild(0).GetChild(0).GetChild(2).gameObject;
@@ -51,14 +43,7 @@ public class player_health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(enableGoggles))
-        {
-            tonyVision.SetActive(true);
-        }
-        else if (Input.GetKeyUp(enableGoggles))
-        {
-            tonyVision.SetActive(false);
-        }
+        
         /*if (Input.GetKeyDown(KeyCode.Space))
         {
             RecieveHit();
