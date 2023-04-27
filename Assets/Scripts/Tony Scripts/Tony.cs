@@ -77,7 +77,8 @@ public class Tony : MonoBehaviour
 
         if (checkGoals())
         {
-            changeGoal(goals[Random.Range(0, goals.Count)]);
+            try { changeGoal(goals[Random.Range(0, goals.Count)]); }
+            catch { }
 
             // Change currentGoal to next goal in goals[]
             /*if (goalIndex < goals.Length)
