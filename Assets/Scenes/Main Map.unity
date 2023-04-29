@@ -14190,6 +14190,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1869630531}
     m_Modifications:
+    - target: {fileID: 5912886652936322248, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
+      propertyPath: m_TagString
+      value: nongog
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491328394686884468, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
+      propertyPath: m_TagString
+      value: nongog
+      objectReference: {fileID: 0}
     - target: {fileID: 6534420261576204862, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -14245,6 +14253,14 @@ PrefabInstance:
     - target: {fileID: 7851380827036028973, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
       propertyPath: m_Name
       value: Drawer 2 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410943446260483702, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
+      propertyPath: m_TagString
+      value: nongog
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473145858675166586, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
+      propertyPath: m_TagString
+      value: nongog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
@@ -20255,7 +20271,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.63
+  m_Intensity: 0.06
   m_Range: 12.57
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -21358,7 +21374,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.7871675, b: 0.3160377, a: 1}
-  m_Intensity: 0.69
+  m_Intensity: 0.15
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -29532,7 +29548,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.59
+  m_Intensity: 0.38
   m_Range: 4.79
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -30360,7 +30376,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.3
+  m_Intensity: 0.4
   m_Range: 7.41
   m_SpotAngle: 79.3
   m_InnerSpotAngle: 19.4
@@ -33851,7 +33867,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.51
+  m_Intensity: 0.15
   m_Range: 13.55
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -41548,7 +41564,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.12
+  m_Intensity: 0.15
   m_Range: 5.75
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -44160,7 +44176,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.67
+  m_Intensity: 0.13
   m_Range: 12.04
   m_SpotAngle: 45.6
   m_InnerSpotAngle: 21.80208
@@ -50119,8 +50135,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1869630531}
     m_Modifications:
     - target: {fileID: 5912886652936322248, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
+      propertyPath: m_TagString
+      value: nongog
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912886652936322248, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6491328394686884468, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
+      propertyPath: m_TagString
+      value: nongog
       objectReference: {fileID: 0}
     - target: {fileID: 6491328394686884468, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -50195,8 +50219,16 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8410943446260483702, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
+      propertyPath: m_TagString
+      value: nongog
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410943446260483702, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473145858675166586, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
+      propertyPath: m_TagString
+      value: nongog
       objectReference: {fileID: 0}
     - target: {fileID: 8473145858675166586, guid: c492efe3e037d4447923edc38633bd5b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -60646,7 +60678,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.37
+  m_Intensity: 0.09
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
