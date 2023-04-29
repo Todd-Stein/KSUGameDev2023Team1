@@ -34,6 +34,8 @@ public class script_responseToHunt : MonoBehaviour
     public float vignetVal;
     public float ChromVal;
 
+    public AudioSource hbeat;
+
     private void Awake()
     {
         if(vignette == null)
@@ -131,7 +133,9 @@ public class script_responseToHunt : MonoBehaviour
     }
     public void EnableResponseToHuntMode(Transform lookAtLoc)
     {
+        hbeat.Play();
         hunt = true;
+        
         //postVig.active = true;
         //postChrom.active = true;
         
@@ -147,7 +151,7 @@ public class script_responseToHunt : MonoBehaviour
     }
     public void DisableResponseToHuntMode()
     {
-
+        hbeat.Stop();
         hunt = false;
 
         /*
