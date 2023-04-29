@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class script_responseToHunt : MonoBehaviour
 {
@@ -22,6 +24,16 @@ public class script_responseToHunt : MonoBehaviour
     [SerializeField]
     private float turnCurrentTime = 0.0f;
 
+    [SerializeField]
+    public PostProcessVolume vol;
+    [SerializeField]
+    private bool hunt;
+    private Vignette postVig;
+    private ChromaticAberration postChrom;
+
+    public float vignetVal;
+    public float ChromVal;
+
     private void Awake()
     {
         if(vignette == null)
@@ -34,6 +46,9 @@ public class script_responseToHunt : MonoBehaviour
         controls1 = GetComponent<FirstPersonController>();
         controls2 = GetComponent<player_controls>();
 
+
+        vol.profile.TryGetSettings<Vignette>(out postVig);
+        vol.profile.TryGetSettings<ChromaticAberration>(out postChrom);
     }
 
     // Start is called before the first frame update
@@ -46,11 +61,48 @@ public class script_responseToHunt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        vignette.SetActive(isNearTony);
 
-        controls1.enabled = isTurningAnimDone;
-        controls2.enabled = isTurningAnimDone;
+
+        //vignette.SetActive(isNearTony);
+
+        if (hunt)
+        {
+            if (postVig.intensity.value <= vignetVal)
+            {
+                postVig.intensity.value += 1f * Time.deltaTime;
+            }
+            if(postChrom.intensity.value <= ChromVal)
+            {
+                postChrom.intensity.value += 2f * Time.deltaTime;
+            }
+
+        }
+        if (!hunt)
+        {
+            if (postVig.intensity.value >= 0)
+            {
+                postVig.intensity.value -= 1f * Time.deltaTime;
+            }
+            if (postChrom.intensity.value >= 0)
+            {
+                postChrom.intensity.value -= 2f * Time.deltaTime;
+            }
+            if(postVig.intensity.value <= 0)
+            {
+                postVig.intensity.value = 0;
+                //postVig.active = false;
+            }
+            if(postChrom.intensity.value <= 0)
+            {
+                postVig.intensity.value = 0;
+                //postVig.active = false;
+            }
+        }
+
+       // controls1.enabled = isTurningAnimDone;
+       //controls2.enabled = isTurningAnimDone;
        
+        /*
         if(!isTurningAnimDone)
         {
             turnCurrentTime += Time.deltaTime / turnTotalTime;
@@ -75,20 +127,33 @@ public class script_responseToHunt : MonoBehaviour
                 DisableResponseToHuntMode();
             }
         }
+        */
     }
     public void EnableResponseToHuntMode(Transform lookAtLoc)
     {
+        hunt = true;
+        //postVig.active = true;
+        //postChrom.active = true;
+        
+
+        /*
         turnCurrentTime = 0.0f;
         Debug.Log("player response");
         isNearTony = true;
         isTurningAnimDone = false;
         playerOriginalRot = transform.rotation;
         tonyLookAt =  Quaternion.LookRotation(lookAtLoc.position, Vector3.up);
+        */
     }
     public void DisableResponseToHuntMode()
     {
+
+        hunt = false;
+
+        /*
         isNearTony = false;
         isTurningAnimDone = true;
         turnCurrentTime = turnTotalTime;
+        */
     }
 }
