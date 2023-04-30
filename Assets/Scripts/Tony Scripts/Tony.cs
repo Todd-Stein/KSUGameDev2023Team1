@@ -33,8 +33,8 @@ public class Tony : MonoBehaviour
     public float idleTimer;
     bool idle;              // Whether Tony is idle or not
     public float huntTimer;
+    bool huntBegin;
     private float dmgCooldown;
-
 
     public GameObject playerRef;
 
@@ -47,6 +47,7 @@ public class Tony : MonoBehaviour
     void Start()
     {
         hunting = false;
+        huntBegin = false;
         alerted = false;
         idle = false;
         ani = GetComponent<Animator>();
@@ -77,23 +78,12 @@ public class Tony : MonoBehaviour
 
         agent.speed = speed; // Change speed as necessary
 
-        if (checkGoals())
+        if (checkGoals() && !hunting) // If he has reached an alert or patrol point, and is not hunting the player
         {
             try { changeGoal(goals[Random.Range(0, goals.Count)]); }
             catch { }
-
-            // Change currentGoal to next goal in goals[]
-            /*if (goalIndex < goals.Length)
-            {
-                //currentGoal = goals[++goalIndex].GetComponent<Transform>();
-                changeGoal(goals[++goalIndex].GetComponent<Transform>());
-            } else
-            {
-                goalIndex = 0;
-                //currentGoal = goals[goalIndex].GetComponent<Transform>();
-                changeGoal(goals[goalIndex].GetComponent<Transform>());
-            }*/
-            //agent.destination = currentGoal.position;
+        } else if (!huntBegin && hunting && agent.remainingDistance <= 0.10f) { // If Tony is hunting and the player is within .10 units...
+            playerHit(playerRef.GetComponent<Collider>());        // Damage the player
         }
     }
 
@@ -101,16 +91,16 @@ public class Tony : MonoBehaviour
     {
        
         if (collision.gameObject.CompareTag("Player") &&
-            !hunting)
+            !hunting && !huntBegin)
         {
             GameObject player = collision.gameObject.GetComponent<GameObject>();
             OnTheHunt(player);
         }
-        else if (collision.gameObject.CompareTag("Player"))
+        /*else if (collision.gameObject.CompareTag("Player") && hunting)
         {
             playerHit(collision.collider);
             playerHasResponded = false;
-        }
+        }*/
     }
 
     //Tony heads towards source of sound
@@ -128,7 +118,7 @@ public class Tony : MonoBehaviour
         //increased speed for 10 secs after hunting == false
 
         //increased speed and aggression
-        //after 1.5: hunting  == false
+        //after 1.5: huntBegin == false, increase speed
         //after 10: speed is normal
         if (!hunting)
         {
@@ -143,6 +133,7 @@ public class Tony : MonoBehaviour
             huntTimer = 11.5f;
             speed = 0;
             hunting = true;
+            huntBegin = true;
 
             Debug.Log("Hunting");
 
@@ -154,6 +145,7 @@ public class Tony : MonoBehaviour
     {
         if (idleTimer > 0 && idle == true)
         {
+            if (!ani.GetBool("idle")) { ani.SetBool("idle", true); } // Show him as idle if not already
             speed = 0;
             idleTimer -= Time.deltaTime;
         }
@@ -164,6 +156,7 @@ public class Tony : MonoBehaviour
             speed = aggression / 10;
             idleTimer = 0;
             idle = false;
+            changeGoal(goals[Random.Range(0, goals.Count)]);
         }
 
         if (dmgCooldown > 0)
@@ -172,16 +165,23 @@ public class Tony : MonoBehaviour
         if (huntTimer > 0)
         {
             huntTimer -= Time.deltaTime;
+            changeGoal(playerRef.transform);    // change the goal to the player, as they are (theoretically) always moving
+        } else if (hunting)
+        {
+            hunting = false; // No longer hunting
+            huntTimer = 0;   // Set hunt timer to 0
+            speed = aggression / 10; // Reset to default speed
+            changeGoal(goals[Random.Range(0, goals.Count)]); // Random patrol point
         }
 
-        if (hunting && huntTimer <= 10f) // 1.5f huntTimer is over, start chasing player
+        if (huntBegin && huntTimer <= 10f) // 1.5f huntTimer is over, start chasing player
         {
             Debug.Log("No More Hunt");
-            //hunting = false;
-            speed = aggression / 5;
+            huntBegin = false;      // Hunt cooldown end
+            speed = aggression / 8; // Slightly increase speed instead of the previous massive increase
             playerRef.GetComponent<script_responseToHunt>().DisableResponseToHuntMode();
-            playerHasResponded = false;
-            changeGoal(playerRef.transform);
+            playerHasResponded = false; // Player response finished
+            changeGoal(playerRef.transform); // Set goal as where player was when this period ended
         }
     }
 
@@ -191,7 +191,7 @@ public class Tony : MonoBehaviour
             !alerted && !hunting)
         {
             ani.SetBool("walk", false);
-            ani.SetBool("idle", true);
+            //ani.SetBool("idle", true);
             //speed = ;
             //idleTimer = (float)((100 - aggression) / 10); // Waits idle for less time as aggression increases
             goalIndex = Random.Range(0, goals.Count);
@@ -203,13 +203,14 @@ public class Tony : MonoBehaviour
             alerted = false;
             speed = 0;
             idleTimer = 2f; // Waits idle for less time as aggression increases
+            ani.SetBool("idle", true);
             goalIndex = Random.Range(0, goals.Count);
             agent.autoBraking = false;
             return true;
-        } else if (hunting && agent.remainingDistance <= 0.5f)
+        } else if (hunting && agent.remainingDistance <= 0.25f) // No longer can happen
         {
             playerHit(playerRef.GetComponent<Collider>());
-            return true;
+            return false;
         }
         return false;
     }
@@ -245,7 +246,19 @@ public class Tony : MonoBehaviour
             other.GetComponent<player_health>().RecieveHit();
             dmgCooldown = 0.5f;
             speed = 0;
+            idle = true;
             idleTimer = 0.5f;
+            ani.SetBool("idle", true);
         }
+    }
+
+    public void EndHunt() // End the hunt early (player dies, game ends, etc)
+    {
+        hunting = false;
+        huntBegin = false;
+        huntTimer = 0f;
+        speed = aggression / 10;
+        playerHasResponded = false;
+        changeGoal(goals[Random.Range(0, goals.Count)]);
     }
 }
