@@ -15,6 +15,10 @@ public class SoundEvent : MonoBehaviour
     public AudioClip sound;
     private AudioSource au;
 
+    public bool looping;
+
+    public LayerMask Tony;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +38,11 @@ public class SoundEvent : MonoBehaviour
     void Update()
     {
         //Test execution
-        if (Input.GetKeyDown(KeyCode.Q))
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log("Activating event");
             activateNoiseEvent();
-        }
+        }*/
         
         if (soundtrigger.enabled)
         {
@@ -49,6 +53,28 @@ public class SoundEvent : MonoBehaviour
                 soundtrigger.enabled = false;
             }
         }
+
+
+        try
+        {
+            if (au.isPlaying == true && looping)
+            {
+               
+                Collider[] hits = Physics.OverlapSphere(transform.position, 2f, Tony);
+                foreach (var hit in hits)
+                {
+                    Debug.Log("checking Collider!");
+                    if (hit.tag == "Tony")
+                    {
+                        au.Stop();
+                    }
+                }
+            }
+        }
+        catch { }
+        
+
+        
     }
 
     public void activateNoiseEvent()

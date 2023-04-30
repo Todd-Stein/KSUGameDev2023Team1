@@ -8,15 +8,15 @@ public class EnvironmentSound : MonoBehaviour
 
     private SoundEvent SE;
 
-    public AudioClip sound;
+    //public AudioClip sound;
     private AudioSource au;
     // Start is called before the first frame update
     void Start()
     {
         SE = GetComponentInChildren<SoundEvent>();
         Debug.Log(SE.name);
-        au = gameObject.GetComponent<AudioSource>();
-        au.clip = sound;
+        au = gameObject.GetComponentInChildren<AudioSource>();
+        //au.clip = sound;
     }
 
     // Update is called once per frame
@@ -27,6 +27,10 @@ public class EnvironmentSound : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.tag == "NoiseMaker" || other.gameObject.layer == 10)
+        {
+            return;
+        }
         if(other.tag == "Player")
         {
             Debug.Log("EnviroSound Activated");

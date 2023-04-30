@@ -40,12 +40,11 @@ public class Goggles : MonoBehaviour
         Debug.Log("Unrendering all goggles");
         for (int i = 0; i < goggleobjs.Length; ++i)
         {
-            goggleobjs[i].GetComponent<MeshRenderer>().enabled = false;
-            Debug.Log("Disabling rend of" + goggleobjs[i].name);
+                try { goggleobjs[i].GetComponent<MeshRenderer>().enabled = false; }
+                catch { }
+                try { goggleobjs[i].GetComponent<SkinnedMeshRenderer>().enabled = false; }
+                catch { }
         }
-;
-        
-
         Debug.Log("end of goggle start!");
     }
 
@@ -118,6 +117,8 @@ public class Goggles : MonoBehaviour
 
         for (int i = 0; i < nongogobjs.Length; ++i)
         {
+            try { if (nongogobjs[i].GetComponent<Door>().opened == true) { continue; } }
+            catch { }
             try { nongogobjs[i].GetComponent<MeshRenderer>().enabled = true; }
             catch { }
         }

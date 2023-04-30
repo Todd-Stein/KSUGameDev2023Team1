@@ -79,7 +79,21 @@ public class Tony : MonoBehaviour
 
         if (checkGoals())
         {
-            changeGoal(goals[Random.Range(0, goals.Count)]); // Changes goal to random patrol point in goals list
+            try { changeGoal(goals[Random.Range(0, goals.Count)]); }
+            catch { }
+
+            // Change currentGoal to next goal in goals[]
+            /*if (goalIndex < goals.Length)
+            {
+                //currentGoal = goals[++goalIndex].GetComponent<Transform>();
+                changeGoal(goals[++goalIndex].GetComponent<Transform>());
+            } else
+            {
+                goalIndex = 0;
+                //currentGoal = goals[goalIndex].GetComponent<Transform>();
+                changeGoal(goals[goalIndex].GetComponent<Transform>());
+            }*/
+            //agent.destination = currentGoal.position;
         }
     }
 

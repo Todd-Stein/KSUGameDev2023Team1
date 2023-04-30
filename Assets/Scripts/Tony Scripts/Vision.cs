@@ -21,17 +21,24 @@ public class Vision : MonoBehaviour
 
     private void Update()
     {
-        if (curHitObj.CompareTag("Player") && !goggs)
+        try
         {
-            tony.GetComponent<Tony>().OnAlert(curHitObj, 10);
-            Debug.Log("Alerted");
+            if (curHitObj.CompareTag("Player") && !goggs)
+            {
+                tony.GetComponent<Tony>().OnAlert(curHitObj, 10);
+                Debug.Log("Alerted");
+            }
         }
-
-        if (curHitObj.CompareTag("Player") && goggs && !GetComponent<Tony>().hunting)
+        catch { }
+        try
         {
-            tony.GetComponent<Tony>().OnTheHunt(curHitObj);
-            Debug.Log("Hunting");
+            if (curHitObj.CompareTag("Player") && goggs)
+            {
+                tony.GetComponent<Tony>().OnTheHunt(curHitObj);
+                Debug.Log("Hunting");
+            }
         }
+        catch { }
     }
 
     private void FixedUpdate()
