@@ -16,7 +16,6 @@ public class Vision : MonoBehaviour
     private Vector3 dir;
     private float curHitDis;
 
-
     [SerializeField]
     GameObject tony;
 
@@ -28,7 +27,7 @@ public class Vision : MonoBehaviour
             Debug.Log("Alerted");
         }
 
-        if (curHitObj.CompareTag("Player") && goggs)
+        if (curHitObj.CompareTag("Player") && goggs && !GetComponent<Tony>().hunting)
         {
             tony.GetComponent<Tony>().OnTheHunt(curHitObj);
             Debug.Log("Hunting");
