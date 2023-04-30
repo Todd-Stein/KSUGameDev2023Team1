@@ -16,7 +16,6 @@ public class Vision : MonoBehaviour
     private Vector3 dir;
     private float curHitDis;
 
-
     [SerializeField]
     GameObject tony;
 
