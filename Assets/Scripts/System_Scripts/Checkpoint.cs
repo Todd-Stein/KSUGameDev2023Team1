@@ -98,6 +98,7 @@ public class Checkpoint : MonoBehaviour
         {
             Tony.transform.position = new Vector3(PlayerPrefs.GetFloat("TonyPosX"), PlayerPrefs.GetFloat("TonyPosY"), PlayerPrefs.GetFloat("TonyPosZ")); // Set Tony's position to the saved position
             Tony.GetComponent<Tony>().aggression = PlayerPrefs.GetInt("TonyAggression"); // Set Tony's aggression to the saved aggression level
+            Tony.GetComponent<Tony>().EndHunt(); // End Tony's hunt mode
         }
     }
 
