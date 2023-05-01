@@ -16,21 +16,22 @@ using UnityEngine.AI;
 
 public class Tony : MonoBehaviour
 {
-    public bool hunting; // To be toggled when he is in hunt mode
-    public bool alerted; // To be toggled when noise can/is heard by him
+    public bool hunting;              // To be toggled when he is in hunt mode
+    public bool alerted;              // To be toggled when noise can/is heard by him
     private bool playerHasResponded = false;
-    public float speed;  // Changes the speed that Tony moves
-    public const float baseSpeed = 4;   // Base speed for Tony when not alerted
-    public Transform currentGoal; // The current goal for Tony to move to
-    public List<Transform> goals; // An array of goals for Tony to move to
+    public float speed;               // Changes the speed that Tony moves
+    public const float baseSpeed = 4; // Base speed for Tony when not alerted
+    public Transform currentGoal;     // The current goal for Tony to move to
+    public List<Transform> goals;     // An array of goals for Tony to move to
     public int goalIndex;
-    public GameObject initialGoals; // A parent gameobject of each tony goal, initial to the scene
+    public GameObject initialGoals;   // A parent gameobject of each tony goal, initial to the scene
 
-    public GameObject soundSphere; // Tony's listening range, in the form of a sphere
+    public GameObject soundSphere;    // Tony's listening range, in the form of a sphere
 
-    public int aggression; // Tony's current aggression level.
+    public int aggression;  // Tony's current aggression level.
 
     public float idleTimer;
+    bool idle;              // Whether Tony is idle or not
     public float huntTimer;
     private float dmgCooldown;
 
@@ -45,12 +46,11 @@ public class Tony : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentGoal = goals[Random.Range(0, goals.Count)];
         hunting = false;
         alerted = false;
+        idle = false;
         ani = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = currentGoal.position;
         personalTransform = GetComponent<Transform>();
         goalIndex = 0;
         idleTimer = 0;
@@ -62,10 +62,12 @@ public class Tony : MonoBehaviour
         {
             playerRef = GameObject.FindGameObjectWithTag("Player");
         }
-        foreach (Transform pnt in initialGoals.GetComponentsInChildren<Transform>())
+        foreach (Transform pnt in initialGoals.GetComponentsInChildren<Transform>()) // Iterate through the children of the initialGoals GameObject and add their transforms as patrol points
         {
-            goals.Add(pnt); // Assign Tony's next patrol points
+            goals.Add(pnt); // Assign Tony's first patrol points
         }
+        currentGoal = goals[Random.Range(0, goals.Count)];
+        agent.destination = currentGoal.position;
     }
 
     // Update is called once per frame
@@ -77,7 +79,8 @@ public class Tony : MonoBehaviour
 
         if (checkGoals())
         {
-            changeGoal(goals[Random.Range(0, goals.Count)]);
+            try { changeGoal(goals[Random.Range(0, goals.Count)]); }
+            catch { }
 
             // Change currentGoal to next goal in goals[]
             /*if (goalIndex < goals.Length)
@@ -116,7 +119,7 @@ public class Tony : MonoBehaviour
         aggroIncrease(aggro);
         changeGoal(other.transform); // Changes destination to object that alerted Tony
         alerted = true;
-        agent.autoBraking = true; // Enable autobraking for distractables
+        agent.autoBraking = true;    // Enable autobraking for distractables
     }
 
     public void OnTheHunt(GameObject other)
@@ -127,50 +130,58 @@ public class Tony : MonoBehaviour
         //increased speed and aggression
         //after 1.5: hunting  == false
         //after 10: speed is normal
-
-        agent.autoBraking = false;
-
-        if (!playerHasResponded)
+        if (!hunting)
         {
-            playerRef.GetComponent<script_responseToHunt>().EnableResponseToHuntMode(transform);
-            playerHasResponded = true;
+            agent.autoBraking = false;
+
+            if (!playerHasResponded)
+            {
+                playerRef.GetComponent<script_responseToHunt>().EnableResponseToHuntMode(transform);
+                playerHasResponded = true;
+            }
+
+            huntTimer = 11.5f;
+            speed = 0;
+            hunting = true;
+
+            Debug.Log("Hunting");
+
+            changeGoal(other.transform);
         }
-
-        huntTimer = 11.5f;
-        hunting = true;
-
-        speed = aggression / 5;   //doubles current speed
-
-        Debug.Log("Hunting");
-
-        changeGoal(other.transform);
     }
 
     private void Timer()
     {
-        if (idleTimer > 0)
+        if (idleTimer > 0 && idle == true)
+        {
+            speed = 0;
             idleTimer -= Time.deltaTime;
-        else
+        }
+        else if (idleTimer <= 0 && idle == true)
         {
             ani.SetBool("idle", false);
             ani.SetBool("walk", true);
             speed = aggression / 10;
             idleTimer = 0;
+            idle = false;
         }
 
         if (dmgCooldown > 0)
             dmgCooldown -= Time.deltaTime;
 
         if (huntTimer > 0)
+        {
             huntTimer -= Time.deltaTime;
+        }
 
-        if (hunting && huntTimer <= 10f)
+        if (hunting && huntTimer <= 10f) // 1.5f huntTimer is over, start chasing player
         {
             Debug.Log("No More Hunt");
-            hunting = false;
-            speed = aggression / 10;
+            //hunting = false;
+            speed = aggression / 5;
             playerRef.GetComponent<script_responseToHunt>().DisableResponseToHuntMode();
             playerHasResponded = false;
+            changeGoal(playerRef.transform);
         }
     }
 
@@ -181,7 +192,7 @@ public class Tony : MonoBehaviour
         {
             ani.SetBool("walk", false);
             ani.SetBool("idle", true);
-            speed = 0;
+            //speed = ;
             //idleTimer = (float)((100 - aggression) / 10); // Waits idle for less time as aggression increases
             goalIndex = Random.Range(0, goals.Count);
             return true;
@@ -194,6 +205,10 @@ public class Tony : MonoBehaviour
             idleTimer = 2f; // Waits idle for less time as aggression increases
             goalIndex = Random.Range(0, goals.Count);
             agent.autoBraking = false;
+            return true;
+        } else if (hunting && agent.remainingDistance <= 0.5f)
+        {
+            playerHit(playerRef.GetComponent<Collider>());
             return true;
         }
         return false;

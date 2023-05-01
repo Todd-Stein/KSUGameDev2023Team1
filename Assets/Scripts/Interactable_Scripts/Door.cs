@@ -8,10 +8,14 @@ public class Door : MonoBehaviour
     public bool unlocked = false;
     public bool opened = false;
 
+    public AudioSource openSound;
+    public AudioSource openDone;
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -30,12 +34,7 @@ public class Door : MonoBehaviour
     {
         if (unlocked)
         {
-            gameObject.GetComponent<BoxCollider>().enabled = false;
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
-            opened = true;
-            GetComponent<NavMeshObstacle>().enabled = false;
-            //gameObject.GetComponent<SoundEvent>().activateNoiseEvent();
-            
+            animator.SetBool("Open", true);
         }
     }
 
@@ -44,5 +43,19 @@ public class Door : MonoBehaviour
         gameObject.GetComponent<BoxCollider>().enabled = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<SoundEvent>().activateNoiseEvent();
+    }
+
+    public void playOpen()
+    {
+        openSound.Play();
+    }
+
+    public void OpenDone()
+    {
+        openDone.Play();
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        opened = true;
+        GetComponent<NavMeshObstacle>().enabled = false;
     }
 }

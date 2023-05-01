@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2103824957955301935}
   m_Layer: 0
   m_Name: Ring Pull
-  m_TagString: Untagged
+  m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
