@@ -122,18 +122,19 @@ public class Tony : MonoBehaviour
         //after 10: speed is normal
         if (!hunting)
         {
-            agent.autoBraking = false;
+            aggroIncrease(1); // Increase aggression slightly
+            agent.autoBraking = false; // Tony does not slow down as he approaches goal
 
-            if (!playerHasResponded)
+            if (!playerHasResponded) // If player response has not already played...
             {
-                playerRef.GetComponent<script_responseToHunt>().EnableResponseToHuntMode(transform);
-                playerHasResponded = true;
+                playerRef.GetComponent<script_responseToHunt>().EnableResponseToHuntMode(transform); // Play player response
+                playerHasResponded = true; // Confirm the player has responded now
             }
 
-            huntTimer = 11.5f;
-            speed = 0;
+            huntTimer = 11.5f; // Set hunt timer to 11.5 seconds
+            speed = 0; // Speed to 0 for 1.5 seconds
             hunting = true;
-            huntBegin = true;
+            huntBegin = true; // The hunting
 
             Debug.Log("Hunting");
 
@@ -188,29 +189,24 @@ public class Tony : MonoBehaviour
     bool checkGoals()
     {
         if (agent.remainingDistance <= 0f &&
-            !alerted && !hunting)
+            !alerted && !hunting) // If Tony is simply patrolling, and has reached a patrol point...
         {
-            ani.SetBool("walk", false);
+            //ani.SetBool("walk", false);
             //ani.SetBool("idle", true);
             //speed = ;
             //idleTimer = (float)((100 - aggression) / 10); // Waits idle for less time as aggression increases
-            goalIndex = Random.Range(0, goals.Count);
+            goalIndex = Random.Range(0, goals.Count); // Get a new patrol point
             return true;
-
         }
-        else if (alerted && agent.remainingDistance <= 4f)
+        else if (alerted && agent.remainingDistance <= 4f) // If Tony was alerted by an object and reached it...
         {
-            alerted = false;
-            speed = 0;
-            idleTimer = 2f; // Waits idle for less time as aggression increases
-            ani.SetBool("idle", true);
-            goalIndex = Random.Range(0, goals.Count);
-            agent.autoBraking = false;
+            alerted = false; // No longer alert
+            speed = 0;      // Waits idle for a time
+            idleTimer = 2f; // Waits idle for less time as aggression increases(?)
+            ani.SetBool("idle", true); // Animation set to idle animation
+            goalIndex = Random.Range(0, goals.Count); // Set goal index to random goal - does nothing
+            agent.autoBraking = false; // Turn off autobraking so Tony doesn't slow when reaching goal
             return true;
-        } else if (hunting && agent.remainingDistance <= 0.25f) // No longer can happen
-        {
-            playerHit(playerRef.GetComponent<Collider>());
-            return false;
         }
         return false;
     }
@@ -226,7 +222,7 @@ public class Tony : MonoBehaviour
         aggression += value;
         if (hunting)
         {
-            speed = aggression / 5;
+            speed = aggression / 8;
         }
         else
         {
