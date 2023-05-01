@@ -42,6 +42,8 @@ public class Tony : MonoBehaviour
     Transform personalTransform;
     //private GameObject playerRef;
     Animator ani;
+    [SerializeField]
+    AudioSource roar;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +55,7 @@ public class Tony : MonoBehaviour
         ani = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         personalTransform = GetComponent<Transform>();
+        roar = GetComponent<AudioSource>();
         goalIndex = 0;
         idleTimer = 0;
         dmgCooldown = 0;
@@ -82,7 +85,7 @@ public class Tony : MonoBehaviour
         {
             try { changeGoal(goals[Random.Range(0, goals.Count)]); }
             catch { }
-        } else if (!huntBegin && hunting && agent.remainingDistance <= 0.10f) { // If Tony is hunting and the player is within .10 units...
+        } else if (!huntBegin && hunting && agent.remainingDistance <= 1f) { // If Tony is hunting and the player is within .10 units...
             playerHit(playerRef.GetComponent<Collider>());        // Damage the player
         }
     }
@@ -122,6 +125,7 @@ public class Tony : MonoBehaviour
         //after 10: speed is normal
         if (!hunting)
         {
+            roar.Play();
             aggroIncrease(1); // Increase aggression slightly
             agent.autoBraking = false; // Tony does not slow down as he approaches goal
 
