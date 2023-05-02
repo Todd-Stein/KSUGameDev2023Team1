@@ -11,6 +11,10 @@ public class Goggles : MonoBehaviour
     private Stack<GameObject> nongogobjs2;
 
     private GameObject[] nongogobjs;
+
+    public float goggleTime;
+    private float gogtime;
+    private bool rendered = false;
     
     // Start is called before the first frame update
     void Start()
@@ -48,29 +52,20 @@ public class Goggles : MonoBehaviour
         Debug.Log("end of goggle start!");
     }
 
+    private void Update()
+    {
+        if(rendered == false && Time.time >= gogtime + goggleTime)
+        {
+            TakeOff();
+            rendered = true;
+        }
+    }
+
     public void Activate()
     {
         Debug.Log("GOGGLES ON!");
         Debug.Log("Activate nongog count " + nongogobjs1.Count);
-        /*if (nongogobjs1.Count > 0)
-        {
-            for (int i = 0; i < nongogobjs1.Count; ++i)
-            {
-                Debug.Log("Disableing " + nongogobjs1.Peek().name);
-                try { nongogobjs1.Peek().GetComponent<MeshRenderer>().enabled = false; }
-                catch { }
-                nongogobjs2.Push(nongogobjs1.Pop());
-            }
-        }
-        else
-        {
-            for (int i = 0; i < nongogobjs2.Count; ++i)
-            {
-                Debug.Log("Disableing");
-                nongogobjs2.Peek().GetComponent<MeshRenderer>().enabled = false;
-                nongogobjs1.Push(nongogobjs2.Pop());
-            }
-        }*/
+        rendered = false;
 
         for(int i = 0; i < nongogobjs.Length; ++i)
         {
@@ -95,6 +90,8 @@ public class Goggles : MonoBehaviour
     public void Disable()
     {
         Debug.Log("GOGGELS OFF");
+        rendered = true;
+        gogtime = Time.time;
         /*if (nongogobjs1.Count > 0)
         {
             for (int i = 0; nongogobjs1.Count != 0; ++i)
@@ -115,6 +112,12 @@ public class Goggles : MonoBehaviour
             }
         }*/
 
+        
+        
+    }
+
+    void TakeOff()
+    {
         for (int i = 0; i < nongogobjs.Length; ++i)
         {
             try { if (nongogobjs[i].GetComponent<Door>().opened == true) { continue; } }
@@ -127,10 +130,9 @@ public class Goggles : MonoBehaviour
         {
 
             try { goggleobjs[i].GetComponent<MeshRenderer>().enabled = false; }
-            catch {}
+            catch { }
             try { goggleobjs[i].GetComponent<SkinnedMeshRenderer>().enabled = false; }
             catch { }
         }
-        
     }
 }
