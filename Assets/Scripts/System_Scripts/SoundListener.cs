@@ -24,7 +24,8 @@ public class SoundListener : MonoBehaviour
         if (other.gameObject.layer == 6 && other.isTrigger || other.gameObject.layer == 7 && other.isTrigger)
         {
             soundlocation = other.gameObject;
-            tony.GetComponent<Tony>().OnAlert(other.gameObject, other.GetComponent<SoundEvent>().noise); // Call Tony's alert script, increasing aggression by noise level
+            try { tony.GetComponent<Tony>().OnAlert(other.gameObject, other.GetComponent<SoundEvent>().noise); } // Call Tony's alert script, increasing aggression by noise level
+            catch { }
             Debug.Log("Heared sound event" + other.name + " other.enebled = " + other.enabled);
         }
     }

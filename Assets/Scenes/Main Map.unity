@@ -19616,6 +19616,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7904971419732683029, guid: e8e03412500878c40829c5647b402ae1, type: 3}
   m_PrefabInstance: {fileID: 569656791}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &569656797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569656792}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8eded130c7a27b4194d9d84b35e8ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tony: {fileID: 0}
 --- !u!1001 &570947361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42577,6 +42590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goggleTime: 1.5
+  TS: {fileID: 569656797}
 --- !u!4 &1248382134
 Transform:
   m_ObjectHideFlags: 0
@@ -75470,6 +75484,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000776460, guid: 49feeeaf946a51b4bb1594407c4da2c9, type: 3}
       propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401309857320815938, guid: 49feeeaf946a51b4bb1594407c4da2c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401309857320815938, guid: 49feeeaf946a51b4bb1594407c4da2c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5824550130920590844, guid: 49feeeaf946a51b4bb1594407c4da2c9, type: 3}

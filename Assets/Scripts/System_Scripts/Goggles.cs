@@ -14,7 +14,9 @@ public class Goggles : MonoBehaviour
 
     public float goggleTime;
     private float gogtime;
-    private bool rendered = false;
+    private bool rendered = true;
+
+    public TonySpawner TS;
     
     // Start is called before the first frame update
     void Start()
@@ -22,13 +24,13 @@ public class Goggles : MonoBehaviour
         Debug.Log("GoggleStart");
         //if(goggleobjs == null)
         //{
-
+        goggleobjs = GameObject.FindGameObjectsWithTag("Goggle");
 
 
         Debug.Log("nongog object count is: " + GameObject.FindGameObjectsWithTag("nongog").Length);
         nongogobjs1 = new Stack<GameObject>();
         nongogobjs2 = new Stack<GameObject>();
-        goggleobjs = GameObject.FindGameObjectsWithTag("Goggle");
+        
 
         Debug.Log("Now doing nongogloop!");
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("nongog").Length; ++i)
@@ -50,6 +52,7 @@ public class Goggles : MonoBehaviour
                 catch { }
         }
         Debug.Log("end of goggle start!");
+        TS.enabled = true;
     }
 
     private void Update()
@@ -65,7 +68,7 @@ public class Goggles : MonoBehaviour
     {
         Debug.Log("GOGGLES ON!");
         Debug.Log("Activate nongog count " + nongogobjs1.Count);
-        rendered = false;
+        //rendered = false;
 
         for(int i = 0; i < nongogobjs.Length; ++i)
         {
@@ -90,7 +93,7 @@ public class Goggles : MonoBehaviour
     public void Disable()
     {
         Debug.Log("GOGGELS OFF");
-        rendered = true;
+        rendered = false;
         gogtime = Time.time;
         /*if (nongogobjs1.Count > 0)
         {
