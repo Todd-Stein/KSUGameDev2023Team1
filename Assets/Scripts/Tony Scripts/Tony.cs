@@ -171,7 +171,8 @@ public class Tony : MonoBehaviour
         {
             huntTimer -= Time.deltaTime;
             changeGoal(playerRef.transform);    // change the goal to the player, as they are (theoretically) always moving
-        } else if (hunting)
+        } 
+        else if (hunting)
         {
             hunting = false; // No longer hunting
             huntTimer = 0;   // Set hunt timer to 0
@@ -237,7 +238,7 @@ public class Tony : MonoBehaviour
         soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
     }
 
-    void playerHit(Collider other)
+    public void playerHit(Collider other)
     {
         if (dmgCooldown <= 0)
         {
