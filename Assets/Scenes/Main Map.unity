@@ -6157,7 +6157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &156558009
 Transform:
   m_ObjectHideFlags: 0
@@ -14395,11 +14395,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6661960538314208218, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6661960538314208218, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6661960538314208218, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14435,7 +14435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6661960539643137120, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.75
+      value: -1.82
       objectReference: {fileID: 0}
     - target: {fileID: 6661960539643137120, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14443,7 +14443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6661960539643137120, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.41
+      value: 21.31
       objectReference: {fileID: 0}
     - target: {fileID: 6661960539643137120, guid: b7b12b213a915234f8cc2be5b7ac6c8b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -75720,7 +75720,7 @@ PrefabInstance:
     - target: {fileID: 5824550130920590844, guid: 49feeeaf946a51b4bb1594407c4da2c9, type: 3}
       propertyPath: playerRef
       value: 
-      objectReference: {fileID: 405232582}
+      objectReference: {fileID: 0}
     - target: {fileID: 5824550130920590844, guid: 49feeeaf946a51b4bb1594407c4da2c9, type: 3}
       propertyPath: initialGoals
       value: 

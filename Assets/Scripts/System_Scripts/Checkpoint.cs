@@ -115,7 +115,7 @@ public class Checkpoint : MonoBehaviour
         Tony = GameObject.Find("Tony"); // Finds Tony in the scene
         used = false; // Sets this Checkpoint to not having been passed through
         //gameOverOverlay = GameObject.Find("Game Over Overlay"); // Finds game over overlay in the scene
-        mainCam = GameObject.Find("PlayerCamera");
+        //mainCam = GameObject.Find("PlayerCamera");
     }
 
     private void OnDisable() // Function called when this Checkpoint is disabled in the scene
