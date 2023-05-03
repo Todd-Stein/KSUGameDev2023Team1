@@ -50614,22 +50614,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &1436934624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436934619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 999126c14526ea44181a28f65953b3cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPos: {x: 1.1, y: -1.610318, z: 0}
-  targetRot: {x: 0.14739424, y: -0.09017123, z: -0.8402015, w: 0.5140093}
-  LERP: 0
-  smoothSpeed: 1
 --- !u!1001 &1439374742
 PrefabInstance:
   m_ObjectHideFlags: 0
