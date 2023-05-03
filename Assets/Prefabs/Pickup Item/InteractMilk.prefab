@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 807553115381311377}
   - component: {fileID: 807553115381311383}
   - component: {fileID: 807553115381311378}
-  - component: {fileID: 1620003711339053505}
+  - component: {fileID: 4324534960571678218}
   m_Layer: 7
-  m_Name: Pickup Item
+  m_Name: InteractMilk
   m_TagString: nongog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2122260180476168462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122260180476168462}
-  m_Mesh: {fileID: 3921628731195719971, guid: 6ee79a39487f7bb4abefb33640b1f96a, type: 3}
+  m_Mesh: {fileID: -8509748037407824054, guid: 6d7b1b7dbbae8b04999632ec36943117, type: 3}
 --- !u!23 &4637813716879721005
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53eee7cd88f521c499c9c2b4a993651c, type: 2}
+  - {fileID: 2100000, guid: a89a0e35bd9957c46ab4f8446709e7f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,8 +115,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.99999994
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Radius: 0.54
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &807553115381311383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   noise: 0
   noiseradius: 0
   sound: {fileID: 0}
---- !u!64 &1620003711339053505
+--- !u!64 &4324534960571678218
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,4 +159,4 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 3921628731195719971, guid: 6ee79a39487f7bb4abefb33640b1f96a, type: 3}
+  m_Mesh: {fileID: -8509748037407824054, guid: 6d7b1b7dbbae8b04999632ec36943117, type: 3}

@@ -22,6 +22,9 @@ public class player_health : MonoBehaviour
     public delegate void OnDeath();
     public static OnDeath onDeath;
 
+    public AudioClip playerHurt;
+    public float hurtAudioVolume = 1.0f;
+
     private void Awake()
     {
         currentHealth = totalHealth;
@@ -54,6 +57,8 @@ public class player_health : MonoBehaviour
         currentHealth--;
         isDead = currentHealth <= 0;
 
+        if(playerHurt != null)
+            AudioSource.PlayClipAtPoint(playerHurt, transform.position, hurtAudioVolume);
 
         bloodOverlay.SetActive(true);
         if (bloodMaterialRef.material != null)

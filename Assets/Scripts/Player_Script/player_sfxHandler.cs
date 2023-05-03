@@ -24,7 +24,7 @@ public class player_sfxHandler : MonoBehaviour
     public List<AudioClipSerialize> footsteps;
     private RaycastHit hit;
 
-    private float timeBetweenSteps = 0.0f;
+    public float timeBetweenSteps = 10.0f;
     private float currentTimeBetweenSteps = 0.0f;
 
     private Vector3 currentLoc, prevLoc;
@@ -63,7 +63,7 @@ public class player_sfxHandler : MonoBehaviour
                     {
                         AudioClip tempClip = temp.clip[Random.Range(0, temp.clip.Count)];
                         currentTimeBetweenSteps = 0.0f;
-                        timeBetweenSteps = tempClip.length;
+                        //timeBetweenSteps = tempClip.length;
                         audioSRC.PlayOneShot(tempClip);
                     }
                 }
