@@ -96,7 +96,7 @@ public class Tony : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") &&
             !hunting && !huntBegin)
         {
-            GameObject player = collision.gameObject.GetComponent<GameObject>();
+            GameObject player = collision.gameObject;
             OnTheHunt(player);
         }
         /*else if (collision.gameObject.CompareTag("Player") && hunting)
