@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 807553115381311384, guid: 61132a14a2e5abb4ba6b86a84636731c, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2122260180476168462, guid: 61132a14a2e5abb4ba6b86a84636731c, type: 3}
       propertyPath: m_Name
       value: InteractBlueCan
