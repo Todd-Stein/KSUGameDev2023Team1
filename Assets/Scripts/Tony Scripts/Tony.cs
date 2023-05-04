@@ -34,7 +34,6 @@ public class Tony : MonoBehaviour
     bool idle;              // Whether Tony is idle or not
     public float huntTimer;
     bool huntBegin;
-    private float dmgCooldown;
 
     public GameObject playerRef;
 
@@ -58,7 +57,6 @@ public class Tony : MonoBehaviour
         roar = GetComponent<AudioSource>();
         goalIndex = 0;
         idleTimer = 0;
-        dmgCooldown = 0;
         aggression = 20;
         speed = aggression / 10;
         soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
@@ -86,7 +84,8 @@ public class Tony : MonoBehaviour
             try { changeGoal(goals[Random.Range(0, goals.Count)]); }
             catch { }
         } else if (!huntBegin && hunting && agent.remainingDistance <= 1f) { // If Tony is hunting and the player is within .10 units...
-            playerHit(playerRef.GetComponent<Collider>());        // Damage the player
+            //playerHit();        // Damage the player
+            ani.SetTrigger("swipe");
         }
     }
 
@@ -99,11 +98,6 @@ public class Tony : MonoBehaviour
             GameObject player = collision.gameObject;
             OnTheHunt(player);
         }
-        /*else if (collision.gameObject.CompareTag("Player") && hunting)
-        {
-            playerHit(collision.collider);
-            playerHasResponded = false;
-        }*/
     }
 
     //Tony heads towards source of sound
@@ -125,8 +119,11 @@ public class Tony : MonoBehaviour
         //after 10: speed is normal
         if (!hunting)
         {
+            //speed = 0; // Speed to 0 for 1.5 seconds
+            agent.enabled = false;
             roar.Play();
-            aggroIncrease(1); // Increase aggression slightly
+            ani.SetBool("walk", false);
+            ani.SetTrigger("rage");
             agent.autoBraking = false; // Tony does not slow down as he approaches goal
 
             if (!playerHasResponded) // If player response has not already played...
@@ -136,8 +133,6 @@ public class Tony : MonoBehaviour
             }
 
             huntTimer = 11.5f; // Set hunt timer to 11.5 seconds
-            speed = 0; // Speed to 0 for 1.5 seconds
-            hunting = true;
             huntBegin = true; // The hunting
 
             Debug.Log("Hunting");
@@ -156,37 +151,24 @@ public class Tony : MonoBehaviour
         }
         else if (idleTimer <= 0 && idle == true)
         {
-            ani.SetBool("idle", false);
-            ani.SetBool("walk", true);
+            //GoIdle();
             speed = aggression / 10;
             idleTimer = 0;
             idle = false;
             changeGoal(goals[Random.Range(0, goals.Count)]);
         }
 
-        if (dmgCooldown > 0)
-            dmgCooldown -= Time.deltaTime;
-
         if (huntTimer > 0)
         {
             huntTimer -= Time.deltaTime;
             changeGoal(playerRef.transform);    // change the goal to the player, as they are (theoretically) always moving
-        } else if (hunting)
+        } 
+        else if (hunting)
         {
             hunting = false; // No longer hunting
             huntTimer = 0;   // Set hunt timer to 0
             speed = aggression / 10; // Reset to default speed
             changeGoal(goals[Random.Range(0, goals.Count)]); // Random patrol point
-        }
-
-        if (huntBegin && huntTimer <= 10f) // 1.5f huntTimer is over, start chasing player
-        {
-            Debug.Log("No More Hunt");
-            huntBegin = false;      // Hunt cooldown end
-            speed = aggression / 8; // Slightly increase speed instead of the previous massive increase
-            playerRef.GetComponent<script_responseToHunt>().DisableResponseToHuntMode();
-            playerHasResponded = false; // Player response finished
-            changeGoal(playerRef.transform); // Set goal as where player was when this period ended
         }
     }
 
@@ -224,32 +206,21 @@ public class Tony : MonoBehaviour
     public void aggroIncrease(int value)
     {
         aggression += value;
-        if (hunting)
-        {
-            speed = aggression / 8;
-        }
-        else
-        {
-            speed = aggression / 10; // Changes speed
-        }
 
         // Changes sound sphere size here
         soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
     }
 
-    void playerHit(Collider other)
+    public void playerHit()
     {
-        if (dmgCooldown <= 0)
-        {
             // Play hit animation here
-            ani.SetTrigger("swipe");
-            other.GetComponent<player_health>().RecieveHit();
-            dmgCooldown = 0.5f;
+            Debug.Log("hit");
+            playerRef.GetComponent<player_health>().RecieveHit();
+            //dmgCooldown = 0.5f;
             speed = 0;
             idle = true;
             idleTimer = 0.5f;
             ani.SetBool("idle", true);
-        }
     }
 
     public void EndHunt() // End the hunt early (player dies, game ends, etc)
@@ -260,5 +231,23 @@ public class Tony : MonoBehaviour
         speed = aggression / 10;
         playerHasResponded = false;
         changeGoal(goals[Random.Range(0, goals.Count)]);
+    }
+
+    public void Unfreeze()
+    {
+        ani.SetBool("walk", true);
+
+        Debug.Log("No More Hunt");
+        
+        agent.enabled = true;
+        hunting = true;
+        
+        aggroIncrease(hunting == true ? 0 : 1); // Increase aggression slightly
+        
+        huntBegin = false;      // Hunt cooldown end
+        speed = aggression / 8; // Slightly increase speed instead of the previous massive increase
+
+        playerRef.GetComponent<script_responseToHunt>().DisableResponseToHuntMode();
+        playerHasResponded = false; // Player response finished
     }
 }
