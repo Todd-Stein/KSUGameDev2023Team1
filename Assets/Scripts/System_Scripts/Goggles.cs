@@ -21,29 +21,29 @@ public class Goggles : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("GoggleStart");
+        //Debug.Log("GoggleStart");
         //if(goggleobjs == null)
         //{
         goggleobjs = GameObject.FindGameObjectsWithTag("Goggle");
 
 
-        Debug.Log("nongog object count is: " + GameObject.FindGameObjectsWithTag("nongog").Length);
+       // Debug.Log("nongog object count is: " + GameObject.FindGameObjectsWithTag("nongog").Length);
         nongogobjs1 = new Stack<GameObject>();
         nongogobjs2 = new Stack<GameObject>();
         
 
-        Debug.Log("Now doing nongogloop!");
+        //Debug.Log("Now doing nongogloop!");
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("nongog").Length; ++i)
         {
 
             nongogobjs1.Push(GameObject.FindGameObjectsWithTag("nongog")[i]);
-            Debug.Log(GameObject.FindGameObjectsWithTag("nongog")[i].name);
+            //Debug.Log(GameObject.FindGameObjectsWithTag("nongog")[i].name);
         }
         nongogobjs = GameObject.FindGameObjectsWithTag("nongog");
-        Debug.Log("nongog count = " + nongogobjs1.Count);
+        //Debug.Log("nongog count = " + nongogobjs1.Count);
         //}
 
-        Debug.Log("Unrendering all goggles");
+        //Debug.Log("Unrendering all goggles");
         for (int i = 0; i < goggleobjs.Length; ++i)
         {
                 try { goggleobjs[i].GetComponent<MeshRenderer>().enabled = false; }
@@ -51,7 +51,7 @@ public class Goggles : MonoBehaviour
                 try { goggleobjs[i].GetComponent<SkinnedMeshRenderer>().enabled = false; }
                 catch { }
         }
-        Debug.Log("end of goggle start!");
+        //Debug.Log("end of goggle start!");
         TS.enabled = true;
     }
 
@@ -66,8 +66,8 @@ public class Goggles : MonoBehaviour
 
     public void Activate()
     {
-        Debug.Log("GOGGLES ON!");
-        Debug.Log("Activate nongog count " + nongogobjs1.Count);
+       // Debug.Log("GOGGLES ON!");
+        //Debug.Log("Activate nongog count " + nongogobjs1.Count);
         //rendered = false;
 
         for(int i = 0; i < nongogobjs.Length; ++i)
@@ -82,7 +82,11 @@ public class Goggles : MonoBehaviour
             //Debug.Log("enabling " + obj.name);
             //obj.GetComponent<MeshRenderer>().enabled = true;
             try { goggleobjs[i].GetComponent<MeshRenderer>().enabled = true; }
-            catch { Debug.Log(goggleobjs[i].name + " has no mesh renderer component"); }
+            catch
+            {
+                
+            }
+            //catch { Debug.Log(goggleobjs[i].name + " has no mesh renderer component"); }
             try { goggleobjs[i].GetComponent<SkinnedMeshRenderer>().enabled = true; }
             catch { }
         }

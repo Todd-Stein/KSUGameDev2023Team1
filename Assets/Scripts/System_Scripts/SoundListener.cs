@@ -21,7 +21,7 @@ public class SoundListener : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 6 && other.isTrigger || other.gameObject.layer == 7 && other.isTrigger)
+        if (other.gameObject.layer == 6 && other.isTrigger || other.gameObject.layer == 7 && other.isTrigger || other.tag == "NoiseMaker" && other.isTrigger)
         {
             soundlocation = other.gameObject;
             try { tony.GetComponent<Tony>().OnAlert(other.gameObject, other.GetComponent<SoundEvent>().noise); } // Call Tony's alert script, increasing aggression by noise level
