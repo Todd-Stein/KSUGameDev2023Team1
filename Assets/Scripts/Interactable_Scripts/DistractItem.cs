@@ -20,7 +20,10 @@ public class DistractItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if(thrown && !Sevent.GetComponent<AudioSource>().isPlaying)
+        {
+            Object.Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,7 +33,9 @@ public class DistractItem : MonoBehaviour
 
             Sevent.activateNoiseEvent();
             Instantiate(emiter, gameObject.transform.position, Quaternion.identity);
-            Object.Destroy(gameObject);
+            //Object.Destroy(gameObject);
+            gameObject.GetComponent<Collider>().enabled = false;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 }

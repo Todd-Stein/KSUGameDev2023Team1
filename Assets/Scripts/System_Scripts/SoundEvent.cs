@@ -60,7 +60,7 @@ public class SoundEvent : MonoBehaviour
             if (au.isPlaying == true && looping)
             {
                
-                Collider[] hits = Physics.OverlapSphere(transform.position, 2f, Tony);
+                Collider[] hits = Physics.OverlapSphere(transform.position, 3f, Tony);
                 foreach (var hit in hits)
                 {
                     Debug.Log("checking Collider!");
