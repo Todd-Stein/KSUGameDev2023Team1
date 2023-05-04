@@ -187,9 +187,10 @@ public class Tony : MonoBehaviour
         {
             alerted = false;                            // No longer alert
             speed = 0;                                  // Waits idle for a time
-            idleTimer = 2f;                             // Waits idle for less time as aggression increases(?)
+            idleTimer = 2f;                             // Waits idle
+            idle = true;
             ani.SetBool("idle", true);                  // Animation set to idle animation
-            goalIndex = Random.Range(0, goals.Count);   // Set goal index to random goal - does nothing
+            //goalIndex = Random.Range(0, goals.Count);   // Set goal index to random goal - does nothing
             agent.autoBraking = false;                  // Turn off autobraking so Tony doesn't slow when reaching goal
             return true;
         }
