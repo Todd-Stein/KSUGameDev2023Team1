@@ -13,8 +13,13 @@ public class Checkpoint : MonoBehaviour
     [SerializeField]
     GameObject previousDoor;        // Last Checkpoint in scene
 
-    //[SerializeField]
-    static private bool used;       // Mark whether the Checkpoint has been passed or not
+    [SerializeField]
+    private bool used;       // Mark whether the Checkpoint has been passed or not
+
+    
+    public GameObject gameOverOverlay;     // Overlay for game over
+    [SerializeField]
+    GameObject mainCam;             // Main camera for game over LERP
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +95,7 @@ public class Checkpoint : MonoBehaviour
         player.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerPosX"), PlayerPrefs.GetFloat("PlayerPosY"), PlayerPrefs.GetFloat("PlayerPosZ")); // Set the player to the Checkpoint's saved position
         player.GetComponent<player_health>().currentHealth = PlayerPrefs.GetInt("PlayerHealth"); // Set the player's health to the saved health
         if (held != null) { player.GetComponent<player_controls>().Pickup(held); } // Set the player's item to the saved item
+        //mainCam.transform.position = new Vector3(0, 0, 0);
     }
 
     public void LoadTonyState() // Function to load Tony's save state
@@ -105,25 +111,54 @@ public class Checkpoint : MonoBehaviour
     private void OnEnable() // Function called when this Checkpoint is enabled in the scene
     {
         player_health.onDeath += OnPlayerDeath; // Subscribe the event 'onDeath' to run when OnPlayerDeath runs
-        //player = GameObject.Find("Player");     // Finds the player in the scene. Player is not always named 'Player'
+        //player = GameObject.Find("Player");    // Finds the player in the scene. Player is not always named 'Player'
         Tony = GameObject.Find("Tony"); // Finds Tony in the scene
         used = false; // Sets this Checkpoint to not having been passed through
+        //gameOverOverlay = GameObject.Find("Game Over Overlay"); // Finds game over overlay in the scene
+        //mainCam = GameObject.Find("PlayerCamera");
     }
 
     private void OnDisable() // Function called when this Checkpoint is disabled in the scene
     {
+        used = false;
         player_health.onDeath -= OnPlayerDeath; // Unsubscribe onDeath from OnPlayerDeath
     }
 
     void OnPlayerDeath() // Function called when player dies
     {
         Debug.Log("Reloading...");
-        LoadPlayerState(); // Run LoadPlayerState
-        LoadTonyState();   // Run LoadTonyState
+        if (used)
+        {
+            Debug.Log("Starting coroutine here...");
+            StartCoroutine(GameOver());
+        }
+        //LoadPlayerState(); // Run LoadPlayerState
+        //LoadTonyState();   // Run LoadTonyState
     }
 
     public void SetPrevDoor(GameObject o) // Function called to set the previous Checkpoint to the previous Checkpoint
     {
         previousDoor = o;
+    }
+
+    IEnumerator GameOver()
+    {
+        Debug.Log("Coroutine started.");
+        Tony.GetComponent<Tony>().speed = 0;
+        Debug.Log("Tony speed 0.");
+        player.GetComponent<FirstPersonController>().playerCanMove = false;
+        Debug.Log("Player movement disabled.");
+        gameOverOverlay?.SetActive(true);
+        Debug.Log("Game Overlay active.");
+        //mainCam.GetComponent<CamLerp>().LERP = true;
+        //Debug.Log("Player Camera LERPing.");
+        yield return new WaitForSeconds(3);
+        //mainCam.GetComponent<CamLerp>().ResetCam();
+        LoadPlayerState();
+        player.GetComponent<FirstPersonController>().playerCanMove = true;
+        gameOverOverlay.SetActive(false);
+        LoadTonyState();
+        Debug.Log("Coroutine finished.");
+        yield return null;
     }
 }
