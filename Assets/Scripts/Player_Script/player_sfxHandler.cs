@@ -18,10 +18,10 @@ public class player_sfxHandler : MonoBehaviour
 {
     public groundMaterialType currentGroundMat;
     private Rigidbody rb;
-    private AudioSource audioSRC;
+    public AudioSource audioSRCR, audioSRCL;
     [SerializeField]
     //public List<List<AudioClip>> footstepSounds;
-    public List<AudioClipSerialize> footsteps;
+    public List<AudioClip> footsteps;
     private RaycastHit hit;
 
     public float timeBetweenSteps = .2f;
@@ -29,10 +29,17 @@ public class player_sfxHandler : MonoBehaviour
 
     private Vector3 currentLoc, prevLoc;
 
+    public Transform joint;
+    private Vector3 jointOriginalPos;
+    private bool Right = false;
+    private bool step = false;
+
     private void Awake()
     {
-        audioSRC = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody>();   
+        audioSRCR = GetComponents<AudioSource>()[0];
+        audioSRCL = GetComponents<AudioSource>()[1];
+        rb = GetComponent<Rigidbody>();
+        jointOriginalPos = joint.localPosition;
         //footstepSounds = new List<List<AudioClip>>();
     }
 
@@ -45,10 +52,48 @@ public class player_sfxHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Joint loc pos = " + jointOriginalPos.y);
         if (Input.GetKeyUp(KeyCode.W))
         {
             currentTimeBetweenSteps = 0;
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            audioSRCR.clip = footsteps[2];
+            audioSRCL.clip = footsteps[3];
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            audioSRCR.clip = footsteps[0];
+            audioSRCL.clip = footsteps[1];
+        }
+
+        if (joint.localPosition.y <= jointOriginalPos.y - .08f)
+        {
+            Debug.Log("Play Sound");
+            if (!Right && !step)
+            {
+                audioSRCR.Play();
+                Right = true;
+                step = true;
+            }
+            else
+            {
+                if (!step)
+                {
+                    audioSRCL.Play();
+                    Right = false;
+                    step = true;
+                }
+            }
+
+        }
+        if(joint.localPosition.y > jointOriginalPos.y - .08f){
+            step = false;
+        }
+        /*
         currentLoc = transform.position;
         Debug.DrawRay(transform.position, transform.up * -2.0f);
         //Debug.Log(rb.velocity.magnitude);
@@ -82,6 +127,7 @@ public class player_sfxHandler : MonoBehaviour
             //audioSRC.Stop();
         }
         prevLoc = currentLoc;
+        */
     }
     void FootstepsSFX()
     {
@@ -89,4 +135,6 @@ public class player_sfxHandler : MonoBehaviour
         //audioSRC.clip = footstepSounds[(int)currentGroundMat][Random.Range(0, footstepSounds.Count)];
         
     }
+
+
 }
