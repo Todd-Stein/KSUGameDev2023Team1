@@ -8,6 +8,8 @@ public class player_controls : MonoBehaviour
     public KeyCode gogglesKey = KeyCode.Mouse1;
     public KeyCode interactKey = KeyCode.E;
     public KeyCode tossKey = KeyCode.Mouse0;
+    public KeyCode crouch = KeyCode.LeftControl;
+    public KeyCode sprint = KeyCode.LeftShift;
 
     public Camera playerCam;
     private Goggles goggles;
@@ -43,6 +45,8 @@ public class player_controls : MonoBehaviour
 
     [Tooltip("The force applied to thrown objects.")]
     public float throwForce = 500f;  //public in case of a future game mechanic that may alter it.
+
+    public player_sfxHandler sfx;
 
     private void Start()
     {
@@ -88,6 +92,16 @@ public class player_controls : MonoBehaviour
         {
             Toss();
         }
+
+        if (Input.GetKeyDown(sprint))
+        {
+            //sfx.timeBetweenSteps = djfk;
+        }
+        if (Input.GetKeyUp(sprint))
+        {
+            //player_sfxHandler.timeBetweenSteps = .2f;
+        }
+        
     }
 
     void Interact()

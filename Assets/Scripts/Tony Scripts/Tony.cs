@@ -36,6 +36,8 @@ public class Tony : MonoBehaviour
     bool huntBegin;
     public bool canHunt;
 
+    public bool attacking = false;
+
     public GameObject playerRef;
 
     NavMeshAgent agent;
@@ -89,7 +91,7 @@ public class Tony : MonoBehaviour
         {
             try { changeGoal(goals[Random.Range(0, goals.Count)]); }
             catch { }
-        } else if (hunting && canHunt && agent.isActiveAndEnabled && Vector3.Distance(playerRef.transform.position, transform.position) <= 5f) { // If Tony is hunting and the player is within 1 units...
+        } else if (hunting && canHunt && agent.isActiveAndEnabled && Vector3.Distance(playerRef.transform.position, transform.position) <= 3f && attacking == false) { // If Tony is hunting and the player is within 1 units...
             ani.SetTrigger("swipe"); // Play damage animation, which calls the PlayerHit() function.
         }
     }
@@ -145,7 +147,7 @@ public class Tony : MonoBehaviour
     {
         if (idleTimer > 0 && idle == true)
         {
-            if (!ani.GetBool("idle")) { ani.SetBool("idle", true); } // Show him as idle if not already
+            if (!ani.GetBool("idle")) { ani.SetBool("idle", true); ani.SetBool("walk", false); } // Show him as idle if not already
             speed = 0;
             idleTimer -= Time.deltaTime;
         }
@@ -154,6 +156,8 @@ public class Tony : MonoBehaviour
             speed = aggression / 10;
             idleTimer = 0;
             idle = false;
+            ani.SetBool("idle", false);
+            ani.SetBool("walk", true);
             changeGoal(goals[Random.Range(0, goals.Count)]);
         }
 
@@ -190,6 +194,7 @@ public class Tony : MonoBehaviour
             idleTimer = 2f;                             // Waits idle
             idle = true;
             ani.SetBool("idle", true);                  // Animation set to idle animation
+            ani.SetBool("walk", false);
             //goalIndex = Random.Range(0, goals.Count);   // Set goal index to random goal - does nothing
             agent.autoBraking = false;                  // Turn off autobraking so Tony doesn't slow when reaching goal
             return true;
@@ -221,7 +226,10 @@ public class Tony : MonoBehaviour
     public void playerHit()
     {
         Debug.Log("hit");
-        playerRef.GetComponent<player_health>().RecieveHit();
+        if (Vector3.Distance(playerRef.transform.position, transform.position) <= 3f)
+        {
+            playerRef.GetComponent<player_health>().RecieveHit();
+        }
     }
 
     // End the hunt early (player dies, game ends, etc)
@@ -248,5 +256,19 @@ public class Tony : MonoBehaviour
 
         playerRef.GetComponent<script_responseToHunt>().DisableResponseToHuntMode();
         playerHasResponded = false; // Player response finished
+    }
+
+    public void attackswitch()
+    {
+        
+        attacking = !attacking;
+        if (attacking)
+        {
+            agent.enabled = false;
+        }
+        else
+        {
+            agent.enabled = true;
+        }
     }
 }

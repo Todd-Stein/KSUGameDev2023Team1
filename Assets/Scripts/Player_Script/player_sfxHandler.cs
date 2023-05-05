@@ -24,8 +24,8 @@ public class player_sfxHandler : MonoBehaviour
     public List<AudioClipSerialize> footsteps;
     private RaycastHit hit;
 
-    public float timeBetweenSteps = 10.0f;
-    private float currentTimeBetweenSteps = 0.0f;
+    public float timeBetweenSteps = .2f;
+    public float currentTimeBetweenSteps = 0.0f;
 
     private Vector3 currentLoc, prevLoc;
 
@@ -45,13 +45,17 @@ public class player_sfxHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            currentTimeBetweenSteps = 0;
+        }
         currentLoc = transform.position;
         Debug.DrawRay(transform.position, transform.up * -2.0f);
         //Debug.Log(rb.velocity.magnitude);
-        if(Physics.Raycast(transform.position, transform.up*-1.0f, out hit, 2.0f))
-        {
+        //if(Physics.Raycast(transform.position, transform.up*-1.0f, out hit, 2.0f))
+        //{
             //Debug.Log(rb.velocity.sqrMagnitude>0);
-            if ((currentLoc - prevLoc).magnitude > 0.0f)
+            if ((currentLoc - prevLoc).magnitude > 0.01f)
             {
                 //Debug.Log(rb.velocity.sqrMagnitude);
                 AudioClipSerialize temp = footsteps[(int)currentGroundMat];
@@ -61,16 +65,16 @@ public class player_sfxHandler : MonoBehaviour
                 {
                     if (currentTimeBetweenSteps >= timeBetweenSteps)
                     {
-                        AudioClip tempClip = temp.clip[Random.Range(0, temp.clip.Count)];
+                        AudioClip tempClip = temp.clip[4];
                         currentTimeBetweenSteps = 0.0f;
                         //timeBetweenSteps = tempClip.length;
                         audioSRC.PlayOneShot(tempClip);
                     }
                 }
                 //AudioSource.PlayClipAtPoint(temp.clip[Random.Range(0, temp.clip.Count)], transform.position);
-            }
-            else
-                currentTimeBetweenSteps = 0.0f;
+            //}
+            //else
+                //currentTimeBetweenSteps = 0.0f;
                 //audioSRC.Stop();
         }
         else
