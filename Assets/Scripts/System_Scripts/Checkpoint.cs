@@ -143,22 +143,22 @@ public class Checkpoint : MonoBehaviour
 
     IEnumerator GameOver()
     {
-        Debug.Log("Coroutine started.");
-        Tony.GetComponent<Tony>().speed = 0;
+        Tony T = Tony.GetComponent<Tony>();
+        T.canHunt = false;
+        T.EndHunt();
+        T.speed = 0;
         Debug.Log("Tony speed 0.");
         player.GetComponent<FirstPersonController>().playerCanMove = false;
         Debug.Log("Player movement disabled.");
         gameOverOverlay?.SetActive(true);
         Debug.Log("Game Overlay active.");
-        //mainCam.GetComponent<CamLerp>().LERP = true;
-        //Debug.Log("Player Camera LERPing.");
         yield return new WaitForSeconds(3);
-        //mainCam.GetComponent<CamLerp>().ResetCam();
         LoadPlayerState();
         player.GetComponent<FirstPersonController>().playerCanMove = true;
         gameOverOverlay.SetActive(false);
         LoadTonyState();
         Debug.Log("Coroutine finished.");
+        T.canHunt = true;
         yield return null;
     }
 }

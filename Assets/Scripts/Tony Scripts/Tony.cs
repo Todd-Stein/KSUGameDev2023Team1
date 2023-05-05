@@ -34,6 +34,7 @@ public class Tony : MonoBehaviour
     bool idle;              // Whether Tony is idle or not
     public float huntTimer;
     bool huntBegin;
+    public bool canHunt;
 
     public GameObject playerRef;
 
@@ -70,22 +71,26 @@ public class Tony : MonoBehaviour
         }
         currentGoal = goals[Random.Range(0, goals.Count)];
         agent.destination = currentGoal.position;
+        canHunt = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Call all our timers
         Timer();
 
-        agent.speed = speed; // Change speed as necessary
+        if (agent.isActiveAndEnabled)
+        {
+            agent.speed = speed; // Change speed as necessary
+        }
 
         if (checkGoals() && !hunting) // If he has reached an alert or patrol point, and is not hunting the player
         {
             try { changeGoal(goals[Random.Range(0, goals.Count)]); }
             catch { }
-        } else if (!huntBegin && hunting && agent.remainingDistance <= 1f) { // If Tony is hunting and the player is within .10 units...
-            //playerHit();        // Damage the player
-            ani.SetTrigger("swipe");
+        } else if (hunting && canHunt && agent.isActiveAndEnabled && Vector3.Distance(playerRef.transform.position, transform.position) <= 5f) { // If Tony is hunting and the player is within 1 units...
+            ani.SetTrigger("swipe"); // Play damage animation, which calls the PlayerHit() function.
         }
     }
 
@@ -93,7 +98,7 @@ public class Tony : MonoBehaviour
     {
        
         if (collision.gameObject.CompareTag("Player") &&
-            !hunting && !huntBegin)
+            !hunting && canHunt)
         {
             GameObject player = collision.gameObject;
             OnTheHunt(player);
@@ -115,16 +120,16 @@ public class Tony : MonoBehaviour
         //increased speed for 10 secs after hunting == false
 
         //increased speed and aggression
-        //after 1.5: huntBegin == false, increase speed
         //after 10: speed is normal
-        if (!hunting)
+        if (!hunting && huntTimer <= 0 && canHunt)
         {
-            //speed = 0; // Speed to 0 for 1.5 seconds
+            hunting = true;
+            huntTimer = 11.5f;
+            agent.autoBraking = false; // Tony does not slow down as he approaches goal
+            changeGoal(other.transform);
             agent.enabled = false;
             roar.Play();
-            ani.SetBool("walk", false);
             ani.SetTrigger("rage");
-            agent.autoBraking = false; // Tony does not slow down as he approaches goal
 
             if (!playerHasResponded) // If player response has not already played...
             {
@@ -132,12 +137,7 @@ public class Tony : MonoBehaviour
                 playerHasResponded = true; // Confirm the player has responded now
             }
 
-            huntTimer = 11.5f; // Set hunt timer to 11.5 seconds
-            huntBegin = true; // The hunting
-
             Debug.Log("Hunting");
-
-            changeGoal(other.transform);
         }
     }
 
@@ -151,47 +151,47 @@ public class Tony : MonoBehaviour
         }
         else if (idleTimer <= 0 && idle == true)
         {
-            //GoIdle();
             speed = aggression / 10;
             idleTimer = 0;
             idle = false;
             changeGoal(goals[Random.Range(0, goals.Count)]);
         }
 
-        if (huntTimer > 0)
+        if (huntTimer > 0 && hunting && canHunt)
         {
             huntTimer -= Time.deltaTime;
             changeGoal(playerRef.transform);    // change the goal to the player, as they are (theoretically) always moving
         } 
-        else if (hunting)
+        else if (hunting && canHunt)
         {
-            hunting = false; // No longer hunting
-            huntTimer = 0;   // Set hunt timer to 0
-            speed = aggression / 10; // Reset to default speed
+            hunting = false;            // No longer hunting
+            huntTimer = 0;              // Set hunt timer to 0
+            speed = aggression / 10;    // Reset to default speed
             changeGoal(goals[Random.Range(0, goals.Count)]); // Random patrol point
         }
     }
 
     bool checkGoals()
     {
-        if (agent.remainingDistance <= 0f &&
+        if (agent.isActiveAndEnabled && agent.remainingDistance <= 0f &&
             !alerted && !hunting) // If Tony is simply patrolling, and has reached a patrol point...
         {
             //ani.SetBool("walk", false);
             //ani.SetBool("idle", true);
-            //speed = ;
+            //speed = 0;
             //idleTimer = (float)((100 - aggression) / 10); // Waits idle for less time as aggression increases
-            goalIndex = Random.Range(0, goals.Count); // Get a new patrol point
+            goalIndex = Random.Range(0, goals.Count);   // Get a new patrol point
             return true;
         }
-        else if (alerted && agent.remainingDistance <= 4f) // If Tony was alerted by an object and reached it...
+        else if (agent.isActiveAndEnabled && !hunting && alerted && agent.remainingDistance <= 4f) // If Tony was alerted by an object and reached it...
         {
-            alerted = false; // No longer alert
-            speed = 0;      // Waits idle for a time
-            idleTimer = 2f; // Waits idle for less time as aggression increases(?)
-            ani.SetBool("idle", true); // Animation set to idle animation
-            goalIndex = Random.Range(0, goals.Count); // Set goal index to random goal - does nothing
-            agent.autoBraking = false; // Turn off autobraking so Tony doesn't slow when reaching goal
+            alerted = false;                            // No longer alert
+            speed = 0;                                  // Waits idle for a time
+            idleTimer = 2f;                             // Waits idle
+            idle = true;
+            ani.SetBool("idle", true);                  // Animation set to idle animation
+            //goalIndex = Random.Range(0, goals.Count);   // Set goal index to random goal - does nothing
+            agent.autoBraking = false;                  // Turn off autobraking so Tony doesn't slow when reaching goal
             return true;
         }
         return false;
@@ -199,8 +199,14 @@ public class Tony : MonoBehaviour
 
     void changeGoal(Transform t)
     {
-        currentGoal = t;
-        agent.destination = currentGoal.position;
+        if (agent.isActiveAndEnabled)
+        {
+            currentGoal = t;
+            agent.destination = currentGoal.position;
+        } else
+        {
+            currentGoal = t;
+        }
     }
 
     public void aggroIncrease(int value)
@@ -211,40 +217,33 @@ public class Tony : MonoBehaviour
         soundSphere.transform.localScale = new Vector3(aggression, aggression, aggression);
     }
 
+    // Function called by animator when the animation is at the right spot to hit player
     public void playerHit()
     {
-            // Play hit animation here
-            Debug.Log("hit");
-            playerRef.GetComponent<player_health>().RecieveHit();
-            //dmgCooldown = 0.5f;
-            speed = 0;
-            idle = true;
-            idleTimer = 0.5f;
-            ani.SetBool("idle", true);
+        Debug.Log("hit");
+        playerRef.GetComponent<player_health>().RecieveHit();
     }
 
-    public void EndHunt() // End the hunt early (player dies, game ends, etc)
+    // End the hunt early (player dies, game ends, etc)
+    public void EndHunt() 
     {
         hunting = false;
         huntBegin = false;
         huntTimer = 0f;
         speed = aggression / 10;
         playerHasResponded = false;
+        ani.ResetTrigger("rage");
         changeGoal(goals[Random.Range(0, goals.Count)]);
     }
 
     public void Unfreeze()
     {
-        ani.SetBool("walk", true);
-
-        Debug.Log("No More Hunt");
-        
         agent.enabled = true;
         hunting = true;
+        huntTimer = 10f;
         
         aggroIncrease(hunting == true ? 0 : 1); // Increase aggression slightly
-        
-        huntBegin = false;      // Hunt cooldown end
+
         speed = aggression / 8; // Slightly increase speed instead of the previous massive increase
 
         playerRef.GetComponent<script_responseToHunt>().DisableResponseToHuntMode();
