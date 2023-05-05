@@ -37,7 +37,7 @@ public class EnvironmentSound : MonoBehaviour
             //au.Play();
             SE.activateNoiseEvent();
         }
-        else
+        else if(other.tag == "Tony")
         {
             au.Play();
         }
