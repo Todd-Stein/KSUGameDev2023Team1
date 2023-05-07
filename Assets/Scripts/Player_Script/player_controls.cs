@@ -113,7 +113,13 @@ public class player_controls : MonoBehaviour
                 Debug.Log("Raycast hit object with Pickupable Layer");
 
                 if (pickupHit.collider.gameObject.GetComponent<Rigidbody>() != null)
-                    Pickup(pickupHit.collider.gameObject);                                           
+                    Pickup(pickupHit.collider.gameObject);
+
+                if (pickupHit.collider.gameObject.GetComponent<KeycardScript>() != null)
+                {
+                    pickupHit.transform.parent = transform;
+                    pickupHit.collider.gameObject.GetComponent<KeycardScript>().GetPickedUp();
+                }
             }
         }
 
@@ -134,6 +140,7 @@ public class player_controls : MonoBehaviour
         isHolding = true;
         if (held.GetComponentInChildren<TextMeshPopup>() != null)
             held.GetComponentInChildren<TextMeshPopup>().destroyMe();
+       
 
         Physics.IgnoreCollision(held.GetComponent<Collider>(), GetComponent<Collider>(), true);
     }

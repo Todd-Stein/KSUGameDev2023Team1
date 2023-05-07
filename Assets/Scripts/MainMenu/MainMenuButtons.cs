@@ -11,12 +11,15 @@ public class MainMenuButtons : MonoBehaviour
 
     private AudioSource audioSource;
     private GameObject creditsCanvas;
+    private GameObject optionsCanvas;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         creditsCanvas = GameObject.Find("CreditsCanvas");
+        optionsCanvas = GameObject.Find("OptionsCanvas");
         creditsCanvas.SetActive(false);
+        optionsCanvas.SetActive(false);
     }
 
     public void LoadMainMap()
@@ -28,7 +31,12 @@ public class MainMenuButtons : MonoBehaviour
     public void ShowOptionsOverlay()
     {
         Debug.Log("Options pressed");
-        
+        optionsCanvas.SetActive(true);
+    }
+
+    public void HideOptionsOverlay()
+    {
+        optionsCanvas.SetActive(false);
     }
 
     public void ShowCreditsOverlay()
