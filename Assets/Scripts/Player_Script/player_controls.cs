@@ -21,6 +21,7 @@ public class player_controls : MonoBehaviour
     private GameObject held;
     private Rigidbody heldRB;
     private bool isHolding = false;
+    private player_inventory inventory;
 
     [SerializeField]
     [Tooltip("(Auto-assigned during Awake().) The position which a pickup will be held at in the FOV.")]
@@ -56,7 +57,7 @@ public class player_controls : MonoBehaviour
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
         // tonyVision = GameObject.Find("TonyVision");
         //tonyVision.SetActive(false);
-
+        inventory = GetComponent<player_inventory>();
         //find game manager
         try { goggles = GameObject.Find("GameManager").GetComponent<Goggles>(); Debug.Log("GOT GOGGLES!!!"); }
         catch { Debug.Log("NO GOG"); }
@@ -115,10 +116,9 @@ public class player_controls : MonoBehaviour
                 if (pickupHit.collider.gameObject.GetComponent<Rigidbody>() != null)
                     Pickup(pickupHit.collider.gameObject);
 
-                if (pickupHit.collider.gameObject.GetComponent<KeycardScript>() != null)
+                else
                 {
-                    pickupHit.transform.parent = transform;
-                    pickupHit.collider.gameObject.GetComponent<KeycardScript>().GetPickedUp();
+                    inventory.Collect(pickupHit.collider.gameObject);
                 }
             }
         }

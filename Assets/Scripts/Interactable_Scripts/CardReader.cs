@@ -24,19 +24,18 @@ public class CardReader : MonoBehaviour
     [Tooltip("Reference the door this CardReader unlocks.")]
     private Door door;
 
+    private player_inventory playerInv;
+
 
     void Start()
     {
         readerMesh = GetComponent<MeshRenderer>();
         ani = GetComponent<Animation>();
         readerMesh.material = materials[keyCount];
+        playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<player_inventory>();
     }
 
 
-    void Update()
-    {
-        
-    }
 
     public void Swipe()
     {
@@ -44,15 +43,18 @@ public class CardReader : MonoBehaviour
         // increment keycount
         // change material
         // if all keys used, unlock the door
-        keyCount++;
-        StartCoroutine(ChangeMaterial());
-        ani.Play();
+        if (playerInv.Use())
+        {
+            keyCount++;
+            StartCoroutine(ChangeMaterial());
+            ani.Play();
 
-        if (keyCount >= keysRequired)
-            keyCount = keysRequired;
+            if (keyCount >= keysRequired)
+                keyCount = keysRequired;
 
-        if (keyCount == keysRequired)
-            door.unlocked = true;
+            if (keyCount == keysRequired)
+                door.unlocked = true;
+        }
     }
 
     private IEnumerator ChangeMaterial()
