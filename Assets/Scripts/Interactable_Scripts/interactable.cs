@@ -8,6 +8,8 @@ public class interactable : MonoBehaviour
 
     public Door door = null;
     public DoorSwitch DS = null;
+    public CardReader cardReader = null;  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,9 @@ public class interactable : MonoBehaviour
         {
             Debug.Log (DS.name);
         }
+
+        if (cardReader != null)
+            Debug.Log (cardReader.name);
     }
 
     // Update is called once per frame
@@ -41,6 +46,14 @@ public class interactable : MonoBehaviour
             DS.Unlock();
             return;
         }
+
+        if (cardReader != null)
+        {
+            Debug.Log("swiping card");
+            cardReader.Swipe();
+            return;
+        }
+
         gameObject.GetComponent<SoundEvent>().activateNoiseEvent();
         Debug.Log("Interactable Activated");
     }
