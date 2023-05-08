@@ -54,11 +54,11 @@ public class player_health : MonoBehaviour
             AudioSource.PlayClipAtPoint(playerHurt, transform.position, hurtAudioVolume);
 
         bloodOverlay.SetActive(true);
-        if (bloodMaterialRef.material != null)
+        /*if (bloodMaterialRef.material != null)
         {
             bloodMaterialRef.material.SetFloat("_randomizeBlood1", Random.Range(200, 600));
             bloodMaterialRef.material.SetFloat("_randomizeBlood2", Random.Range(4000, 6000));
-        }
+        }*/
         if (isDead)
         {
             // Invoke onDeath delegate

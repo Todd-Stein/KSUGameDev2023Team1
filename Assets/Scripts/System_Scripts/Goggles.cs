@@ -17,6 +17,7 @@ public class Goggles : MonoBehaviour
     private bool rendered = true;
 
     public TonySpawner TS;
+    public Vision TV;
     
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,7 @@ public class Goggles : MonoBehaviour
         {
             TakeOff();
             rendered = true;
+            TV.goggs = false;
         }
     }
 
@@ -91,6 +93,7 @@ public class Goggles : MonoBehaviour
             catch { }
         }
 
+        TV.goggs = true;
         
     }
 

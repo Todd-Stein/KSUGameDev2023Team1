@@ -598,7 +598,10 @@ MonoBehaviour:
   aggression: 40
   idleTimer: 0
   huntTimer: 0
+  canHunt: 0
+  attacking: 0
   playerRef: {fileID: 0}
+  roar: {fileID: 0}
 --- !u!114 &1415318471828593831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc6ffcf98b0fb2468474b67e868ff3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goggs: 1
+  goggs: 0
   curHitObj: {fileID: 0}
   radius: 0.5
   distance: 6
@@ -731,6 +734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundlocation: {fileID: 0}
+  growls: []
+  shout: {fileID: 0}
   tony: {fileID: 3888634955850296481}
 --- !u!54 &2150179097931310584
 Rigidbody:

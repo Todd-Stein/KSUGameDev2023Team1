@@ -52,7 +52,7 @@ public class player_sfxHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Joint loc pos = " + jointOriginalPos.y);
+        //Debug.Log("Joint loc pos = " + jointOriginalPos.y);
         if (Input.GetKeyUp(KeyCode.W))
         {
             currentTimeBetweenSteps = 0;
@@ -72,7 +72,7 @@ public class player_sfxHandler : MonoBehaviour
 
         if (joint.localPosition.y <= jointOriginalPos.y - .08f)
         {
-            Debug.Log("Play Sound");
+            //Debug.Log("Play Sound");
             if (!Right && !step)
             {
                 audioSRCR.Play();

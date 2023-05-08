@@ -49,7 +49,6 @@ public class Door : MonoBehaviour
     public void ForceOpen()
     {
         gameObject.GetComponent<BoxCollider>().enabled = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<SoundEvent>().activateNoiseEvent();
     }
 
@@ -60,9 +59,9 @@ public class Door : MonoBehaviour
 
     public void OpenDone()
     {
-        openDone.Play();
+        //Disabling box
         gameObject.GetComponent<BoxCollider>().enabled = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        openDone.Play();
         opened = true;
         GetComponent<NavMeshObstacle>().enabled = false;
     }

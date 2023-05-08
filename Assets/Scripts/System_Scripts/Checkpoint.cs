@@ -110,6 +110,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnEnable() // Function called when this Checkpoint is enabled in the scene
     {
+        Debug.Log("CHECKPOINT ENABLED");
         player_health.onDeath += OnPlayerDeath; // Subscribe the event 'onDeath' to run when OnPlayerDeath runs
         //player = GameObject.Find("Player");    // Finds the player in the scene. Player is not always named 'Player'
         Tony = GameObject.Find("Tony"); // Finds Tony in the scene

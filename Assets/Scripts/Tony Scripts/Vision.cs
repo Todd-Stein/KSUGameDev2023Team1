@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vision : MonoBehaviour
 {
-    public bool goggs = true;
+    public bool goggs = false;
 
     public GameObject curHitObj;
 
@@ -23,11 +23,13 @@ public class Vision : MonoBehaviour
     {
         try
         {
+            /*
             if (curHitObj.CompareTag("Player") && !goggs)
             {
                 tony.GetComponent<Tony>().OnAlert(curHitObj, 10);
-                Debug.Log("Alerted");
+                //Debug.Log("Alerted");
             }
+            */
         }
         catch { }
         try
@@ -35,7 +37,7 @@ public class Vision : MonoBehaviour
             if (curHitObj.CompareTag("Player") && goggs)
             {
                 tony.GetComponent<Tony>().OnTheHunt(curHitObj);
-                Debug.Log("Hunting");
+                //Debug.Log("Hunting");
             }
         }
         catch { }

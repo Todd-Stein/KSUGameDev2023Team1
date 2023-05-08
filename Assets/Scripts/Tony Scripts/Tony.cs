@@ -226,10 +226,14 @@ public class Tony : MonoBehaviour
     public void playerHit()
     {
         Debug.Log("hit");
-        if (Vector3.Distance(playerRef.transform.position, transform.position) <= 4f)
+        //if (Vector3.Distance(playerRef.transform.position, transform.position) <= 4f)
+        //{
+        if(playerRef.GetComponent<player_health>().currentHealth == 0)
         {
-            playerRef.GetComponent<player_health>().RecieveHit();
+            return;
         }
+        playerRef.GetComponent<player_health>().RecieveHit();
+        //}
     }
 
     // End the hunt early (player dies, game ends, etc)
