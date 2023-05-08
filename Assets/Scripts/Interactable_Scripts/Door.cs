@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Door : MonoBehaviour
     public AudioSource openSound;
     public AudioSource openDone;
     private Animator animator;
+    public bool finalDoor = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +36,14 @@ public class Door : MonoBehaviour
     {
         if (unlocked)
         {
+            if (finalDoor == true)
+            {
+                SceneManager.LoadScene("EndCredits");
+            }
             animator.SetBool("Open", true);
+            
         }
+        
     }
 
     public void ForceOpen()

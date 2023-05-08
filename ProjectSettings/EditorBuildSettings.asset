@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Map.unity
     guid: 4a538bdf137179e4291472ba2cecaf69
+  - enabled: 1
+    path: Assets/Scenes/EndCredits.unity
+    guid: 586ce40206f93694fad61beb1bbd01c6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7310e0df9062f1e41b4ed330b75587de, type: 2}
