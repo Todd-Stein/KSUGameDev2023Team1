@@ -5677,6 +5677,7 @@ GameObject:
   - component: {fileID: 840082502}
   - component: {fileID: 840082504}
   - component: {fileID: 840082503}
+  - component: {fileID: 840082505}
   m_Layer: 5
   m_Name: CreditsText
   m_TagString: Untagged
@@ -5724,67 +5725,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '3 spaces in between section titles
-
-    1 space before list begins
-
-    need
-    animation for slow scroll
-
-
-
-
-    Developers:
-
-
-    Jakob Kirby
-
-    Justin Labrie
-
-    Alex
-    Witwicky
-
-    Michael Angie
-
-    Todd Stein
-
-
-
-
-    Asset Authors:
-
-
-    name1
-    - assetname
-
-    name2 - assetname
-
-    name3 - assetname
-
-    name4 - assetname
-
-
-
-
-    Special
-    Thanks:
-
-
-    Melden Bektic
-
-
-
-
-    (larger gap here for dramatic closure)
-
-
-
-
-    Thanks
-    for playing.'
+  m_text: "TEAM A MEMBERS:\n\nJAKOB KIRBY\n\nMICHAEL ANGIE\n\nJUSTIN LABRIE\n\nALEX
+    HILL\n\nTODD STEIN\n\n\n\nASSETS\n\nSCI-FI OFFICE PACK BY TERRESQUALL\n\nRADIO
+    BY AK STUDIO ART\n\nMONSTER SCAVENGER BY MAX ANTONOV\n\nLOW POLY OFFICE PROPS
+    BY RRFREELANCE\n\nMODULAR FIRST PERSON CONTROLLER BY JESS CASE\n\nACTION FIGURE
+    IS MELDIN BEKTIC\n\n\nSOUNDS: \n\nDOOR OPEN SOUND FROM HALO COMBAT EVOLVED\n\nJUST
+    LIKE A RAINBOW BY THE COLUMBIAN\n\nUNIVERSAL COMMERCIAL TUNES VOL1 BY StevenAndolf\n\nSTEPING
+    AND INTERACTING SOUNDS FROM ULTIMATE SFX PACK\n\nFUTURISTIC SECURITY DOOR BY
+    Dantesly\n\nSCP MAIN THEME AND THE FINAL FLASH OF EXISTENCE FROM SCP:SECURITY
+    BREACH"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fc893577f9c9dbf4f8ad1ceeac6fc05f, type: 2}
+  m_sharedMaterial: {fileID: 3346264915676368961, guid: fc893577f9c9dbf4f8ad1ceeac6fc05f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5808,8 +5760,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 78.14
+  m_fontSizeBase: 78.14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5858,6 +5810,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840082501}
   m_CullTransparentMesh: 1
+--- !u!95 &840082505
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840082501}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 711d125aefd2ed84fb7d54ec2d513ee5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &852569133
 PrefabInstance:
   m_ObjectHideFlags: 0
