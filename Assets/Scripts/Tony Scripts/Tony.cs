@@ -226,7 +226,7 @@ public class Tony : MonoBehaviour
     public void playerHit()
     {
         Debug.Log("hit");
-        if (Vector3.Distance(playerRef.transform.position, transform.position) <= 3f)
+        if (Vector3.Distance(playerRef.transform.position, transform.position) <= 4f)
         {
             playerRef.GetComponent<player_health>().RecieveHit();
         }
