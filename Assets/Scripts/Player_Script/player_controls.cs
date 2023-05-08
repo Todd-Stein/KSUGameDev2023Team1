@@ -49,6 +49,8 @@ public class player_controls : MonoBehaviour
 
     public player_sfxHandler sfx;
 
+    public Transform joint;
+
     private void Start()
     {
         interactableLayer = LayerMask.GetMask("Interactables");
@@ -94,13 +96,16 @@ public class player_controls : MonoBehaviour
             Toss();
         }
 
-        if (Input.GetKeyDown(sprint))
+        if (Input.GetKeyDown(crouch))
         {
-            //sfx.timeBetweenSteps = djfk;
+            GetComponent<CapsuleCollider>().height = .6f;
+            joint.localPosition = new Vector3(0, 0.34f, 0);
         }
-        if (Input.GetKeyUp(sprint))
+
+        if (Input.GetKeyUp(crouch))
         {
-            //player_sfxHandler.timeBetweenSteps = .2f;
+            GetComponent<CapsuleCollider>().height = 2f;
+            joint.localPosition = new Vector3(0, 0.7499996f, 0);
         }
         
     }
