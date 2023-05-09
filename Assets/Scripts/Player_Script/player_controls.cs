@@ -38,9 +38,7 @@ public class player_controls : MonoBehaviour
     private RaycastHit interactHit;
     private RaycastHit pickupHit;
 
-    [SerializeField]
-    [Tooltip("(Auto-assigned during Awake().) The Canvas Image which overlays a yellow tint when gogglesKey is pressed.")]
-    private GameObject tonyVision;
+ 
 
     //throwing control
 
@@ -53,22 +51,19 @@ public class player_controls : MonoBehaviour
     {
         interactableLayer = LayerMask.GetMask("Interactables");
         pickupableLayer = LayerMask.GetMask("Pickup"); 
+
         if(holdPos == null)
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
-        if(tonyVision== null)
-        pickupableLayer = LayerMask.GetMask("Pickup");
+  
         if(holdPos== null)
             holdPos = GameObject.Find("HoldingPosition").GetComponent<Transform>();
-        // tonyVision = GameObject.Find("TonyVision");
-        //tonyVision.SetActive(false);
+        
         inventory = GetComponent<player_inventory>();
+
         //find game manager
         try { goggles = GameObject.Find("GameManager").GetComponent<Goggles>(); Debug.Log("GOT GOGGLES!!!"); }
         catch { Debug.Log("NO GOG"); }
         
-
-        //playerCam = transform.GetChild(0).GetChild(0).GetComponent<Camera>();
-       // playerCam = Camera.main;
     }
 
     void Update()
@@ -123,16 +118,23 @@ public class player_controls : MonoBehaviour
         //This raycast will only hit objects on the pickupableLayer. If it hits, it will send that gameobject to the pickup() method.
         if (!isHolding)
         {
-            if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out pickupHit, interactDistance, pickupableLayer))
+            if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out pickupHit, interactDistance))
             {
-                Debug.Log("Raycast hit object with Pickupable Layer");
+                Debug.Log("Raycast hit object with Any Layer (removed pickup layer requirement)");
 
-                if (pickupHit.collider.gameObject.GetComponent<Rigidbody>() != null)
-                    Pickup(pickupHit.collider.gameObject);
-
-                else
+                if (pickupHit.collider.CompareTag("Pickup"))
                 {
-                    inventory.Collect(pickupHit.collider.gameObject);
+                    Debug.Log("Raycast hit object with Pickup tag.");
+
+                    //if it has a rigidbody it will pick it up
+                    if (pickupHit.collider.gameObject.GetComponent<Rigidbody>() != null)
+                        Pickup(pickupHit.collider.gameObject);
+
+                    //otherwise the player inventory will collect it cuz its a keycard
+                    else
+                    {
+                        inventory.Collect(pickupHit.collider.gameObject);
+                    }
                 }
             }
         }

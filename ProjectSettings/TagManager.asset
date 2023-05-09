@@ -8,6 +8,7 @@ TagManager:
   - nongog
   - Tony
   - NoiseMaker
+  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - NoizeMaker
   - player
   - Tony
+  - Tablet
   - 
-  - 
-  - 
+  - TabletOnly
   - 
   - 
   - 

@@ -16,7 +16,7 @@ public class Checkpoint : MonoBehaviour
     [SerializeField]
     private bool used;       // Mark whether the Checkpoint has been passed or not
 
-    
+
     public GameObject gameOverOverlay;     // Overlay for game over
     [SerializeField]
     GameObject mainCam;             // Main camera for game over LERP
@@ -44,7 +44,7 @@ public class Checkpoint : MonoBehaviour
                 Debug.Log(nextGoals.transform.GetComponentInChildren<Transform>());
                 foreach (Transform pnt in nextGoals.transform.GetComponentsInChildren<Transform>())
                 {
-                    if(pnt.name == nextGoals.name)
+                    if (pnt.name == nextGoals.name)
                     {
                         continue;
                     }
@@ -74,16 +74,18 @@ public class Checkpoint : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerPosZ", other.transform.position.z); // Save the player's z position
         PlayerPrefs.SetInt("PlayerHealth", other.GetComponent<player_health>().currentHealth); // Save the player's health
         // Place GetHolding and GetItem here
-        if (other.GetComponent<player_controls>().GetHolding()) { // If the player is holding an item...
+        if (other.GetComponent<player_controls>().GetHolding())
+        { // If the player is holding an item...
             held = other.GetComponent<player_controls>().GetItem(); // Retrieve the held item
-        } else
+        }
+        else
         {
             held = null; // If not, set the held item to nothing
         }
     }
 
     void SaveTonyState() // Function to save Tony's state
-    { 
+    {
         PlayerPrefs.SetFloat("TonyPosX", Tony.transform.position.x); // Save Tony's x position
         PlayerPrefs.SetFloat("TonyPosY", Tony.transform.position.y); // Save Tony's y position
         PlayerPrefs.SetFloat("TonyPosZ", Tony.transform.position.z); // Save Tony's z position
@@ -110,6 +112,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnEnable() // Function called when this Checkpoint is enabled in the scene
     {
+        Debug.Log("CHECKPOINT ENABLED");
         player_health.onDeath += OnPlayerDeath; // Subscribe the event 'onDeath' to run when OnPlayerDeath runs
         //player = GameObject.Find("Player");    // Finds the player in the scene. Player is not always named 'Player'
         Tony = GameObject.Find("Tony"); // Finds Tony in the scene

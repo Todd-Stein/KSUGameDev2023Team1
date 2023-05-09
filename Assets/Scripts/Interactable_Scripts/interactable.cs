@@ -13,17 +13,7 @@ public class interactable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (door != null)
-        {
-            Debug.Log(door.name);
-        }
-        if(DS != null)
-        {
-            Debug.Log (DS.name);
-        }
-
-        if (cardReader != null)
-            Debug.Log (cardReader.name);
+      
     }
 
     // Update is called once per frame

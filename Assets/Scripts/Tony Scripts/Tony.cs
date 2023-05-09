@@ -98,10 +98,14 @@ public class Tony : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-       
+        if (collision.gameObject.CompareTag("Player"))
+            Debug.Log("tony collided wiht player.");
+
         if (collision.gameObject.CompareTag("Player") &&
             !hunting && canHunt)
         {
+
+            Debug.Log("and not hunting and canhunt");
             GameObject player = collision.gameObject;
             OnTheHunt(player);
         }
@@ -118,6 +122,8 @@ public class Tony : MonoBehaviour
 
     public void OnTheHunt(GameObject other)
     {
+
+        Debug.Log("onthehunt() called");
         //activated by contact or seen with goggles active
         //increased speed for 10 secs after hunting == false
 
